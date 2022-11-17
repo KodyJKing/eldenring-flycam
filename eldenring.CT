@@ -213,9 +213,18 @@ eldenring.exe+3C5E73: 0F 57 05 F6 25 E1 02     - xorps xmm0,[eldenring.exe+31D84
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
+          <ID>21</ID>
+          <Description>"ChrCamPointer"</Description>
+          <LastState Value="00007FF45466D450" RealAddress="7FF4531A80D0"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>["eldenring.exe"+03C482C8]+60</Address>
+        </CheatEntry>
+        <CheatEntry>
           <ID>6</ID>
           <Description>"Copy ChrCam"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : eldenring.exe
   Version: 
@@ -297,11 +306,19 @@ eldenring.exe+4A1C2B: C3                    - ret
             <CheatEntry>
               <ID>7</ID>
               <Description>"ChrCam Address"</Description>
-              <LastState Value="00007FF4DE4FBFF0" RealAddress="7FF60CF71000"/>
+              <LastState Value="00007FF45466D450" RealAddress="7FF60CF71000"/>
               <ShowAsHex>1</ShowAsHex>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>8 Bytes</VariableType>
               <Address>chrCam</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>19</ID>
+              <Description>"VTable"</Description>
+              <LastState Value="00007FF60F9076F8" RealAddress="7FF45466D450"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>8 Bytes</VariableType>
+              <Address>[chrCam]</Address>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
@@ -317,7 +334,7 @@ eldenring.exe+4A1C2B: C3                    - ret
         <CheatEntry>
           <ID>18</ID>
           <Description>"FreezePlayerControls"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : eldenring.exe
   Version: 
@@ -376,7 +393,7 @@ eldenring.exe+3FD850: 48 8B 49 28           - mov rcx,[rcx+28]
         <CheatEntry>
           <ID>16</ID>
           <Description>"FreezeCam"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : eldenring.exe
   Version: 
@@ -435,7 +452,7 @@ eldenring.exe+A8D762: 0F 28 74 24 40           - movaps xmm6,[rsp+40]
         <CheatEntry>
           <ID>14</ID>
           <Description>"Fly Cam"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 if syntaxcheck then return end
@@ -446,6 +463,17 @@ flyCam.destroy()
 </AssemblerScript>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>20</ID>
+      <Description>"pointerscan result"</Description>
+      <LastState Value="261125880" RealAddress="7FF45466D450"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"eldenring.exe"+03C482C8</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>60</Offset>
+      </Offsets>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -3919,11 +3947,77 @@ flyCam.destroy()
         <Element Offset="1016" Vartype="Pointer" Bytesize="8" OffsetHex="000003F8" DisplayMethod="Unsigned Integer"/>
       </Elements>
     </Structure>
+    <Structure Name="CS::ChrCam 2" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="Pointer" Bytesize="8" OffsetHex="00000000" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="8" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000008" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="12" Vartype="Double" Bytesize="8" RLECount="2" OffsetHex="0000000C" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="28" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000001C" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="32" Vartype="Float" Bytesize="4" RLECount="3" OffsetHex="00000020" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="44" Vartype="Double" Bytesize="8" OffsetHex="0000002C" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="52" Vartype="Float" Bytesize="4" OffsetHex="00000034" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="56" Vartype="Byte" Bytesize="1" RLECount="4" OffsetHex="00000038" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="60" Vartype="Double" Bytesize="8" OffsetHex="0000003C" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="68" Vartype="Float" Bytesize="4" RLECount="3" OffsetHex="00000044" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="80" Vartype="String" Bytesize="5" OffsetHex="00000050" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="85" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000055" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="88" Vartype="Float" Bytesize="4" RLECount="2" OffsetHex="00000058" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="96" Vartype="Pointer" Bytesize="8" OffsetHex="00000060" ChildStruct="CS::ChrExFollowCam" Description="Pointer to instance of CS::ChrExFollowCam" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="104" Vartype="Pointer" Bytesize="8" OffsetHex="00000068" Description="Pointer to instance of CS::ChrAimCam" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="112" Vartype="Pointer" Bytesize="8" OffsetHex="00000070" Description="Pointer to instance of CS::CSDistViewCam" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="120" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000078" DisplayMethod="Hexadecimal"/>
+        <Element Offset="124" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="0000007C" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="132" Vartype="Float" Bytesize="4" OffsetHex="00000084" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="136" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000088" DisplayMethod="Hexadecimal"/>
+        <Element Offset="144" Vartype="4 Bytes" Bytesize="4" RLECount="9" OffsetHex="00000090" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="180" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="000000B4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="192" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000000C0" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="200" Vartype="String" Bytesize="9" OffsetHex="000000C8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="209" Vartype="Byte" Bytesize="1" OffsetHex="000000D1" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="210" Vartype="2 Bytes" Bytesize="2" OffsetHex="000000D2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="212" Vartype="Float" Bytesize="4" RLECount="3" OffsetHex="000000D4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="224" Vartype="String" Bytesize="5" OffsetHex="000000E0" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="229" Vartype="Byte" Bytesize="1" OffsetHex="000000E5" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="230" Vartype="2 Bytes" Bytesize="2" OffsetHex="000000E6" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="232" Vartype="Float" Bytesize="4" RLECount="3" OffsetHex="000000E8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="244" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="000000F4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="256" Vartype="Double" Bytesize="8" OffsetHex="00000100" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="264" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000108" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="276" Vartype="Double" Bytesize="8" OffsetHex="00000114" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="284" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000011C" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="288" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000120" DisplayMethod="Hexadecimal"/>
+        <Element Offset="296" Vartype="Double" Bytesize="8" OffsetHex="00000128" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="304" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000130" DisplayMethod="Hexadecimal"/>
+        <Element Offset="312" Vartype="Double" Bytesize="8" OffsetHex="00000138" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="320" Vartype="Float" Bytesize="4" OffsetHex="00000140" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="324" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000144" DisplayMethod="Hexadecimal"/>
+        <Element Offset="332" Vartype="Float" Bytesize="4" OffsetHex="0000014C" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="336" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000150" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="344" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000158" DisplayMethod="Hexadecimal"/>
+        <Element Offset="352" Vartype="Float" Bytesize="4" RLECount="5" OffsetHex="00000160" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="372" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000174" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="384" Vartype="Double" Bytesize="8" OffsetHex="00000180" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="392" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000188" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="404" Vartype="Double" Bytesize="8" OffsetHex="00000194" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="412" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000019C" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="416" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000001A0" DisplayMethod="Hexadecimal"/>
+        <Element Offset="424" Vartype="Double" Bytesize="8" OffsetHex="000001A8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="432" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000001B0" DisplayMethod="Hexadecimal"/>
+        <Element Offset="440" Vartype="Double" Bytesize="8" OffsetHex="000001B8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="448" Vartype="Float" Bytesize="4" RLECount="4" OffsetHex="000001C0" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="464" Vartype="Pointer" Bytesize="8" OffsetHex="000001D0" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="472" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000001D8" DisplayMethod="Hexadecimal"/>
+        <Element Offset="480" Vartype="Float" Bytesize="4" RLECount="136" OffsetHex="000001E0" DisplayMethod="Unsigned Integer"/>
+      </Elements>
+    </Structure>
   </Structures>
   <LuaScript>function reloadPackage(path)
   package.loaded[path] = nil
   return require(path)
 end
+
+function toHex(n) return string.format("%x", n):upper() end
+function printHex(n) print(toHex(n)) end
 
 function openFormIfAbsent(address, structureName)
     local found = false
