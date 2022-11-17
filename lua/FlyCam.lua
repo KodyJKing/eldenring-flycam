@@ -1,11 +1,11 @@
 local vector = reloadPackage("lua/vector")
 local util = reloadPackage("lua/util")
 local json = reloadPackage("lua/json")
+local addresses = reloadPackage("lua/addresses")
 
 local FlyCam = {}
 
--- local chrCamSymbol = "chrCam"
-local chrCamSymbol = '["eldenring.exe"+03C482C8]+60'
+local chrCamSymbol = addresses.chrCam
 
 local tau = math.pi * 2
 local pitchLimit = math.pi / 2 * 7 / 8

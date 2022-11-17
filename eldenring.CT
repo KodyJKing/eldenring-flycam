@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CheatTable CheatEngineTableVersion="38">
   <Forms>
-    <MainForm_1 Class="TCEForm" Encoding="Ascii85">ZI8W9!!Q(@U8k+S[!-K=mLYSLFt9LzX?pQvkZ?a:qBJ$cBDEuP!??iF0Xh+oGAwxVXZfCczSj^#;=w@2ql.AOo(Q*0X*Z-F(iEU6FNf)p7w/LTjmK2$J(Y!6v4z@)qtlxT#22SZf;sTg*5UEEpkzVI-81N{0z%6cgp$+l!3KtVLL0#*IOg#X9dbfdqx3ioL+%DDH=o/Ks#)[pILT%Izxp6(%eyow49^jiquGk/PqT[#Msai%#c0Ny([8Cj9KLqlE:*HZ4At:WulGD{xeWTLU;NK4pToIzaOlK79/g$h;n,z9[2(l</MainForm_1>
+    <MainForm_1 Class="TCEForm" Encoding="Ascii85">ZIVq-!axv*+A]q?([u+LF]OIl.2kQBCNvPKa%{ps!o:,@+:_*#y!a#hv7YP*l}lRyOx}G(-ZvvOgq+oGz;Ybwgp7#o0nZ-pur^SnO8?vizNN5QD:pL:vC-+KeF;pj;tE/)6exJ1rr:5nhCAkDoG2x?YkJW[$s_y%v5,B@cY*w;tL=+L8!H.wlqbXo8#qMpPSH-aP,LZE,m9U}+b.asUa^$I6bOFY%(;YHSKDMjxhk1jMOh-%O}Hh$[4_Evk#faKrgJJbZ11g^:;F-Kqg6fd!,PMQo;-{GBmWQMfGyXcD4y_?CwRuE4;#7)(3N.gOwH+dm2qYTUl^{A,8CgwQwDY+xjcN0l-bX-;?}8B^u9,l3_1UBJXZMc;;{KF0q}Vk44,k-]G*gq=;@s7y4CJjq%e[2e(g?VHk9^LxL!e+$i3Ce^l(QdedL.k/N34fgY=*C]T,</MainForm_1>
   </Forms>
   <CheatEntries>
     <CheatEntry>
@@ -203,27 +203,10 @@ eldenring.exe+3C5E73: 0F 57 05 F6 25 E1 02     - xorps xmm0,[eldenring.exe+31D84
 }
 </AssemblerScript>
         </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>12</ID>
-      <Description>"Dev Scripts"</Description>
-      <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
-      <GroupHeader>1</GroupHeader>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>21</ID>
-          <Description>"ChrCamPointer"</Description>
-          <LastState Value="00007FF45466D450" RealAddress="7FF4531A80D0"/>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>8 Bytes</VariableType>
-          <Address>["eldenring.exe"+03C482C8]+60</Address>
-        </CheatEntry>
         <CheatEntry>
           <ID>6</ID>
           <Description>"Copy ChrCam"</Description>
+          <Options moHideChildren="1"/>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : eldenring.exe
@@ -306,7 +289,6 @@ eldenring.exe+4A1C2B: C3                    - ret
             <CheatEntry>
               <ID>7</ID>
               <Description>"ChrCam Address"</Description>
-              <LastState Value="00007FF45466D450" RealAddress="7FF60CF71000"/>
               <ShowAsHex>1</ShowAsHex>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>8 Bytes</VariableType>
@@ -315,7 +297,6 @@ eldenring.exe+4A1C2B: C3                    - ret
             <CheatEntry>
               <ID>19</ID>
               <Description>"VTable"</Description>
-              <LastState Value="00007FF60F9076F8" RealAddress="7FF45466D450"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>8 Bytes</VariableType>
               <Address>[chrCam]</Address>
@@ -325,9 +306,27 @@ eldenring.exe+4A1C2B: C3                    - ret
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>5</ID>
-      <Description>"Scripts"</Description>
-      <Options moManualExpandCollapse="1"/>
+      <ID>22</ID>
+      <Description>"Pointers"</Description>
+      <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>21</ID>
+          <Description>"ChrCamPointer"</Description>
+          <LastState Value="00007FF4C5DC9440" RealAddress="7FF4C5D12210"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>["eldenring.exe"+03C482C8]+60</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>23</ID>
+      <Description>"Dev"</Description>
+      <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
       <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
@@ -465,15 +464,60 @@ flyCam.destroy()
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>20</ID>
-      <Description>"pointerscan result"</Description>
-      <LastState Value="261125880" RealAddress="7FF45466D450"/>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"eldenring.exe"+03C482C8</Address>
-      <Offsets>
-        <Offset>0</Offset>
-        <Offset>60</Offset>
-      </Offsets>
+      <ID>5</ID>
+      <Description>"Scripts"</Description>
+      <Options moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>24</ID>
+          <Description>"Fly Cam"</Description>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+{$asm}
+
+[ENABLE]
+
+aobscanmodule(INJECT_FreezeCam,eldenring.exe,E8 64 0C 92 FF)
+aobscanmodule(INJECT_FreezePlayerControls,eldenring.exe,E8 63 84 FC FF 48 8B 8F 90 01 00 00)
+INJECT_FreezeCam:
+  db 90 90 90 90 90
+INJECT_FreezePlayerControls:
+  db 90 90 90 90 90
+registersymbol(INJECT_FreezeCam)
+registersymbol(INJECT_FreezePlayerControls)
+
+{$lua}
+flyCam = reloadPackage("lua/FlyCam").create()
+{$asm}
+
+[DISABLE]
+
+INJECT_FreezeCam:
+  db E8 64 0C 92 FF
+INJECT_FreezePlayerControls:
+  db E8 63 84 FC FF
+unregistersymbol(INJECT_FreezeCam)
+unregistersymbol(INJECT_FreezePlayerControls)
+
+{$lua}
+flyCam.destroy()
+{$asm}
+</AssemblerScript>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Toggle Activation</Action>
+              <Keys>
+                <Key>33</Key>
+              </Keys>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -4039,5 +4083,13 @@ function openFormIfAbsent(address, structureName)
         createStructureForm(address, nil, structureName)
     end
 end
+
+-- Forms --
+
+function MainForm_1_CEButton_CamStructClick(sender)
+    local addr = reloadPackage("lua/addresses").chrCam
+    openFormIfAbsent("[" .. addr .. "]", "CS::ChrCam")
+end
+
 </LuaScript>
 </CheatTable>
