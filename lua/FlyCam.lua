@@ -7,17 +7,7 @@ local twoPi = math.pi * 2
 local dt = 1000 / 120
 local maxSpeed = 20 / 1000
 local maxRotationSpeed = twoPi / 2000
-
-local STICK_MAX = 32768
-function getSpeedZ()
-    local stickY = getXBox360ControllerState().ThumbLeftY
-    return stickY / STICK_MAX * maxSpeed
-end
-
-function getSpeedX()
-    local stickX = getXBox360ControllerState().ThumbLeftX
-    return stickX / STICK_MAX * maxSpeed
-end
+local stickMax = 32768
 
 function writeLookMatrix(address, angles, x, y, z)
     local c = math.cos(angles.yaw)
@@ -54,7 +44,7 @@ FlyCam.create = function()
     local sizeofMatrix = 4 * 15
     cam.matrix = allocateMemory(sizeofMatrix)
     for i = 0, 11 do writeFloat(cam.matrix + i * 4, 0) end
-    writeFloat(cam.matrix + 15 * 4, 1)
+    -- writeFloat(cam.matrix + 15 * 4, 1)
 
     local timer = createTimer(nil)
     timer.Interval = dt
@@ -65,8 +55,15 @@ FlyCam.create = function()
         local dt = tick - lastTick
         lastTick = tick
 
-        local moveZ = input.ThumbLeftY / STICK_MAX * maxSpeed * dt
-        local moveX = input.ThumbLeftX / STICK_MAX * maxSpeed * dt
+        local moveZ = input.ThumbLeftY / stickMax * maxSpeed * dt
+        local moveX = input.ThumbLeftX / stickMax * maxSpeed * dt
+
+        local moveY = 0
+        if input.GAMEPAD_A then
+            moveY = maxSpeed * dt
+        elseif input.GAMEPAD_B then
+            moveY = -maxSpeed * dt
+        end
 
         local x = readFloat(camAddr + 0x40)
         local y = readFloat(camAddr + 0x44)
@@ -81,11 +78,11 @@ FlyCam.create = function()
         local rz = readFloat(camAddr + 0x18)
 
         x = x + fx * moveZ + rx * moveX
-        y = y + fy * moveZ + ry * moveX
+        y = y + fy * moveZ + ry * moveX + moveY
         z = z + fz * moveZ + rz * moveX
 
-        local lookX = -input.ThumbRightX / STICK_MAX * maxRotationSpeed * dt
-        local lookY = -input.ThumbRightY / STICK_MAX * maxRotationSpeed * dt
+        local lookX = -input.ThumbRightX / stickMax * maxRotationSpeed * dt
+        local lookY = -input.ThumbRightY / stickMax * maxRotationSpeed * dt
         local nextYaw = (cam.angles.yaw + lookX) % twoPi
         local nextPitch = cam.angles.pitch + lookY
         if nextPitch > math.pi / 4 then
