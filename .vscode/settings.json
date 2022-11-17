@@ -1,0 +1,30 @@
+{
+    "Lua.diagnostics.disable": [
+        "lowercase-global"
+    ],
+    "Lua.diagnostics.globals": [
+        "findWindow",
+        "createMemoryStream",
+        "executeCodeLocalEx",
+        "createForm",
+        "readFloat",
+        "readInteger",
+        "getAddress",
+        "reloadPackage",
+        "createTimer",
+        "getTickCount",
+        "writeFloat",
+        "readSmallInteger",
+        "VK_PAUSE",
+        "createHotkey",
+        "beep",
+        "writeToClipboard",
+        "getOpenedProcessID",
+        "getForegroundProcess",
+        "readBytes",
+        "bAnd",
+        "readQword",
+        "readString",
+        "getXBox360ControllerState"
+    ]
+}
