@@ -5,9 +5,10 @@ local FlyCam = {}
 
 local twoPi = math.pi * 2
 local dt = 1000 / 120
-local maxSpeed = 20 / 1000
+local baseSpeed = 20 / 1000
 local maxRotationSpeed = twoPi / 2000
 local stickMax = 32768
+local pitchLimit = math.pi / 2 * 7 / 8
 
 function writeLookMatrix(address, angles, x, y, z)
     local c = math.cos(angles.yaw)
@@ -34,10 +35,12 @@ end
 
 FlyCam.create = function()
 
-    local camAddr = readQword("chrCam")
 
     local cam = {}
 
+    cam.speedModifier = 1
+
+    local camAddr = readQword("chrCam")
     local fwd = vector.readVec(camAddr + 0x30)
     cam.angles = vector.vecToAngles(fwd)
 
@@ -55,27 +58,44 @@ FlyCam.create = function()
         local dt = tick - lastTick
         lastTick = tick
 
-        local moveZ = input.ThumbLeftY / stickMax * maxSpeed * dt
-        local moveX = input.ThumbLeftX / stickMax * maxSpeed * dt
+        local rShoulder = input.GAMEPAD_RIGHT_SHOULDER
+        local lShoulder = input.GAMEPAD_LEFT_SHOULDER
+        if rShoulder and lShoulder then
+            cam.speedModifier = 1
+        elseif rShoulder then
+            cam.speedModifier = cam.speedModifier * 2 ^ (dt / 1000)
+        elseif lShoulder then
+            cam.speedModifier = cam.speedModifier / 2 ^ (dt / 1000)
+        end
 
+        local speed = baseSpeed * cam.speedModifier
+
+        local moveZ = input.ThumbLeftY / stickMax * speed * dt
+        local moveX = input.ThumbLeftX / stickMax * speed * dt
         local moveY = 0
         if input.GAMEPAD_A then
-            moveY = maxSpeed * dt
+            moveY = speed * dt
         elseif input.GAMEPAD_B then
-            moveY = -maxSpeed * dt
+            moveY = -speed * dt
         end
+
+        local camAddr = readQword("chrCam")
 
         local x = readFloat(camAddr + 0x40)
         local y = readFloat(camAddr + 0x44)
         local z = readFloat(camAddr + 0x48)
-        -- fwd
-        local fx = readFloat(camAddr + 0x30)
-        local fy = readFloat(camAddr + 0x34)
-        local fz = readFloat(camAddr + 0x38)
         -- right
         local rx = readFloat(camAddr + 0x10)
         local ry = readFloat(camAddr + 0x14)
         local rz = readFloat(camAddr + 0x18)
+        -- up
+        local ux = readFloat(camAddr + 0x20)
+        local uy = readFloat(camAddr + 0x24)
+        local uz = readFloat(camAddr + 0x28)
+        -- fwd
+        local fx = readFloat(camAddr + 0x30)
+        local fy = readFloat(camAddr + 0x34)
+        local fz = readFloat(camAddr + 0x38)
 
         x = x + fx * moveZ + rx * moveX
         y = y + fy * moveZ + ry * moveX + moveY
@@ -85,10 +105,10 @@ FlyCam.create = function()
         local lookY = -input.ThumbRightY / stickMax * maxRotationSpeed * dt
         local nextYaw = (cam.angles.yaw + lookX) % twoPi
         local nextPitch = cam.angles.pitch + lookY
-        if nextPitch > math.pi / 4 then
-            nextPitch = math.pi / 4
-        elseif nextPitch < -math.pi / 4 then
-            nextPitch = -math.pi / 4
+        if nextPitch > pitchLimit then
+            nextPitch = pitchLimit
+        elseif nextPitch < -pitchLimit then
+            nextPitch = -pitchLimit
         end
         cam.angles.yaw = nextYaw
         cam.angles.pitch = nextPitch
