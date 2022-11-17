@@ -25,6 +25,9 @@
         "bAnd",
         "readQword",
         "readString",
-        "getXBox360ControllerState"
+        "getXBox360ControllerState",
+        "allocateMemory",
+        "deAlloc",
+        "copyMemory"
     ]
 }

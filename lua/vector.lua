@@ -115,10 +115,10 @@ function vector.anglesToVec(angles)
 end
 
 function vector.vecToAngles(v)
-    local h = math.sqrt(v.x * v.x + v.y * v.y)
+    local h = math.sqrt(v.x * v.x + v.z * v.z)
     return {
-        yaw = math.atan(v.y, v.x),
-        pitch = math.atan(v.z, h),
+        yaw = math.atan(v.z, v.x),
+        pitch = math.atan(v.y, h),
     }
 end
 
@@ -132,6 +132,26 @@ end
 function vector.writeAngles(address, angles)
     writeFloat(address + 0, angles.yaw)
     writeFloat(address + 4, angles.pitch)
+end
+
+function vector.toDegrees(angles)
+    return {
+        yaw = angles.yaw * 180 / math.pi,
+        pitch = angles.pitch * 180 / math.pi,
+    }
+end
+
+local _up = vector.vector(0, 1, 0)
+function vector.getLookMatrix(fwd)
+    local right = vector.unit(vector.cross(_up, fwd))
+    local up = vector.cross(fwd, right)
+    return { right = right, up = up, fwd = fwd }
+end
+
+function vector.writeMatrix(address, mat)
+    vector.writeVec(address + 0x00, mat.right)
+    vector.writeVec(address + 0x10, mat.up)
+    vector.writeVec(address + 0x20, mat.fwd)
 end
 
 return vector

@@ -5,6 +5,148 @@
   </Forms>
   <CheatEntries>
     <CheatEntry>
+      <ID>17</ID>
+      <Description>"Old Scripts"</Description>
+      <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"FreezeFollowCamera"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : eldenring.exe
+  Version: 
+  Date   : 2022-11-13
+  Author : Kody
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT_FreezeCamera,eldenring.exe,0F 29 37 80 BB 15 03 00 00 00)
+
+INJECT_FreezeCamera:
+  db 90 90 90 90 90 90 90 90 90 90
+
+registersymbol(INJECT_FreezeCamera)
+
+[DISABLE]
+
+INJECT_FreezeCamera:
+  db 0F 29 37 80 BB 15 03 00 00 00
+
+unregistersymbol(INJECT_FreezeCamera)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: eldenring.exe+3B56FC
+
+eldenring.exe+3B56C9: F3 0F 10 4C 24 7C        - movss xmm1,[rsp+7C]
+eldenring.exe+3B56CF: 0F 28 F3                 - movaps xmm6,xmm3
+eldenring.exe+3B56D2: 0F 14 F0                 - unpcklps xmm6,xmm0
+eldenring.exe+3B56D5: 0F 14 D1                 - unpcklps xmm2,xmm1
+eldenring.exe+3B56D8: 0F 14 F2                 - unpcklps xmm6,xmm2
+eldenring.exe+3B56DB: 44 0F 29 43 70           - movaps [rbx+70],xmm8
+eldenring.exe+3B56E0: 44 0F 28 4C 24 50        - movaps xmm9,[rsp+50]
+eldenring.exe+3B56E6: 44 0F 29 8B 80 00 00 00  - movaps [rbx+00000080],xmm9
+eldenring.exe+3B56EE: 0F 29 BB 90 00 00 00     - movaps [rbx+00000090],xmm7
+eldenring.exe+3B56F5: 48 8D BB A0 00 00 00     - lea rdi,[rbx+000000A0]
+// ---------- INJECTING HERE ----------
+eldenring.exe+3B56FC: 0F 29 37                 - movaps [rdi],xmm6
+// ---------- DONE INJECTING  ----------
+eldenring.exe+3B56FF: 80 BB 15 03 00 00 00     - cmp byte ptr [rbx+00000315],00
+eldenring.exe+3B5706: 74 1E                    - je eldenring.exe+3B5726
+eldenring.exe+3B5708: 0F 57 C9                 - xorps xmm1,xmm1
+eldenring.exe+3B570B: 0F 29 8B 10 02 00 00     - movaps [rbx+00000210],xmm1
+eldenring.exe+3B5712: 0F 28 07                 - movaps xmm0,[rdi]
+eldenring.exe+3B5715: 66 0F 7F 83 20 02 00 00  - movdqa [rbx+00000220],xmm0
+eldenring.exe+3B571D: 0F 29 8B 30 02 00 00     - movaps [rbx+00000230],xmm1
+eldenring.exe+3B5724: EB 4E                    - jmp eldenring.exe+3B5774
+eldenring.exe+3B5726: F3 0F 10 8B CC 01 00 00  - movss xmm1,[rbx+000001CC]
+eldenring.exe+3B572E: 0F 57 D2                 - xorps xmm2,xmm2
+}
+</AssemblerScript>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Toggle Activation</Action>
+              <Keys>
+                <Key>22533</Key>
+                <Key>22550</Key>
+                <Key>22529</Key>
+                <Key>22563</Key>
+                <Key>22578</Key>
+              </Keys>
+              <ID>0</ID>
+              <ActivateSound>Activate</ActivateSound>
+              <DeactivateSound>Deactivate</DeactivateSound>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>13</ID>
+          <Description>"FreezeCamPos"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : eldenring.exe
+  Version: 
+  Date   : 2022-11-16
+  Author : Kody
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT_FreezeCamPos,eldenring.exe,0F 29 4F 40 E9 31 04 00 00)
+
+INJECT_FreezeCamPos:
+  db 90 90 90 90
+
+registersymbol(INJECT_FreezeCamPos)
+
+[DISABLE]
+
+INJECT_FreezeCamPos:
+  db 0F 29 4F 40
+
+unregistersymbol(INJECT_FreezeCamPos)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: eldenring.exe+3AEAE9
+
+eldenring.exe+3AEAC4: 89 47 58                 - mov [rdi+58],eax
+eldenring.exe+3AEAC7: 8B 41 5C                 - mov eax,[rcx+5C]
+eldenring.exe+3AEACA: 89 47 5C                 - mov [rdi+5C],eax
+eldenring.exe+3AEACD: 0F 28 41 10              - movaps xmm0,[rcx+10]
+eldenring.exe+3AEAD1: 0F 29 47 10              - movaps [rdi+10],xmm0
+eldenring.exe+3AEAD5: 0F 28 49 20              - movaps xmm1,[rcx+20]
+eldenring.exe+3AEAD9: 0F 29 4F 20              - movaps [rdi+20],xmm1
+eldenring.exe+3AEADD: 0F 28 41 30              - movaps xmm0,[rcx+30]
+eldenring.exe+3AEAE1: 0F 29 47 30              - movaps [rdi+30],xmm0
+eldenring.exe+3AEAE5: 0F 28 49 40              - movaps xmm1,[rcx+40]
+// ---------- INJECTING HERE ----------
+eldenring.exe+3AEAE9: 0F 29 4F 40              - movaps [rdi+40],xmm1
+// ---------- DONE INJECTING  ----------
+eldenring.exe+3AEAED: E9 31 04 00 00           - jmp eldenring.exe+3AEF23
+eldenring.exe+3AEAF2: 48 8B 4F 60              - mov rcx,[rdi+60]
+eldenring.exe+3AEAF6: 4D 8B CE                 - mov r9,r14
+eldenring.exe+3AEAF9: 4C 8B C6                 - mov r8,rsi
+eldenring.exe+3AEAFC: 41 0F 28 C9              - movaps xmm1,xmm9
+eldenring.exe+3AEB00: E8 8B 41 00 00           - call eldenring.exe+3B2C90
+eldenring.exe+3AEB05: F3 0F 10 9F 80 00 00 00  - movss xmm3,[rdi+00000080]
+eldenring.exe+3AEB0D: 41 0F 2F D8              - comiss xmm3,xmm8
+eldenring.exe+3AEB11: 76 15                    - jna eldenring.exe+3AEB28
+eldenring.exe+3AEB13: 4C 8B 47 68              - mov r8,[rdi+68]
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
       <ID>12</ID>
       <Description>"Dev Scripts"</Description>
       <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
@@ -14,7 +156,7 @@
         <CheatEntry>
           <ID>6</ID>
           <Description>"Copy ChrCam"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : eldenring.exe
   Version: 
@@ -96,6 +238,7 @@ eldenring.exe+4A1C2B: C3                    - ret
             <CheatEntry>
               <ID>7</ID>
               <Description>"ChrCam Address"</Description>
+              <LastState Value="00007FF4DE4FBFF0" RealAddress="7FF60CF81000"/>
               <ShowAsHex>1</ShowAsHex>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>8 Bytes</VariableType>
@@ -113,83 +256,9 @@ eldenring.exe+4A1C2B: C3                    - ret
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>3</ID>
-          <Description>"__FreezeFollowCamera"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{ Game   : eldenring.exe
-  Version: 
-  Date   : 2022-11-13
-  Author : Kody
-
-  This script does blah blah blah
-}
-
-[ENABLE]
-
-aobscanmodule(INJECT_FreezeCamera,eldenring.exe,0F 29 37 80 BB 15 03 00 00 00)
-
-INJECT_FreezeCamera:
-  db 90 90 90 90 90 90 90 90 90 90
-
-registersymbol(INJECT_FreezeCamera)
-
-[DISABLE]
-
-INJECT_FreezeCamera:
-  db 0F 29 37 80 BB 15 03 00 00 00
-
-unregistersymbol(INJECT_FreezeCamera)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+3B56FC
-
-eldenring.exe+3B56C9: F3 0F 10 4C 24 7C        - movss xmm1,[rsp+7C]
-eldenring.exe+3B56CF: 0F 28 F3                 - movaps xmm6,xmm3
-eldenring.exe+3B56D2: 0F 14 F0                 - unpcklps xmm6,xmm0
-eldenring.exe+3B56D5: 0F 14 D1                 - unpcklps xmm2,xmm1
-eldenring.exe+3B56D8: 0F 14 F2                 - unpcklps xmm6,xmm2
-eldenring.exe+3B56DB: 44 0F 29 43 70           - movaps [rbx+70],xmm8
-eldenring.exe+3B56E0: 44 0F 28 4C 24 50        - movaps xmm9,[rsp+50]
-eldenring.exe+3B56E6: 44 0F 29 8B 80 00 00 00  - movaps [rbx+00000080],xmm9
-eldenring.exe+3B56EE: 0F 29 BB 90 00 00 00     - movaps [rbx+00000090],xmm7
-eldenring.exe+3B56F5: 48 8D BB A0 00 00 00     - lea rdi,[rbx+000000A0]
-// ---------- INJECTING HERE ----------
-eldenring.exe+3B56FC: 0F 29 37                 - movaps [rdi],xmm6
-// ---------- DONE INJECTING  ----------
-eldenring.exe+3B56FF: 80 BB 15 03 00 00 00     - cmp byte ptr [rbx+00000315],00
-eldenring.exe+3B5706: 74 1E                    - je eldenring.exe+3B5726
-eldenring.exe+3B5708: 0F 57 C9                 - xorps xmm1,xmm1
-eldenring.exe+3B570B: 0F 29 8B 10 02 00 00     - movaps [rbx+00000210],xmm1
-eldenring.exe+3B5712: 0F 28 07                 - movaps xmm0,[rdi]
-eldenring.exe+3B5715: 66 0F 7F 83 20 02 00 00  - movdqa [rbx+00000220],xmm0
-eldenring.exe+3B571D: 0F 29 8B 30 02 00 00     - movaps [rbx+00000230],xmm1
-eldenring.exe+3B5724: EB 4E                    - jmp eldenring.exe+3B5774
-eldenring.exe+3B5726: F3 0F 10 8B CC 01 00 00  - movss xmm1,[rbx+000001CC]
-eldenring.exe+3B572E: 0F 57 D2                 - xorps xmm2,xmm2
-}
-</AssemblerScript>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Toggle Activation</Action>
-              <Keys>
-                <Key>22533</Key>
-                <Key>22550</Key>
-                <Key>22529</Key>
-                <Key>22563</Key>
-                <Key>22578</Key>
-              </Keys>
-              <ID>0</ID>
-              <ActivateSound>Activate</ActivateSound>
-              <DeactivateSound>Deactivate</DeactivateSound>
-            </Hotkey>
-          </Hotkeys>
-        </CheatEntry>
-        <CheatEntry>
           <ID>11</ID>
           <Description>"FreezePlayerWalk"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : eldenring.exe
   Version: 
@@ -246,13 +315,13 @@ eldenring.exe+3C5E73: 0F 57 05 F6 25 E1 02     - xorps xmm0,[eldenring.exe+31D84
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
-          <ID>13</ID>
-          <Description>"FreezeCamPos"</Description>
-          <LastState/>
+          <ID>16</ID>
+          <Description>"FreezeCam"</Description>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : eldenring.exe
   Version: 
-  Date   : 2022-11-16
+  Date   : 2022-11-17
   Author : Kody
 
   This script does blah blah blah
@@ -260,117 +329,64 @@ eldenring.exe+3C5E73: 0F 57 05 F6 25 E1 02     - xorps xmm0,[eldenring.exe+31D84
 
 [ENABLE]
 
-aobscanmodule(INJECT_FreezeCamPos,eldenring.exe,0F 29 4F 40 E9 31 04 00 00)
+aobscanmodule(INJECT_FreezeCam,eldenring.exe,E8 64 0C 92 FF)
 
-INJECT_FreezeCamPos:
-  db 90 90 90 90
+INJECT_FreezeCam:
+  db 90 90 90 90 90
 
-registersymbol(INJECT_FreezeCamPos)
+registersymbol(INJECT_FreezeCam)
 
 [DISABLE]
 
-INJECT_FreezeCamPos:
-  db 0F 29 4F 40
+INJECT_FreezeCam:
+  db E8 64 0C 92 FF
 
-unregistersymbol(INJECT_FreezeCamPos)
+unregistersymbol(INJECT_FreezeCam)
 dealloc(newmem)
 
 {
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+3AEAE9
+// ORIGINAL CODE - INJECTION POINT: eldenring.exe+A8D727
 
-eldenring.exe+3AEAC4: 89 47 58                 - mov [rdi+58],eax
-eldenring.exe+3AEAC7: 8B 41 5C                 - mov eax,[rcx+5C]
-eldenring.exe+3AEACA: 89 47 5C                 - mov [rdi+5C],eax
-eldenring.exe+3AEACD: 0F 28 41 10              - movaps xmm0,[rcx+10]
-eldenring.exe+3AEAD1: 0F 29 47 10              - movaps [rdi+10],xmm0
-eldenring.exe+3AEAD5: 0F 28 49 20              - movaps xmm1,[rcx+20]
-eldenring.exe+3AEAD9: 0F 29 4F 20              - movaps [rdi+20],xmm1
-eldenring.exe+3AEADD: 0F 28 41 30              - movaps xmm0,[rcx+30]
-eldenring.exe+3AEAE1: 0F 29 47 30              - movaps [rdi+30],xmm0
-eldenring.exe+3AEAE5: 0F 28 49 40              - movaps xmm1,[rcx+40]
+eldenring.exe+A8D6F2: 48 8D 0D 27 A3 E8 01     - lea rcx,[eldenring.exe+2917A20]
+eldenring.exe+A8D6F9: E8 22 7C 39 01           - call eldenring.exe+1E25320
+eldenring.exe+A8D6FE: 48 8B 05 6B 25 1C 03     - mov rax,[eldenring.exe+3C4FC70]
+eldenring.exe+A8D705: C6 80 31 28 00 00 00     - mov byte ptr [rax+00002831],00
+eldenring.exe+A8D70C: 4C 89 74 24 28           - mov [rsp+28],r14
+eldenring.exe+A8D711: 48 89 74 24 28           - mov [rsp+28],rsi
+eldenring.exe+A8D716: 44 0F B6 CD              - movzx r9d,bpl
+eldenring.exe+A8D71A: 4C 8B C7                 - mov r8,rdi
+eldenring.exe+A8D71D: 0F 28 CE                 - movaps xmm1,xmm6
+eldenring.exe+A8D720: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
 // ---------- INJECTING HERE ----------
-eldenring.exe+3AEAE9: 0F 29 4F 40              - movaps [rdi+40],xmm1
+eldenring.exe+A8D727: E8 64 0C 92 FF           - call eldenring.exe+3AE390
 // ---------- DONE INJECTING  ----------
-eldenring.exe+3AEAED: E9 31 04 00 00           - jmp eldenring.exe+3AEF23
-eldenring.exe+3AEAF2: 48 8B 4F 60              - mov rcx,[rdi+60]
-eldenring.exe+3AEAF6: 4D 8B CE                 - mov r9,r14
-eldenring.exe+3AEAF9: 4C 8B C6                 - mov r8,rsi
-eldenring.exe+3AEAFC: 41 0F 28 C9              - movaps xmm1,xmm9
-eldenring.exe+3AEB00: E8 8B 41 00 00           - call eldenring.exe+3B2C90
-eldenring.exe+3AEB05: F3 0F 10 9F 80 00 00 00  - movss xmm3,[rdi+00000080]
-eldenring.exe+3AEB0D: 41 0F 2F D8              - comiss xmm3,xmm8
-eldenring.exe+3AEB11: 76 15                    - jna eldenring.exe+3AEB28
-eldenring.exe+3AEB13: 4C 8B 47 68              - mov r8,[rdi+68]
+eldenring.exe+A8D72C: 48 8B 93 E8 00 00 00     - mov rdx,[rbx+000000E8]
+eldenring.exe+A8D733: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
+eldenring.exe+A8D73A: E8 31 0B 92 FF           - call eldenring.exe+3AE270
+eldenring.exe+A8D73F: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
+eldenring.exe+A8D746: E8 A5 07 92 FF           - call eldenring.exe+3ADEF0
+eldenring.exe+A8D74B: 0F 28 CE                 - movaps xmm1,xmm6
+eldenring.exe+A8D74E: 48 8B 8B E8 00 00 00     - mov rcx,[rbx+000000E8]
+eldenring.exe+A8D755: 48 8B 5C 24 70           - mov rbx,[rsp+70]
+eldenring.exe+A8D75A: 48 8B AC 24 80 00 00 00  - mov rbp,[rsp+00000080]
+eldenring.exe+A8D762: 0F 28 74 24 40           - movaps xmm6,[rsp+40]
 }
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
           <ID>14</ID>
           <Description>"Fly Cam"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 if syntaxcheck then return end
-if flyCamState == nil then
-    flyCamState = {}
-end
 [ENABLE]
-
-local dt = 5
-local maxSpeed = 20 / 1000
-
-local STICK_MAX = 32768
-function getSpeedZ()
-    local stickY = getXBox360ControllerState().ThumbLeftY
-    return stickY / STICK_MAX * maxSpeed
-end
-function getSpeedX()
-    local stickX = getXBox360ControllerState().ThumbLeftX
-    return stickX / STICK_MAX * maxSpeed
-end
-
-local timer = createTimer(nil)
-flyCamState.timer = timer
-timer.Interval = dt
-
-timer.OnTimer = function()
-    local camAddr = readQword("chrCam")
-
-    local rightX = 0readFloat(camAddr+0x10)
-    local rightY = readFloat(camAddr+0x14)
-    local rightZ = readFloat(camAddr+0x18)
-
-    local fwdX = readFloat(camAddr+0x30)
-    local fwdY = readFloat(camAddr+0x34)
-    local fwdZ = readFloat(camAddr+0x38)
-
-    --print(fwdX, fwdY, fwdZ)
-
-    local posX = readFloat(camAddr+0x40)
-    local posY = readFloat(camAddr+0x44)
-    local posZ = readFloat(camAddr+0x48)
-
-    local speedZ = 1--getSpeedZ()
-    local speedX = 0--getSpeedX()
-    -- --[[
-    writeFloat(camAddr+0x40, posX + fwdX * speedZ * dt + rightX * speedX * dt)
-    writeFloat(camAddr+0x44, posY + fwdY * speedZ * dt + rightY * speedX * dt)
-    writeFloat(camAddr+0x48, posZ + fwdZ * speedZ * dt + rightZ * speedX * dt)
-    -- ]]--
-end
-
+flyCam = reloadPackage("lua/FlyCam").create()
 [DISABLE]
-
-flyCamState.timer.destroy()
+flyCam.destroy()
 </AssemblerScript>
         </CheatEntry>
       </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>15</ID>
-      <Description>"fwd.x"</Description>
-      <VariableType>Float</VariableType>
-      <Address>[chrCam]+30</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
