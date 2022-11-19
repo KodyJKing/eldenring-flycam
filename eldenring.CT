@@ -411,6 +411,44 @@ flyCam = reloadPackage("lua/FlyCam").create()
 flyCam.destroy()
 </AssemblerScript>
         </CheatEntry>
+        <CheatEntry>
+          <ID>24</ID>
+          <Description>"Fly Cam"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+{$asm}
+
+[ENABLE]
+
+aobscanmodule(INJECT_FreezeCam,eldenring.exe,E8 64 0C 92 FF)
+aobscanmodule(INJECT_FreezePlayerControls,eldenring.exe,E8 63 84 FC FF 48 8B 8F 90 01 00 00)
+INJECT_FreezeCam:
+  db 90 90 90 90 90
+INJECT_FreezePlayerControls:
+  db 90 90 90 90 90
+registersymbol(INJECT_FreezeCam)
+registersymbol(INJECT_FreezePlayerControls)
+
+{$lua}
+flyCam = reloadPackage("lua/FlyCam").create()
+{$asm}
+
+[DISABLE]
+
+INJECT_FreezeCam:
+  db E8 64 0C 92 FF
+INJECT_FreezePlayerControls:
+  db E8 63 84 FC FF
+unregistersymbol(INJECT_FreezeCam)
+unregistersymbol(INJECT_FreezePlayerControls)
+
+{$lua}
+flyCam.destroy()
+{$asm}
+</AssemblerScript>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
@@ -432,7 +470,7 @@ flyCam.destroy()
         <CheatEntry>
           <ID>21</ID>
           <Description>"ChrCamPointer"</Description>
-          <LastState Value="00007FF44186E4F0" RealAddress="7FF44186DE00"/>
+          <LastState Value="00007FF3B190CF00" RealAddress="7FF3B190C810"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
@@ -441,7 +479,7 @@ flyCam.destroy()
         <CheatEntry>
           <ID>29</ID>
           <Description>"PlayerIns Pointer"</Description>
-          <LastState Value="00007FF43E595820" RealAddress="7FF402B72CC0"/>
+          <LastState Value="00007FF3F1BFF210" RealAddress="7FF3B24B13C0"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
@@ -450,7 +488,7 @@ flyCam.destroy()
         <CheatEntry>
           <ID>32</ID>
           <Description>"ChrDataModule"</Description>
-          <LastState Value="00007FF43E596190" RealAddress="7FF401EA6000"/>
+          <LastState Value="00007FF3F1BFFB80" RealAddress="7FF3EF466000"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
@@ -459,7 +497,7 @@ flyCam.destroy()
         <CheatEntry>
           <ID>33</ID>
           <Description>"PlayerHP"</Description>
-          <LastState Value="1216" RealAddress="7FF43E5962C8"/>
+          <LastState Value="1216" RealAddress="7FF3F1BFFCB8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>[[[["eldenring.exe"+03A18D80]]+190]+0]+138</Address>
@@ -618,9 +656,57 @@ eldenring.exe+A8D762: 0F 28 74 24 40           - movaps xmm6,[rsp+40]
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
+          <ID>39</ID>
+          <Description>"FreezeCamPosition"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(INJECT_FreezeCamPosition,eldenring.exe,0F 29 4F 40 E9 31 04 00 00)
+INJECT_FreezeCamPosition:
+  db 90 90 90 90
+registersymbol(INJECT_FreezeCamPosition)
+
+[DISABLE]
+
+INJECT_FreezeCamPosition:
+  db 0F 29 4F 40
+unregistersymbol(INJECT_FreezeCamPosition)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: eldenring.exe+3AEAE9
+
+eldenring.exe+3AEAC4: 89 47 58                 - mov [rdi+58],eax
+eldenring.exe+3AEAC7: 8B 41 5C                 - mov eax,[rcx+5C]
+eldenring.exe+3AEACA: 89 47 5C                 - mov [rdi+5C],eax
+eldenring.exe+3AEACD: 0F 28 41 10              - movaps xmm0,[rcx+10]
+eldenring.exe+3AEAD1: 0F 29 47 10              - movaps [rdi+10],xmm0
+eldenring.exe+3AEAD5: 0F 28 49 20              - movaps xmm1,[rcx+20]
+eldenring.exe+3AEAD9: 0F 29 4F 20              - movaps [rdi+20],xmm1
+eldenring.exe+3AEADD: 0F 28 41 30              - movaps xmm0,[rcx+30]
+eldenring.exe+3AEAE1: 0F 29 47 30              - movaps [rdi+30],xmm0
+eldenring.exe+3AEAE5: 0F 28 49 40              - movaps xmm1,[rcx+40]
+// ---------- INJECTING HERE ----------
+eldenring.exe+3AEAE9: 0F 29 4F 40              - movaps [rdi+40],xmm1
+// ---------- DONE INJECTING  ----------
+eldenring.exe+3AEAED: E9 31 04 00 00           - jmp eldenring.exe+3AEF23
+eldenring.exe+3AEAF2: 48 8B 4F 60              - mov rcx,[rdi+60]
+eldenring.exe+3AEAF6: 4D 8B CE                 - mov r9,r14
+eldenring.exe+3AEAF9: 4C 8B C6                 - mov r8,rsi
+eldenring.exe+3AEAFC: 41 0F 28 C9              - movaps xmm1,xmm9
+eldenring.exe+3AEB00: E8 8B 41 00 00           - call eldenring.exe+3B2C90
+eldenring.exe+3AEB05: F3 0F 10 9F 80 00 00 00  - movss xmm3,[rdi+00000080]
+eldenring.exe+3AEB0D: 41 0F 2F D8              - comiss xmm3,xmm8
+eldenring.exe+3AEB11: 76 15                    - jna eldenring.exe+3AEB28
+eldenring.exe+3AEB13: 4C 8B 47 68              - mov r8,[rdi+68]
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>18</ID>
           <Description>"FreezePlayerControls"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : eldenring.exe
   Version: 
@@ -676,168 +762,11 @@ eldenring.exe+3FD850: 48 8B 49 28           - mov rcx,[rcx+28]
 }
 </AssemblerScript>
         </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>5</ID>
-      <Description>"Scripts"</Description>
-      <Options moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
-      <GroupHeader>1</GroupHeader>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>24</ID>
-          <Description>"Fly Cam"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
-if syntaxcheck then return end
-{$asm}
-
-[ENABLE]
-
-aobscanmodule(INJECT_FreezeCam,eldenring.exe,E8 64 0C 92 FF)
-aobscanmodule(INJECT_FreezePlayerControls,eldenring.exe,E8 63 84 FC FF 48 8B 8F 90 01 00 00)
-INJECT_FreezeCam:
-  db 90 90 90 90 90
-INJECT_FreezePlayerControls:
-  db 90 90 90 90 90
-registersymbol(INJECT_FreezeCam)
-registersymbol(INJECT_FreezePlayerControls)
-
-{$lua}
-flyCam = reloadPackage("lua/FlyCam").create()
-{$asm}
-
-[DISABLE]
-
-INJECT_FreezeCam:
-  db E8 64 0C 92 FF
-INJECT_FreezePlayerControls:
-  db E8 63 84 FC FF
-unregistersymbol(INJECT_FreezeCam)
-unregistersymbol(INJECT_FreezePlayerControls)
-
-{$lua}
-flyCam.destroy()
-{$asm}
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>38</ID>
-          <Description>"Fly Cam Native"</Description>
-          <LastState Activated="1"/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
-
-aobscanmodule(INJECT_FlyCamNative,eldenring.exe,E8 64 0C 92 FF 48 8B 93 E8 00 00 00)
-alloc(newmem,$1000,INJECT_FlyCamNative)
-
-label(code)
-label(return)
-
-{$c}
-
-#include &lt;stdbool.h&gt;
-
-typedef struct {
-    char pad0[0x10];
-    float rx; float ry; float rz; float rw;
-    float ux; float uy; float uz; float uw;
-    float fx; float fy; float fz; float fw;
-    float  x; float  y; float  z;
-} Camera;
-
-typedef struct {
-    char pad_0[0x40];
-    bool dpadUp:1; bool dpadDown:1; bool dpadLeft:1; bool dpadRight:1;
-    bool start:1; bool back:1;
-    bool leftStick:1; bool rightStick:1;
-    bool leftShoulder:1; bool rightShoulder:1;
-    int pad_1:2;
-    bool a:1; bool b:1; bool x:1; bool y:1;
-    unsigned char leftTrigger; unsigned char rightTrigger;
-    short leftStickX; short leftStickY;
-    short rightStickX; short rightStickY;
-} Input;
-
-void main(void* cambase, void* inputbase) {
-    Camera *cam = (Camera*)cambase;
-    Input *input = (Input*)inputbase;
-    if (input-&gt;rightStickY &lt; -2000)
-        cam-&gt;y += 1.0 / 60.0;
-}
-
-{$asm}
-
-newmem:
-
-code:
-  //call eldenring.exe+3AE390
-
-  mov rax,[inputPointer]
-{$ccode cambase=RCX inputbase=RAX}
-    main(cambase, inputbase)
-{$asm}
-
-  jmp return
-
-INJECT_FlyCamNative:
-  jmp newmem
-return:
-registersymbol(INJECT_FlyCamNative)
-
-[DISABLE]
-
-INJECT_FlyCamNative:
-  db E8 64 0C 92 FF
-
-unregistersymbol(INJECT_FlyCamNative)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+A8D727
-
-eldenring.exe+A8D6F2: 48 8D 0D 27 A3 E8 01     - lea rcx,[eldenring.exe+2917A20]
-eldenring.exe+A8D6F9: E8 22 7C 39 01           - call eldenring.exe+1E25320
-eldenring.exe+A8D6FE: 48 8B 05 6B 25 1C 03     - mov rax,[eldenring.exe+3C4FC70]
-eldenring.exe+A8D705: C6 80 31 28 00 00 00     - mov byte ptr [rax+00002831],00
-eldenring.exe+A8D70C: 4C 89 74 24 28           - mov [rsp+28],r14
-eldenring.exe+A8D711: 48 89 74 24 28           - mov [rsp+28],rsi
-eldenring.exe+A8D716: 44 0F B6 CD              - movzx r9d,bpl
-eldenring.exe+A8D71A: 4C 8B C7                 - mov r8,rdi
-eldenring.exe+A8D71D: 0F 28 CE                 - movaps xmm1,xmm6
-eldenring.exe+A8D720: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
-// ---------- INJECTING HERE ----------
-eldenring.exe+A8D727: E8 64 0C 92 FF           - call eldenring.exe+3AE390
-// ---------- DONE INJECTING  ----------
-eldenring.exe+A8D72C: 48 8B 93 E8 00 00 00     - mov rdx,[rbx+000000E8]
-eldenring.exe+A8D733: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
-eldenring.exe+A8D73A: E8 31 0B 92 FF           - call eldenring.exe+3AE270
-eldenring.exe+A8D73F: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
-eldenring.exe+A8D746: E8 A5 07 92 FF           - call eldenring.exe+3ADEF0
-eldenring.exe+A8D74B: 0F 28 CE                 - movaps xmm1,xmm6
-eldenring.exe+A8D74E: 48 8B 8B E8 00 00 00     - mov rcx,[rbx+000000E8]
-eldenring.exe+A8D755: 48 8B 5C 24 70           - mov rbx,[rsp+70]
-eldenring.exe+A8D75A: 48 8B AC 24 80 00 00 00  - mov rbp,[rsp+00000080]
-eldenring.exe+A8D762: 0F 28 74 24 40           - movaps xmm6,[rsp+40]
-}
-</AssemblerScript>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Toggle Activation</Action>
-              <Keys>
-                <Key>33</Key>
-              </Keys>
-              <ID>0</ID>
-            </Hotkey>
-          </Hotkeys>
-        </CheatEntry>
         <CheatEntry>
           <ID>36</ID>
           <Description>"Copy Input Pointer"</Description>
           <Options moHideChildren="1" moManualExpandCollapse="1"/>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : eldenring.exe
   Version: 
@@ -911,13 +840,228 @@ XINPUT1_4.dll+5920: 0F B6 4D 03        - movzx ecx,byte ptr [rbp+03]
             <CheatEntry>
               <ID>37</ID>
               <Description>"Input Pointer"</Description>
-              <LastState Value="000001F8FC5C5550" RealAddress="7FFA87851000"/>
               <ShowAsHex>1</ShowAsHex>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>8 Bytes</VariableType>
               <Address>inputPointer</Address>
             </CheatEntry>
           </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"Scripts"</Description>
+      <Options moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>38</ID>
+          <Description>"Fly Cam Native"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+// === INJECTION COPY INPUT POINTER ===
+aobscanmodule(INJECT_CopyInputPointer,XINPUT1_4.dll,88 43 43 0F B6 45 FE 66 0B C8)
+alloc(newmem_copyPointer,$1000,INJECT_CopyInputPointer)
+alloc(inputPointer,8)
+
+label(code_copyPointer)
+label(return_copyPointer)
+
+inputPointer:
+    dq 0
+
+newmem_copyPointer:
+
+code_copyPointer:
+  mov [inputPointer],rbx
+  mov [rbx+43],al
+  movzx eax,byte ptr [rbp-02]
+  jmp return_copyPointer
+
+INJECT_CopyInputPointer:
+  jmp newmem_copyPointer
+  nop 2
+return_copyPointer:
+
+registersymbol(INJECT_CopyInputPointer)
+registersymbol(inputPointer)
+// ====================================
+
+// === FREEZE CAM POS ====
+aobscanmodule(INJECT_FreezeCamPosition,eldenring.exe,0F 29 4F 40 E9 31 04 00 00)
+INJECT_FreezeCamPosition:
+  db 90 90 90 90
+registersymbol(INJECT_FreezeCamPosition)
+// =======================
+
+// === FREEZE CONTROLS ===
+aobscanmodule(INJECT_FreezePlayerControls,eldenring.exe,E8 63 84 FC FF 48 8B 8F 90 01 00 00)
+INJECT_FreezePlayerControls:
+  db 90 90 90 90 90
+registersymbol(INJECT_FreezePlayerControls)
+// =======================
+
+// === HOOK UPDATE CAM ===
+aobscanmodule(INJECT_FlyCamNative,eldenring.exe,E8 64 0C 92 FF 48 8B 93 E8 00 00 00)
+alloc(newmem,$1000,INJECT_FlyCamNative)
+label(code)
+label(return)
+
+{$c}
+#include &lt;stdbool.h&gt;
+
+//typedef struct { float yaw; float pitch; } Angles;
+//Angles angles;
+
+const int null = 0;
+const float speedModifyRate = 1.0116194403019225;
+const float dt = 1.0 / 60.0;
+const float baseSpeed = 10.0;
+const float triggerMax = 255.0;
+const float stickMax = 32768.0;
+//const float pi = 3.141592653589793;
+//const float tau = 6.283185307179586;
+
+typedef struct {
+    char pad0[0x10];
+    float rx; float ry; float rz; float rw;
+    float ux; float uy; float uz; float uw;
+    float fx; float fy; float fz; float fw;
+    float  x; float  y; float  z;
+} Camera;
+
+typedef struct {
+    char pad_0[0x40];
+    bool dpadUp:1; bool dpadDown:1; bool dpadLeft:1; bool dpadRight:1;
+    bool start:1; bool back:1;
+    bool leftStick:1; bool rightStick:1;
+    bool leftShoulder:1; bool rightShoulder:1;
+    int pad_1:2;
+    bool a:1; bool b:1; bool x:1; bool y:1;
+    unsigned char leftTrigger; unsigned char rightTrigger;
+    short leftStickX; short leftStickY;
+    short rightStickX; short rightStickY;
+} Input;
+
+float speedModifier = 1.0;
+
+void main(void* cambase) {
+    extern void* inputPointer;
+    if (inputPointer == null)
+        return;
+
+    Camera *cam = (Camera*)cambase;
+    Input *input = (Input*)inputPointer;
+
+    if (input-&gt;rightShoulder &amp;&amp; input-&gt;leftShoulder)
+        speedModifier = 1.0;
+    else if (input-&gt;rightShoulder)
+        speedModifier *= speedModifyRate;
+    else if (input-&gt;leftShoulder)
+        speedModifier /= speedModifyRate;
+
+    float moveX = input-&gt;leftStickX / stickMax;
+    float moveZ = input-&gt;leftStickY / stickMax;
+    float moveY =
+        ((float)input-&gt;rightTrigger - (float)input-&gt;leftTrigger)
+        / triggerMax;
+
+    float vx = cam-&gt;rx * moveX + cam-&gt;ux * moveY + cam-&gt;fx * moveZ;
+    float vy = cam-&gt;ry * moveX + cam-&gt;uy * moveY + cam-&gt;fy * moveZ;
+    float vz = cam-&gt;rz * moveX + cam-&gt;uz * moveY + cam-&gt;fz * moveZ;
+
+    float speed = baseSpeed * speedModifier;
+    cam-&gt;x += vx * speed * dt;
+    cam-&gt;y += vy * speed * dt;
+    cam-&gt;z += vz * speed * dt;
+}
+{$asm}
+
+newmem:
+code:
+{$ccode cambase=RCX}
+  main(cambase)
+{$asm}
+  call eldenring.exe+3AE390
+  jmp return
+INJECT_FlyCamNative:
+  jmp newmem
+return:
+
+registersymbol(INJECT_FlyCamNative)
+// =======================
+
+
+[DISABLE]
+
+
+// === INJECTION COPY INPUT POINTER ===
+INJECT_CopyInputPointer:
+  db 88 43 43 0F B6 45 FE
+unregistersymbol(INJECT_CopyInputPointer)
+dealloc(newmem_copyPointer)
+// ====================================
+
+// === FREEZE CAM ========
+INJECT_FreezeCamPosition:
+  db 0F 29 4F 40
+unregistersymbol(INJECT_FreezeCamPosition)
+// =======================
+
+// === FREEZE CONTROLS ===
+INJECT_FreezePlayerControls:
+  db E8 63 84 FC FF
+unregistersymbol(INJECT_FreezePlayerControls)
+// =======================
+
+// === UNHOOK UPDATE CAM ===
+INJECT_FlyCamNative:
+  db E8 64 0C 92 FF
+unregistersymbol(INJECT_FlyCamNative)
+dealloc(newmem)
+// =========================
+
+{
+// ORIGINAL CODE - INJECTION POINT: eldenring.exe+A8D727
+
+eldenring.exe+A8D6F2: 48 8D 0D 27 A3 E8 01     - lea rcx,[eldenring.exe+2917A20]
+eldenring.exe+A8D6F9: E8 22 7C 39 01           - call eldenring.exe+1E25320
+eldenring.exe+A8D6FE: 48 8B 05 6B 25 1C 03     - mov rax,[eldenring.exe+3C4FC70]
+eldenring.exe+A8D705: C6 80 31 28 00 00 00     - mov byte ptr [rax+00002831],00
+eldenring.exe+A8D70C: 4C 89 74 24 28           - mov [rsp+28],r14
+eldenring.exe+A8D711: 48 89 74 24 28           - mov [rsp+28],rsi
+eldenring.exe+A8D716: 44 0F B6 CD              - movzx r9d,bpl
+eldenring.exe+A8D71A: 4C 8B C7                 - mov r8,rdi
+eldenring.exe+A8D71D: 0F 28 CE                 - movaps xmm1,xmm6
+eldenring.exe+A8D720: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
+// ---------- INJECTING HERE ----------
+eldenring.exe+A8D727: E8 64 0C 92 FF           - call eldenring.exe+3AE390
+// ---------- DONE INJECTING  ----------
+eldenring.exe+A8D72C: 48 8B 93 E8 00 00 00     - mov rdx,[rbx+000000E8]
+eldenring.exe+A8D733: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
+eldenring.exe+A8D73A: E8 31 0B 92 FF           - call eldenring.exe+3AE270
+eldenring.exe+A8D73F: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
+eldenring.exe+A8D746: E8 A5 07 92 FF           - call eldenring.exe+3ADEF0
+eldenring.exe+A8D74B: 0F 28 CE                 - movaps xmm1,xmm6
+eldenring.exe+A8D74E: 48 8B 8B E8 00 00 00     - mov rcx,[rbx+000000E8]
+eldenring.exe+A8D755: 48 8B 5C 24 70           - mov rbx,[rsp+70]
+eldenring.exe+A8D75A: 48 8B AC 24 80 00 00 00  - mov rbp,[rsp+00000080]
+eldenring.exe+A8D762: 0F 28 74 24 40           - movaps xmm6,[rsp+40]
+}
+</AssemblerScript>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Toggle Activation</Action>
+              <Keys>
+                <Key>33</Key>
+              </Keys>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
