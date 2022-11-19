@@ -40,7 +40,7 @@ FlyCam.create = function()
     timer.Interval = dt
     local lastTick = getTickCount()
     timer.OnTimer = function()
-        local camAddr = readQword(addresses.chrCam)
+        local camAddr = getCamAddr()
         if camAddr == nil then return end
 
         local input = getXBox360ControllerState()
@@ -138,6 +138,15 @@ function writeLookMatrix(address, angles, x, y, z)
     writeFloat(address + 0x30, x)
     writeFloat(address + 0x34, y)
     writeFloat(address + 0x38, z)
+end
+
+function getCamAddr()
+    local camAddr = readQword(addresses.chrCam)
+    if camAddr == nil then return nil end
+    local vtableExpected = getAddress(addresses.chrCamVTable)
+    local vtableActual = readPointer(camAddr + 0x0)
+    if vtableActual ~= vtableExpected then return nil end
+    return camAddr
 end
 
 return FlyCam

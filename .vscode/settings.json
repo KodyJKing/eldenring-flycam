@@ -28,6 +28,7 @@
         "getXBox360ControllerState",
         "allocateMemory",
         "deAlloc",
-        "copyMemory"
+        "copyMemory",
+        "readPointer"
     ]
 }

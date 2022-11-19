@@ -408,9 +408,18 @@ eldenring.exe+2C4A4E: 48 3B C2              - cmp rax,rdx
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
+          <ID>35</ID>
+          <Description>"Game Base"</Description>
+          <LastState Value="0000000300905A4D" RealAddress="7FF6F9700000"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>"eldenring.exe"</Address>
+        </CheatEntry>
+        <CheatEntry>
           <ID>21</ID>
           <Description>"ChrCamPointer"</Description>
-          <LastState Value="00007FF46740B4A0" RealAddress="7FF465959FE0"/>
+          <LastState Value="00007FF49A323F70" RealAddress="7FF49A6CC380"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
@@ -419,11 +428,28 @@ eldenring.exe+2C4A4E: 48 3B C2              - cmp rax,rdx
         <CheatEntry>
           <ID>29</ID>
           <Description>"PlayerIns Pointer"</Description>
-          <LastState Value="00007FF4B08812E0" RealAddress="7FF4AF888FC0"/>
+          <LastState Value="00007FF499A66F30" RealAddress="7FF4596713C0"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
           <Address>["eldenring.exe"+03A18D80]</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>32</ID>
+          <Description>"ChrDataModule"</Description>
+          <LastState Value="00007FF499A678A0" RealAddress="7FF49664AC00"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>[[["eldenring.exe"+03A18D80]]+190]</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>33</ID>
+          <Description>"PlayerHP"</Description>
+          <LastState Value="994" RealAddress="7FF499A679D8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[[[["eldenring.exe"+03A18D80]]+190]+0]+138</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
@@ -662,7 +688,7 @@ eldenring.exe+4609B3: 0F 29 BC 24 A0 00 00 00  - movaps [rsp+000000A0],xmm7
         <CheatEntry>
           <ID>24</ID>
           <Description>"Fly Cam"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 if syntaxcheck then return end
@@ -707,6 +733,14 @@ flyCam.destroy()
           </Hotkeys>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>34</ID>
+      <Description>"No description"</Description>
+      <LastState Value="160" RealAddress="7FF6FC0776F8"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>"eldenring.exe"+29776F8</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
