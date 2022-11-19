@@ -101,7 +101,7 @@ FlyCam.create = function()
         --         print("Cannot find player physics module.")
         --     else
         --         writeFloat(playerPhysAddr + 0x70, x)
-        --         writeFloat(playerPhysAddr + 0x74, y)
+        --         writeFloat(playerPhysAddr + 0x74, y - 2)
         --         writeFloat(playerPhysAddr + 0x78, z)
         --     end
         -- end

@@ -398,6 +398,19 @@ eldenring.exe+2C4A4E: 48 3B C2              - cmp rax,rdx
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"_FlyCam"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+flyCam = reloadPackage("lua/FlyCam").create()
+[DISABLE]
+flyCam.destroy()
+</AssemblerScript>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
@@ -419,7 +432,7 @@ eldenring.exe+2C4A4E: 48 3B C2              - cmp rax,rdx
         <CheatEntry>
           <ID>21</ID>
           <Description>"ChrCamPointer"</Description>
-          <LastState Value="00007FF49A323F70" RealAddress="7FF49A6CC380"/>
+          <LastState Value="00007FF44186E4F0" RealAddress="7FF44186DE00"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
@@ -428,7 +441,7 @@ eldenring.exe+2C4A4E: 48 3B C2              - cmp rax,rdx
         <CheatEntry>
           <ID>29</ID>
           <Description>"PlayerIns Pointer"</Description>
-          <LastState Value="00007FF499A66F30" RealAddress="7FF4596713C0"/>
+          <LastState Value="00007FF43E595820" RealAddress="7FF402B72CC0"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
@@ -437,7 +450,7 @@ eldenring.exe+2C4A4E: 48 3B C2              - cmp rax,rdx
         <CheatEntry>
           <ID>32</ID>
           <Description>"ChrDataModule"</Description>
-          <LastState Value="00007FF499A678A0" RealAddress="7FF49664AC00"/>
+          <LastState Value="00007FF43E596190" RealAddress="7FF401EA6000"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
@@ -446,7 +459,7 @@ eldenring.exe+2C4A4E: 48 3B C2              - cmp rax,rdx
         <CheatEntry>
           <ID>33</ID>
           <Description>"PlayerHP"</Description>
-          <LastState Value="994" RealAddress="7FF499A679D8"/>
+          <LastState Value="1216" RealAddress="7FF43E5962C8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>[[[["eldenring.exe"+03A18D80]]+190]+0]+138</Address>
@@ -460,137 +473,6 @@ eldenring.exe+2C4A4E: 48 3B C2              - cmp rax,rdx
       <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
-        <CheatEntry>
-          <ID>18</ID>
-          <Description>"_FreezePlayerControls"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{ Game   : eldenring.exe
-  Version: 
-  Date   : 2022-11-17
-  Author : Kody
-
-  This script does blah blah blah
-}
-
-[ENABLE]
-
-aobscanmodule(INJECT_FreezePlayerControls,eldenring.exe,E8 63 84 FC FF 48 8B 8F 90 01 00 00)
-
-INJECT_FreezePlayerControls:
-  db 90 90 90 90 90
-
-registersymbol(INJECT_FreezePlayerControls)
-
-[DISABLE]
-
-INJECT_FreezePlayerControls:
-  db E8 63 84 FC FF
-
-unregistersymbol(INJECT_FreezePlayerControls)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+3FD818
-
-eldenring.exe+3FD7ED: 48 8D 4D EF           - lea rcx,[rbp-11]
-eldenring.exe+3FD7F1: E8 7A 46 A4 01        - call eldenring.exe+1E41E70
-eldenring.exe+3FD7F6: 48 8B 07              - mov rax,[rdi]
-eldenring.exe+3FD7F9: 48 8B CF              - mov rcx,rdi
-eldenring.exe+3FD7FC: FF 90 F0 05 00 00     - call qword ptr [rax+000005F0]
-eldenring.exe+3FD802: 48 8B 10              - mov rdx,[rax]
-eldenring.exe+3FD805: 48 8B C8              - mov rcx,rax
-eldenring.exe+3FD808: FF 92 D0 00 00 00     - call qword ptr [rdx+000000D0]
-eldenring.exe+3FD80E: F3 41 0F 10 4F 08     - movss xmm1,[r15+08]
-eldenring.exe+3FD814: 48 8B 4F 58           - mov rcx,[rdi+58]
-// ---------- INJECTING HERE ----------
-eldenring.exe+3FD818: E8 63 84 FC FF        - call eldenring.exe+3C5C80
-// ---------- DONE INJECTING  ----------
-eldenring.exe+3FD81D: 48 8B 8F 90 01 00 00  - mov rcx,[rdi+00000190]
-eldenring.exe+3FD824: 49 8B D7              - mov rdx,r15
-eldenring.exe+3FD827: 48 8B 89 C0 00 00 00  - mov rcx,[rcx+000000C0]
-eldenring.exe+3FD82E: E8 2D 53 01 00        - call eldenring.exe+412B60
-eldenring.exe+3FD833: 48 8B 8F 90 01 00 00  - mov rcx,[rdi+00000190]
-eldenring.exe+3FD83A: F3 41 0F 10 4F 08     - movss xmm1,[r15+08]
-eldenring.exe+3FD840: 48 8B 49 30           - mov rcx,[rcx+30]
-eldenring.exe+3FD844: E8 27 1C 02 00        - call eldenring.exe+41F470
-eldenring.exe+3FD849: 48 8B 8F 90 01 00 00  - mov rcx,[rdi+00000190]
-eldenring.exe+3FD850: 48 8B 49 28           - mov rcx,[rcx+28]
-}
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>16</ID>
-          <Description>"_FreezeCam"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{ Game   : eldenring.exe
-  Version: 
-  Date   : 2022-11-17
-  Author : Kody
-
-  This script does blah blah blah
-}
-
-[ENABLE]
-
-aobscanmodule(INJECT_FreezeCam,eldenring.exe,E8 64 0C 92 FF)
-
-INJECT_FreezeCam:
-  db 90 90 90 90 90
-
-registersymbol(INJECT_FreezeCam)
-
-[DISABLE]
-
-INJECT_FreezeCam:
-  db E8 64 0C 92 FF
-
-unregistersymbol(INJECT_FreezeCam)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+A8D727
-
-eldenring.exe+A8D6F2: 48 8D 0D 27 A3 E8 01     - lea rcx,[eldenring.exe+2917A20]
-eldenring.exe+A8D6F9: E8 22 7C 39 01           - call eldenring.exe+1E25320
-eldenring.exe+A8D6FE: 48 8B 05 6B 25 1C 03     - mov rax,[eldenring.exe+3C4FC70]
-eldenring.exe+A8D705: C6 80 31 28 00 00 00     - mov byte ptr [rax+00002831],00
-eldenring.exe+A8D70C: 4C 89 74 24 28           - mov [rsp+28],r14
-eldenring.exe+A8D711: 48 89 74 24 28           - mov [rsp+28],rsi
-eldenring.exe+A8D716: 44 0F B6 CD              - movzx r9d,bpl
-eldenring.exe+A8D71A: 4C 8B C7                 - mov r8,rdi
-eldenring.exe+A8D71D: 0F 28 CE                 - movaps xmm1,xmm6
-eldenring.exe+A8D720: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
-// ---------- INJECTING HERE ----------
-eldenring.exe+A8D727: E8 64 0C 92 FF           - call eldenring.exe+3AE390
-// ---------- DONE INJECTING  ----------
-eldenring.exe+A8D72C: 48 8B 93 E8 00 00 00     - mov rdx,[rbx+000000E8]
-eldenring.exe+A8D733: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
-eldenring.exe+A8D73A: E8 31 0B 92 FF           - call eldenring.exe+3AE270
-eldenring.exe+A8D73F: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
-eldenring.exe+A8D746: E8 A5 07 92 FF           - call eldenring.exe+3ADEF0
-eldenring.exe+A8D74B: 0F 28 CE                 - movaps xmm1,xmm6
-eldenring.exe+A8D74E: 48 8B 8B E8 00 00 00     - mov rcx,[rbx+000000E8]
-eldenring.exe+A8D755: 48 8B 5C 24 70           - mov rbx,[rsp+70]
-eldenring.exe+A8D75A: 48 8B AC 24 80 00 00 00  - mov rbp,[rsp+00000080]
-eldenring.exe+A8D762: 0F 28 74 24 40           - movaps xmm6,[rsp+40]
-}
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>14</ID>
-          <Description>"_FlyCam"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
-if syntaxcheck then return end
-[ENABLE]
-flyCam = reloadPackage("lua/FlyCam").create()
-[DISABLE]
-flyCam.destroy()
-</AssemblerScript>
-        </CheatEntry>
         <CheatEntry>
           <ID>30</ID>
           <Description>"False Floor"</Description>
@@ -676,6 +558,124 @@ eldenring.exe+4609B3: 0F 29 BC 24 A0 00 00 00  - movaps [rsp+000000A0],xmm7
 }
 </AssemblerScript>
         </CheatEntry>
+        <CheatEntry>
+          <ID>16</ID>
+          <Description>"FreezeCam"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : eldenring.exe
+  Version: 
+  Date   : 2022-11-17
+  Author : Kody
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT_FreezeCam,eldenring.exe,E8 64 0C 92 FF)
+
+INJECT_FreezeCam:
+  db 90 90 90 90 90
+
+registersymbol(INJECT_FreezeCam)
+
+[DISABLE]
+
+INJECT_FreezeCam:
+  db E8 64 0C 92 FF
+
+unregistersymbol(INJECT_FreezeCam)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: eldenring.exe+A8D727
+
+eldenring.exe+A8D6F2: 48 8D 0D 27 A3 E8 01     - lea rcx,[eldenring.exe+2917A20]
+eldenring.exe+A8D6F9: E8 22 7C 39 01           - call eldenring.exe+1E25320
+eldenring.exe+A8D6FE: 48 8B 05 6B 25 1C 03     - mov rax,[eldenring.exe+3C4FC70]
+eldenring.exe+A8D705: C6 80 31 28 00 00 00     - mov byte ptr [rax+00002831],00
+eldenring.exe+A8D70C: 4C 89 74 24 28           - mov [rsp+28],r14
+eldenring.exe+A8D711: 48 89 74 24 28           - mov [rsp+28],rsi
+eldenring.exe+A8D716: 44 0F B6 CD              - movzx r9d,bpl
+eldenring.exe+A8D71A: 4C 8B C7                 - mov r8,rdi
+eldenring.exe+A8D71D: 0F 28 CE                 - movaps xmm1,xmm6
+eldenring.exe+A8D720: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
+// ---------- INJECTING HERE ----------
+eldenring.exe+A8D727: E8 64 0C 92 FF           - call eldenring.exe+3AE390
+// ---------- DONE INJECTING  ----------
+eldenring.exe+A8D72C: 48 8B 93 E8 00 00 00     - mov rdx,[rbx+000000E8]
+eldenring.exe+A8D733: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
+eldenring.exe+A8D73A: E8 31 0B 92 FF           - call eldenring.exe+3AE270
+eldenring.exe+A8D73F: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
+eldenring.exe+A8D746: E8 A5 07 92 FF           - call eldenring.exe+3ADEF0
+eldenring.exe+A8D74B: 0F 28 CE                 - movaps xmm1,xmm6
+eldenring.exe+A8D74E: 48 8B 8B E8 00 00 00     - mov rcx,[rbx+000000E8]
+eldenring.exe+A8D755: 48 8B 5C 24 70           - mov rbx,[rsp+70]
+eldenring.exe+A8D75A: 48 8B AC 24 80 00 00 00  - mov rbp,[rsp+00000080]
+eldenring.exe+A8D762: 0F 28 74 24 40           - movaps xmm6,[rsp+40]
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>18</ID>
+          <Description>"FreezePlayerControls"</Description>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : eldenring.exe
+  Version: 
+  Date   : 2022-11-17
+  Author : Kody
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT_FreezePlayerControls,eldenring.exe,E8 63 84 FC FF 48 8B 8F 90 01 00 00)
+
+INJECT_FreezePlayerControls:
+  db 90 90 90 90 90
+
+registersymbol(INJECT_FreezePlayerControls)
+
+[DISABLE]
+
+INJECT_FreezePlayerControls:
+  db E8 63 84 FC FF
+
+unregistersymbol(INJECT_FreezePlayerControls)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: eldenring.exe+3FD818
+
+eldenring.exe+3FD7ED: 48 8D 4D EF           - lea rcx,[rbp-11]
+eldenring.exe+3FD7F1: E8 7A 46 A4 01        - call eldenring.exe+1E41E70
+eldenring.exe+3FD7F6: 48 8B 07              - mov rax,[rdi]
+eldenring.exe+3FD7F9: 48 8B CF              - mov rcx,rdi
+eldenring.exe+3FD7FC: FF 90 F0 05 00 00     - call qword ptr [rax+000005F0]
+eldenring.exe+3FD802: 48 8B 10              - mov rdx,[rax]
+eldenring.exe+3FD805: 48 8B C8              - mov rcx,rax
+eldenring.exe+3FD808: FF 92 D0 00 00 00     - call qword ptr [rdx+000000D0]
+eldenring.exe+3FD80E: F3 41 0F 10 4F 08     - movss xmm1,[r15+08]
+eldenring.exe+3FD814: 48 8B 4F 58           - mov rcx,[rdi+58]
+// ---------- INJECTING HERE ----------
+eldenring.exe+3FD818: E8 63 84 FC FF        - call eldenring.exe+3C5C80
+// ---------- DONE INJECTING  ----------
+eldenring.exe+3FD81D: 48 8B 8F 90 01 00 00  - mov rcx,[rdi+00000190]
+eldenring.exe+3FD824: 49 8B D7              - mov rdx,r15
+eldenring.exe+3FD827: 48 8B 89 C0 00 00 00  - mov rcx,[rcx+000000C0]
+eldenring.exe+3FD82E: E8 2D 53 01 00        - call eldenring.exe+412B60
+eldenring.exe+3FD833: 48 8B 8F 90 01 00 00  - mov rcx,[rdi+00000190]
+eldenring.exe+3FD83A: F3 41 0F 10 4F 08     - movss xmm1,[r15+08]
+eldenring.exe+3FD840: 48 8B 49 30           - mov rcx,[rcx+30]
+eldenring.exe+3FD844: E8 27 1C 02 00        - call eldenring.exe+41F470
+eldenring.exe+3FD849: 48 8B 8F 90 01 00 00  - mov rcx,[rdi+00000190]
+eldenring.exe+3FD850: 48 8B 49 28           - mov rcx,[rcx+28]
+}
+</AssemblerScript>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
@@ -688,7 +688,7 @@ eldenring.exe+4609B3: 0F 29 BC 24 A0 00 00 00  - movaps [rsp+000000A0],xmm7
         <CheatEntry>
           <ID>24</ID>
           <Description>"Fly Cam"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 if syntaxcheck then return end
@@ -722,6 +722,107 @@ unregistersymbol(INJECT_FreezePlayerControls)
 flyCam.destroy()
 {$asm}
 </AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>38</ID>
+          <Description>"Fly Cam Native"</Description>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(INJECT_FlyCamNative,eldenring.exe,E8 64 0C 92 FF 48 8B 93 E8 00 00 00)
+alloc(newmem,$1000,INJECT_FlyCamNative)
+
+label(code)
+label(return)
+
+{$c}
+
+#include &lt;stdbool.h&gt;
+
+typedef struct {
+    char pad0[0x10];
+    float rx; float ry; float rz; float rw;
+    float ux; float uy; float uz; float uw;
+    float fx; float fy; float fz; float fw;
+    float  x; float  y; float  z;
+} Camera;
+
+typedef struct {
+    char pad_0[0x40];
+    bool dpadUp:1; bool dpadDown:1; bool dpadLeft:1; bool dpadRight:1;
+    bool start:1; bool back:1;
+    bool leftStick:1; bool rightStick:1;
+    bool leftShoulder:1; bool rightShoulder:1;
+    int pad_1:2;
+    bool a:1; bool b:1; bool x:1; bool y:1;
+    unsigned char leftTrigger; unsigned char rightTrigger;
+    short leftStickX; short leftStickY;
+    short rightStickX; short rightStickY;
+} Input;
+
+void main(void* cambase, void* inputbase) {
+    Camera *cam = (Camera*)cambase;
+    Input *input = (Input*)inputbase;
+    if (input-&gt;rightStickY &lt; -2000)
+        cam-&gt;y += 1.0 / 60.0;
+}
+
+{$asm}
+
+newmem:
+
+code:
+  //call eldenring.exe+3AE390
+
+  mov rax,[inputPointer]
+{$ccode cambase=RCX inputbase=RAX}
+    main(cambase, inputbase)
+{$asm}
+
+  jmp return
+
+INJECT_FlyCamNative:
+  jmp newmem
+return:
+registersymbol(INJECT_FlyCamNative)
+
+[DISABLE]
+
+INJECT_FlyCamNative:
+  db E8 64 0C 92 FF
+
+unregistersymbol(INJECT_FlyCamNative)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: eldenring.exe+A8D727
+
+eldenring.exe+A8D6F2: 48 8D 0D 27 A3 E8 01     - lea rcx,[eldenring.exe+2917A20]
+eldenring.exe+A8D6F9: E8 22 7C 39 01           - call eldenring.exe+1E25320
+eldenring.exe+A8D6FE: 48 8B 05 6B 25 1C 03     - mov rax,[eldenring.exe+3C4FC70]
+eldenring.exe+A8D705: C6 80 31 28 00 00 00     - mov byte ptr [rax+00002831],00
+eldenring.exe+A8D70C: 4C 89 74 24 28           - mov [rsp+28],r14
+eldenring.exe+A8D711: 48 89 74 24 28           - mov [rsp+28],rsi
+eldenring.exe+A8D716: 44 0F B6 CD              - movzx r9d,bpl
+eldenring.exe+A8D71A: 4C 8B C7                 - mov r8,rdi
+eldenring.exe+A8D71D: 0F 28 CE                 - movaps xmm1,xmm6
+eldenring.exe+A8D720: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
+// ---------- INJECTING HERE ----------
+eldenring.exe+A8D727: E8 64 0C 92 FF           - call eldenring.exe+3AE390
+// ---------- DONE INJECTING  ----------
+eldenring.exe+A8D72C: 48 8B 93 E8 00 00 00     - mov rdx,[rbx+000000E8]
+eldenring.exe+A8D733: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
+eldenring.exe+A8D73A: E8 31 0B 92 FF           - call eldenring.exe+3AE270
+eldenring.exe+A8D73F: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
+eldenring.exe+A8D746: E8 A5 07 92 FF           - call eldenring.exe+3ADEF0
+eldenring.exe+A8D74B: 0F 28 CE                 - movaps xmm1,xmm6
+eldenring.exe+A8D74E: 48 8B 8B E8 00 00 00     - mov rcx,[rbx+000000E8]
+eldenring.exe+A8D755: 48 8B 5C 24 70           - mov rbx,[rsp+70]
+eldenring.exe+A8D75A: 48 8B AC 24 80 00 00 00  - mov rbp,[rsp+00000080]
+eldenring.exe+A8D762: 0F 28 74 24 40           - movaps xmm6,[rsp+40]
+}
+</AssemblerScript>
           <Hotkeys>
             <Hotkey>
               <Action>Toggle Activation</Action>
@@ -732,15 +833,93 @@ flyCam.destroy()
             </Hotkey>
           </Hotkeys>
         </CheatEntry>
+        <CheatEntry>
+          <ID>36</ID>
+          <Description>"Copy Input Pointer"</Description>
+          <Options moHideChildren="1" moManualExpandCollapse="1"/>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : eldenring.exe
+  Version: 
+  Date   : 2022-11-19
+  Author : Kody
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT_CopyInputPointer,XINPUT1_4.dll,88 43 43 0F B6 45 FE 66 0B C8)
+alloc(newmem,$1000,INJECT_CopyInputPointer)
+alloc(inputPointer,8)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [inputPointer],rbx
+  mov [rbx+43],al
+  movzx eax,byte ptr [rbp-02]
+  jmp return
+
+INJECT_CopyInputPointer:
+  jmp newmem
+  nop 2
+return:
+registersymbol(INJECT_CopyInputPointer)
+registersymbol(inputPointer)
+
+[DISABLE]
+
+INJECT_CopyInputPointer:
+  db 88 43 43 0F B6 45 FE
+
+unregistersymbol(INJECT_CopyInputPointer)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: XINPUT1_4.dll+58FB
+
+XINPUT1_4.dll+58D7: 8B 13              - mov edx,[rbx]
+XINPUT1_4.dll+58D9: 66 44 39 6B 38     - cmp [rbx+38],r13w
+XINPUT1_4.dll+58DE: 0F 84 8E 00 00 00  - je XINPUT1_4.dll+5972
+XINPUT1_4.dll+58E4: 8B 45 F4           - mov eax,[rbp-0C]
+XINPUT1_4.dll+58E7: 0F B6 4D FF        - movzx ecx,byte ptr [rbp-01]
+XINPUT1_4.dll+58EB: 66 C1 E1 08        - shl cx,08
+XINPUT1_4.dll+58EF: 89 43 3C           - mov [rbx+3C],eax
+XINPUT1_4.dll+58F2: 8A 45 FC           - mov al,[rbp-04]
+XINPUT1_4.dll+58F5: 88 43 42           - mov [rbx+42],al
+XINPUT1_4.dll+58F8: 8A 45 FD           - mov al,[rbp-03]
+// ---------- INJECTING HERE ----------
+XINPUT1_4.dll+58FB: 88 43 43           - mov [rbx+43],al
+// ---------- DONE INJECTING  ----------
+XINPUT1_4.dll+58FE: 0F B6 45 FE        - movzx eax,byte ptr [rbp-02]
+XINPUT1_4.dll+5902: 66 0B C8           - or cx,ax
+XINPUT1_4.dll+5905: 0F B6 45 00        - movzx eax,byte ptr [rbp+00]
+XINPUT1_4.dll+5909: 66 89 4B 44        - mov [rbx+44],cx
+XINPUT1_4.dll+590D: 0F B6 4D 01        - movzx ecx,byte ptr [rbp+01]
+XINPUT1_4.dll+5911: 66 C1 E1 08        - shl cx,08
+XINPUT1_4.dll+5915: 66 0B C8           - or cx,ax
+XINPUT1_4.dll+5918: 0F B6 45 02        - movzx eax,byte ptr [rbp+02]
+XINPUT1_4.dll+591C: 66 89 4B 46        - mov [rbx+46],cx
+XINPUT1_4.dll+5920: 0F B6 4D 03        - movzx ecx,byte ptr [rbp+03]
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>37</ID>
+              <Description>"Input Pointer"</Description>
+              <LastState Value="000001F8FC5C5550" RealAddress="7FFA87851000"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>inputPointer</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
       </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>34</ID>
-      <Description>"No description"</Description>
-      <LastState Value="160" RealAddress="7FF6FC0776F8"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Byte</VariableType>
-      <Address>"eldenring.exe"+29776F8</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -1170,6 +1349,105 @@ flyCam.destroy()
         <Byte>89</Byte>
         <Byte>7D</Byte>
         <Byte>C0</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Write Health on Death?</Description>
+      <AddressString>eldenring.exe+432782</AddressString>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>4F</Byte>
+        <Byte>C7</Byte>
+        <Byte>8B</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>81</Byte>
+        <Byte>38</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>C3</Byte>
+        <Byte>B2</Byte>
+        <Byte>22</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Write Fall Time</Description>
+      <AddressString>eldenring.exe+4496F8</AddressString>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>43</Byte>
+        <Byte>18</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>43</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>C6</Byte>
+        <Byte>43</Byte>
+        <Byte>1C</Byte>
+        <Byte>00</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Call Killbox Code?</Description>
+      <AddressString>eldenring.exe+4490F7</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>09</Byte>
+      </Before>
+      <Actual>
+        <Byte>E8</Byte>
+        <Byte>F4</Byte>
+        <Byte>A9</Byte>
+        <Byte>FE</Byte>
+        <Byte>FF</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>CB</Byte>
+        <Byte>BF</Byte>
+        <Byte>8F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Write Right Trigger</Description>
+      <AddressString>XINPUT1_4.dll+58FB</AddressString>
+      <Before>
+        <Byte>43</Byte>
+        <Byte>42</Byte>
+        <Byte>8A</Byte>
+        <Byte>45</Byte>
+        <Byte>FD</Byte>
+      </Before>
+      <Actual>
+        <Byte>88</Byte>
+        <Byte>43</Byte>
+        <Byte>43</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>B6</Byte>
+        <Byte>45</Byte>
+        <Byte>FE</Byte>
+        <Byte>66</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
@@ -5746,7 +6024,7 @@ flyCam.destroy()
         <Element Offset="376" Vartype="Pointer" Bytesize="8" OffsetHex="00000178" Description="Pointer to instance of CS::SpecialEffect" DisplayMethod="Unsigned Integer"/>
         <Element Offset="384" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000180" DisplayMethod="Unsigned Integer"/>
         <Element Offset="396" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000018C" DisplayMethod="Hexadecimal"/>
-        <Element Offset="400" Vartype="Pointer" Bytesize="8" OffsetHex="00000190" Description="All The Modules" DisplayMethod="Unsigned Integer">
+        <Element Offset="400" Vartype="Pointer" Bytesize="8" OffsetHex="00000190" Description="Module List" DisplayMethod="Unsigned Integer">
           <Structure Name="Autocreated from 7FF492E9CA00" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
             <Elements>
               <Element Offset="0" Vartype="Pointer" Bytesize="8" OffsetHex="00000000" ChildStruct="CS::CSChrDataModule" Description="Pointer to instance of CS::CSChrDataModule" DisplayMethod="Unsigned Integer"/>
@@ -8427,7 +8705,555 @@ flyCam.destroy()
                   </Elements>
                 </Structure>
               </Element>
-              <Element Offset="112" Vartype="Pointer" Bytesize="8" OffsetHex="00000070" Description="Pointer to instance of CS::CSChrFallModule" DisplayMethod="Unsigned Integer"/>
+              <Element Offset="112" Vartype="Pointer" Bytesize="8" OffsetHex="00000070" Description="Pointer to instance of CS::CSChrFallModule" DisplayMethod="Unsigned Integer">
+                <Structure Name="Autocreated from 7FF49EC90180" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+                  <Elements>
+                    <Element Offset="0" Vartype="Pointer" Bytesize="8" OffsetHex="00000000" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="8" Vartype="Pointer" Bytesize="8" OffsetHex="00000008" ChildStruct="CS::PlayerIns" Description="Pointer to instance of CS::PlayerIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="16" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000010" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="24" Vartype="Float" Bytesize="4" OffsetHex="00000018" Description="Fall Time" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="28" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000001C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="32" Vartype="Unicode String" Bytesize="14" OffsetHex="00000020" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="46" Vartype="Unicode String" Bytesize="7" OffsetHex="0000002E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="53" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000035" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="56" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000038" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="64" Vartype="Pointer" Bytesize="8" RLECount="3" OffsetHex="00000040" Description="Pointer to instance of GXFLV::GXFlverTexture" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="88" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000058" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="92" Vartype="4 Bytes" Bytesize="4" RLECount="9" OffsetHex="0000005C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="128" Vartype="Unicode String" Bytesize="13" OffsetHex="00000080" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="141" Vartype="Byte" Bytesize="1" OffsetHex="0000008D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="142" Vartype="Unicode String" Bytesize="6" OffsetHex="0000008E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="148" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000094" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="156" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000009C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="160" Vartype="Pointer" Bytesize="8" OffsetHex="000000A0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="168" Vartype="Pointer" Bytesize="8" OffsetHex="000000A8" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="176" Vartype="4 Bytes" Bytesize="4" OffsetHex="000000B0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="180" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000000B4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="188" Vartype="4 Bytes" Bytesize="4" OffsetHex="000000BC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="192" Vartype="Pointer" Bytesize="8" OffsetHex="000000C0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="200" Vartype="Pointer" Bytesize="8" OffsetHex="000000C8" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="208" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="000000D0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="224" Vartype="Pointer" Bytesize="8" OffsetHex="000000E0" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="232" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="000000E8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="248" Vartype="4 Bytes" Bytesize="4" OffsetHex="000000F8" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="252" Vartype="4 Bytes" Bytesize="4" OffsetHex="000000FC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="256" Vartype="Pointer" Bytesize="8" OffsetHex="00000100" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="264" Vartype="Pointer" Bytesize="8" OffsetHex="00000108" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="272" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000110" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="276" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000114" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="284" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000011C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="288" Vartype="Pointer" Bytesize="8" OffsetHex="00000120" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="296" Vartype="Pointer" Bytesize="8" OffsetHex="00000128" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="304" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000130" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="320" Vartype="Unicode String" Bytesize="13" OffsetHex="00000140" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="333" Vartype="Byte" Bytesize="1" OffsetHex="0000014D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="334" Vartype="Unicode String" Bytesize="6" OffsetHex="0000014E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="340" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000154" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="348" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000015C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="352" Vartype="Unicode String" Bytesize="13" OffsetHex="00000160" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="365" Vartype="Byte" Bytesize="1" OffsetHex="0000016D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="366" Vartype="Unicode String" Bytesize="6" OffsetHex="0000016E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="372" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000174" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="380" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000017C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="384" Vartype="Unicode String" Bytesize="13" OffsetHex="00000180" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="397" Vartype="Byte" Bytesize="1" OffsetHex="0000018D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="398" Vartype="Unicode String" Bytesize="6" OffsetHex="0000018E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="404" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000194" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="412" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000019C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="416" Vartype="Unicode String" Bytesize="13" OffsetHex="000001A0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="429" Vartype="Byte" Bytesize="1" OffsetHex="000001AD" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="430" Vartype="Unicode String" Bytesize="6" OffsetHex="000001AE" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="436" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000001B4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="444" Vartype="4 Bytes" Bytesize="4" OffsetHex="000001BC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="448" Vartype="Pointer" Bytesize="8" OffsetHex="000001C0" Description="Pointer to instance of DLKRD::HeapAllocator&lt;DLKR::DLDynamicHeap&lt;DLKR::DLDefaultHeapStrategy&lt;DLKR::DLRegularHeap,DLKR::DLMultiThreadingPolicy&gt; &gt; &gt;" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="456" Vartype="Pointer" Bytesize="8" OffsetHex="000001C8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="464" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000001D0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="472" Vartype="Pointer" Bytesize="8" OffsetHex="000001D8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="480" Vartype="Unicode String" Bytesize="13" OffsetHex="000001E0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="493" Vartype="Byte" Bytesize="1" OffsetHex="000001ED" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="494" Vartype="Unicode String" Bytesize="6" OffsetHex="000001EE" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="500" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000001F4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="508" Vartype="4 Bytes" Bytesize="4" OffsetHex="000001FC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="512" Vartype="Unicode String" Bytesize="13" OffsetHex="00000200" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="525" Vartype="Byte" Bytesize="1" OffsetHex="0000020D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="526" Vartype="Unicode String" Bytesize="6" OffsetHex="0000020E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="532" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000214" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="540" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000021C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="544" Vartype="Pointer" Bytesize="8" OffsetHex="00000220" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="552" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000228" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="568" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000238" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="572" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000023C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="576" Vartype="Pointer" Bytesize="8" OffsetHex="00000240" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="584" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000248" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="600" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000258" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="604" Vartype="4 Bytes" Bytesize="4" RLECount="9" OffsetHex="0000025C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="640" Vartype="Pointer" Bytesize="8" OffsetHex="00000280" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="648" Vartype="Pointer" Bytesize="8" OffsetHex="00000288" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="656" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000290" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="660" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000294" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="668" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000029C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="672" Vartype="Unicode String" Bytesize="13" OffsetHex="000002A0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="685" Vartype="Byte" Bytesize="1" OffsetHex="000002AD" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="686" Vartype="Unicode String" Bytesize="6" OffsetHex="000002AE" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="692" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000002B4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="700" Vartype="4 Bytes" Bytesize="4" OffsetHex="000002BC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="704" Vartype="Unicode String" Bytesize="12" OffsetHex="000002C0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="716" Vartype="Unicode String" Bytesize="6" OffsetHex="000002CC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="722" Vartype="Byte" Bytesize="1" RLECount="2" OffsetHex="000002D2" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="724" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="000002D4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="736" Vartype="Pointer" Bytesize="8" OffsetHex="000002E0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="744" Vartype="Pointer" Bytesize="8" OffsetHex="000002E8" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="752" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="000002F0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="768" Vartype="Pointer" Bytesize="8" OffsetHex="00000300" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="776" Vartype="Pointer" Bytesize="8" OffsetHex="00000308" ChildStruct="CS::PlayerIns" Description="Pointer to instance of CS::PlayerIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="784" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000310" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="788" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000314" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="792" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000318" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="796" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000031C" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="800" Vartype="Pointer" Bytesize="8" RLECount="3" OffsetHex="00000320" Description="Pointer to instance of GXFLV::GXFlverTexture" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="824" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000338" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="828" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000033C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="832" Vartype="Unicode String" Bytesize="13" OffsetHex="00000340" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="845" Vartype="Byte" Bytesize="1" OffsetHex="0000034D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="846" Vartype="Unicode String" Bytesize="6" OffsetHex="0000034E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="852" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000354" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="856" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000358" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="864" Vartype="Pointer" Bytesize="8" OffsetHex="00000360" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="872" Vartype="Pointer" Bytesize="8" OffsetHex="00000368" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="880" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000370" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="884" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000374" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="888" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000378" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="896" Vartype="Unicode String" Bytesize="13" OffsetHex="00000380" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="909" Vartype="Byte" Bytesize="1" OffsetHex="0000038D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="910" Vartype="Unicode String" Bytesize="6" OffsetHex="0000038E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="916" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000394" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="924" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000039C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="928" Vartype="Pointer" Bytesize="8" OffsetHex="000003A0" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="936" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="000003A8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="952" Vartype="4 Bytes" Bytesize="4" OffsetHex="000003B8" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="956" Vartype="4 Bytes" Bytesize="4" OffsetHex="000003BC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="960" Vartype="Unicode String" Bytesize="14" OffsetHex="000003C0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="974" Vartype="Unicode String" Bytesize="7" OffsetHex="000003CE" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="981" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="000003D5" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="984" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000003D8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="992" Vartype="Pointer" Bytesize="8" OffsetHex="000003E0" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1000" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="000003E8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1016" Vartype="4 Bytes" Bytesize="4" OffsetHex="000003F8" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1020" Vartype="4 Bytes" Bytesize="4" OffsetHex="000003FC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1024" Vartype="Pointer" Bytesize="8" OffsetHex="00000400" Description="Pointer to instance of CS::AnibndResCap" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1032" Vartype="4 Bytes" Bytesize="4" RLECount="6" OffsetHex="00000408" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1056" Vartype="Pointer" Bytesize="8" OffsetHex="00000420" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1064" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000428" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1080" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000438" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1084" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000043C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1088" Vartype="Unicode String" Bytesize="11" OffsetHex="00000440" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1099" Vartype="2 Bytes" Bytesize="2" OffsetHex="0000044B" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1101" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="0000044D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1104" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000450" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1108" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000454" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1120" Vartype="Pointer" Bytesize="8" OffsetHex="00000460" Description="Pointer to instance of DLKRD::HeapAllocator&lt;DLKR::DLDynamicHeap&lt;DLKR::DLDefaultHeapStrategy&lt;DLKR::DLRegularHeap,DLKR::DLMultiThreadingPolicy&gt; &gt; &gt;" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1128" Vartype="Pointer" Bytesize="8" OffsetHex="00000468" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1136" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000470" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1144" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000478" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1148" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000047C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1152" Vartype="Unicode String" Bytesize="13" OffsetHex="00000480" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1165" Vartype="Byte" Bytesize="1" OffsetHex="0000048D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1166" Vartype="Unicode String" Bytesize="6" OffsetHex="0000048E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1172" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000494" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1176" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000498" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1184" Vartype="Unicode String" Bytesize="14" OffsetHex="000004A0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1198" Vartype="Unicode String" Bytesize="7" OffsetHex="000004AE" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1205" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="000004B5" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1208" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000004B8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1216" Vartype="Pointer" Bytesize="8" OffsetHex="000004C0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1224" Vartype="Pointer" Bytesize="8" OffsetHex="000004C8" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1232" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="000004D0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1248" Vartype="Unicode String" Bytesize="13" OffsetHex="000004E0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1261" Vartype="Byte" Bytesize="1" OffsetHex="000004ED" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1262" Vartype="Unicode String" Bytesize="6" OffsetHex="000004EE" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1268" Vartype="4 Bytes" Bytesize="4" OffsetHex="000004F4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1272" Vartype="4 Bytes" Bytesize="4" OffsetHex="000004F8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1276" Vartype="4 Bytes" Bytesize="4" OffsetHex="000004FC" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1280" Vartype="Pointer" Bytesize="8" OffsetHex="00000500" Description="Pointer to instance of DLKRD::HeapAllocator&lt;DLKR::DLDynamicHeap&lt;DLKR::DLDefaultHeapStrategy&lt;DLKR::DLRegularHeap,DLKR::DLMultiThreadingPolicy&gt; &gt; &gt;" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1288" Vartype="Pointer" Bytesize="8" OffsetHex="00000508" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1296" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000510" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1304" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000518" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1312" Vartype="Pointer" Bytesize="8" OffsetHex="00000520" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1320" Vartype="Pointer" Bytesize="8" OffsetHex="00000528" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1328" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000530" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1344" Vartype="Unicode String" Bytesize="13" OffsetHex="00000540" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1357" Vartype="Byte" Bytesize="1" OffsetHex="0000054D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1358" Vartype="Unicode String" Bytesize="6" OffsetHex="0000054E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1364" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000554" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1368" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000558" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1376" Vartype="Unicode String" Bytesize="13" OffsetHex="00000560" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1389" Vartype="Byte" Bytesize="1" OffsetHex="0000056D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1390" Vartype="Unicode String" Bytesize="6" OffsetHex="0000056E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1396" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000574" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1400" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000578" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1408" Vartype="Pointer" Bytesize="8" OffsetHex="00000580" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1416" Vartype="Pointer" Bytesize="8" OffsetHex="00000588" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1424" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000590" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1440" Vartype="Pointer" Bytesize="8" OffsetHex="000005A0" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1448" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="000005A8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1464" Vartype="4 Bytes" Bytesize="4" OffsetHex="000005B8" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1468" Vartype="4 Bytes" Bytesize="4" OffsetHex="000005BC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1472" Vartype="Unicode String" Bytesize="11" OffsetHex="000005C0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1483" Vartype="Byte" Bytesize="1" OffsetHex="000005CB" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1484" Vartype="Unicode String" Bytesize="5" OffsetHex="000005CC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1489" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="000005D1" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1492" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000005D4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1500" Vartype="4 Bytes" Bytesize="4" OffsetHex="000005DC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1504" Vartype="Unicode String" Bytesize="11" OffsetHex="000005E0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1515" Vartype="2 Bytes" Bytesize="2" OffsetHex="000005EB" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1517" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="000005ED" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1520" Vartype="4 Bytes" Bytesize="4" OffsetHex="000005F0" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1524" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="000005F4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1536" Vartype="Pointer" Bytesize="8" OffsetHex="00000600" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1544" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000608" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1560" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000618" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1564" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000061C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1568" Vartype="Unicode String" Bytesize="11" OffsetHex="00000620" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1579" Vartype="2 Bytes" Bytesize="2" OffsetHex="0000062B" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1581" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="0000062D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1584" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000630" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1588" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000634" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1600" Vartype="Pointer" Bytesize="8" OffsetHex="00000640" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1608" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000648" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1624" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000658" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1628" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000065C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1632" Vartype="Unicode String" Bytesize="11" OffsetHex="00000660" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1643" Vartype="2 Bytes" Bytesize="2" OffsetHex="0000066B" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1645" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="0000066D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1648" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000670" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1656" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000678" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1664" Vartype="Unicode String" Bytesize="13" OffsetHex="00000680" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1677" Vartype="Byte" Bytesize="1" OffsetHex="0000068D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1678" Vartype="Unicode String" Bytesize="6" OffsetHex="0000068E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1684" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000694" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1696" Vartype="Unicode String" Bytesize="11" OffsetHex="000006A0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1707" Vartype="2 Bytes" Bytesize="2" OffsetHex="000006AB" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1709" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="000006AD" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1712" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000006B0" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1720" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000006B8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1728" Vartype="Pointer" Bytesize="8" OffsetHex="000006C0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1736" Vartype="Pointer" Bytesize="8" OffsetHex="000006C8" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1744" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="000006D0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1760" Vartype="Unicode String" Bytesize="13" OffsetHex="000006E0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1773" Vartype="Byte" Bytesize="1" OffsetHex="000006ED" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1774" Vartype="Unicode String" Bytesize="6" OffsetHex="000006EE" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1780" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000006F4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1788" Vartype="4 Bytes" Bytesize="4" OffsetHex="000006FC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1792" Vartype="Unicode String" Bytesize="11" OffsetHex="00000700" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1803" Vartype="2 Bytes" Bytesize="2" OffsetHex="0000070B" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1805" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="0000070D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1808" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000710" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1812" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000714" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1816" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000718" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1820" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000071C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1824" Vartype="Unicode String" Bytesize="13" OffsetHex="00000720" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1837" Vartype="Byte" Bytesize="1" OffsetHex="0000072D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1838" Vartype="Unicode String" Bytesize="6" OffsetHex="0000072E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1844" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000734" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1852" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000073C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1856" Vartype="Unicode String" Bytesize="13" OffsetHex="00000740" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1869" Vartype="Byte" Bytesize="1" OffsetHex="0000074D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1870" Vartype="Unicode String" Bytesize="6" OffsetHex="0000074E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1876" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000754" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1884" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000075C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1888" Vartype="Pointer" Bytesize="8" OffsetHex="00000760" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1896" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000768" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1912" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000778" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1916" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000077C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1920" Vartype="Pointer" Bytesize="8" OffsetHex="00000780" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1928" Vartype="Pointer" Bytesize="8" OffsetHex="00000788" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1936" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000790" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1948" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000079C" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1952" Vartype="Pointer" Bytesize="8" OffsetHex="000007A0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1960" Vartype="Pointer" Bytesize="8" OffsetHex="000007A8" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1968" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="000007B0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1984" Vartype="Unicode String" Bytesize="13" OffsetHex="000007C0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1997" Vartype="Byte" Bytesize="1" OffsetHex="000007CD" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1998" Vartype="Unicode String" Bytesize="6" OffsetHex="000007CE" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2004" Vartype="4 Bytes" Bytesize="4" OffsetHex="000007D4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2008" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000007D8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2016" Vartype="Pointer" Bytesize="8" OffsetHex="000007E0" Description="Pointer to instance of DLKRD::HeapAllocator&lt;DLKR::DLDynamicHeap&lt;DLKR::DLDefaultHeapStrategy&lt;DLKR::DLRegularHeap,DLKR::DLMultiThreadingPolicy&gt; &gt; &gt;" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2024" Vartype="Pointer" Bytesize="8" OffsetHex="000007E8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2032" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="000007F0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2048" Vartype="Pointer" Bytesize="8" OffsetHex="00000800" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2056" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000808" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2072" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000818" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2076" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000081C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2080" Vartype="Pointer" Bytesize="8" OffsetHex="00000820" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2088" Vartype="Pointer" Bytesize="8" OffsetHex="00000828" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2096" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000830" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2112" Vartype="Pointer" Bytesize="8" OffsetHex="00000840" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2120" Vartype="Pointer" Bytesize="8" OffsetHex="00000848" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2128" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000850" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2132" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000854" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2136" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000858" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2144" Vartype="Pointer" Bytesize="8" OffsetHex="00000860" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2152" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000868" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2168" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000878" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2172" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000087C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2176" Vartype="Pointer" Bytesize="8" OffsetHex="00000880" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2184" Vartype="Pointer" Bytesize="8" OffsetHex="00000888" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2192" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000890" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2204" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000089C" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2208" Vartype="Unicode String" Bytesize="14" OffsetHex="000008A0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2222" Vartype="Unicode String" Bytesize="7" OffsetHex="000008AE" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2229" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="000008B5" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2232" Vartype="4 Bytes" Bytesize="4" OffsetHex="000008B8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2236" Vartype="4 Bytes" Bytesize="4" OffsetHex="000008BC" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2240" Vartype="4 Bytes" Bytesize="4" OffsetHex="000008C0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2244" Vartype="4 Bytes" Bytesize="4" RLECount="5" OffsetHex="000008C4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2264" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000008D8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2272" Vartype="Unicode String" Bytesize="13" OffsetHex="000008E0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2285" Vartype="Byte" Bytesize="1" OffsetHex="000008ED" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2286" Vartype="Unicode String" Bytesize="6" OffsetHex="000008EE" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2292" Vartype="4 Bytes" Bytesize="4" OffsetHex="000008F4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2296" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000008F8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2304" Vartype="Pointer" Bytesize="8" OffsetHex="00000900" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2312" Vartype="Pointer" Bytesize="8" RLECount="2" OffsetHex="00000908" Description="Pointer to instance of CS::TpfFileCap" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2328" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000918" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2336" Vartype="Unicode String" Bytesize="13" OffsetHex="00000920" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2349" Vartype="Byte" Bytesize="1" OffsetHex="0000092D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2350" Vartype="Unicode String" Bytesize="6" OffsetHex="0000092E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2356" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000934" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2364" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000093C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2368" Vartype="Unicode String" Bytesize="13" OffsetHex="00000940" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2381" Vartype="Byte" Bytesize="1" OffsetHex="0000094D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2382" Vartype="Unicode String" Bytesize="6" OffsetHex="0000094E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2388" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000954" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2392" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000958" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2400" Vartype="Pointer" Bytesize="8" OffsetHex="00000960" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2408" Vartype="Pointer" Bytesize="8" OffsetHex="00000968" ChildStruct="CS::PlayerIns" Description="Pointer to instance of CS::PlayerIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2416" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000970" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2428" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000097C" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2432" Vartype="Unicode String" Bytesize="13" OffsetHex="00000980" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2445" Vartype="Byte" Bytesize="1" OffsetHex="0000098D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2446" Vartype="Unicode String" Bytesize="6" OffsetHex="0000098E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2452" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000994" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2456" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000998" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2464" Vartype="Pointer" Bytesize="8" OffsetHex="000009A0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2472" Vartype="Pointer" Bytesize="8" OffsetHex="000009A8" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2480" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="000009B0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2492" Vartype="4 Bytes" Bytesize="4" OffsetHex="000009BC" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2496" Vartype="Unicode String" Bytesize="13" OffsetHex="000009C0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2509" Vartype="Byte" Bytesize="1" OffsetHex="000009CD" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2510" Vartype="Unicode String" Bytesize="6" OffsetHex="000009CE" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2516" Vartype="4 Bytes" Bytesize="4" OffsetHex="000009D4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2520" Vartype="4 Bytes" Bytesize="4" RLECount="10" OffsetHex="000009D8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2560" Vartype="Unicode String" Bytesize="13" OffsetHex="00000A00" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2573" Vartype="Byte" Bytesize="1" OffsetHex="00000A0D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2574" Vartype="Unicode String" Bytesize="6" OffsetHex="00000A0E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2580" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000A14" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2588" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000A1C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2592" Vartype="Unicode String" Bytesize="13" OffsetHex="00000A20" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2605" Vartype="Byte" Bytesize="1" OffsetHex="00000A2D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2606" Vartype="Unicode String" Bytesize="6" OffsetHex="00000A2E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2612" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000A34" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2620" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000A3C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2624" Vartype="Unicode String" Bytesize="14" OffsetHex="00000A40" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2638" Vartype="Unicode String" Bytesize="7" OffsetHex="00000A4E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2645" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000A55" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2648" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000A58" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2656" Vartype="Pointer" Bytesize="8" OffsetHex="00000A60" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2664" Vartype="Pointer" Bytesize="8" OffsetHex="00000A68" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2672" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000A70" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2676" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000A74" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2680" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000A78" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2684" Vartype="4 Bytes" Bytesize="4" RLECount="7" OffsetHex="00000A7C" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2712" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000A98" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2720" Vartype="4 Bytes" Bytesize="4" RLECount="7" OffsetHex="00000AA0" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2748" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000ABC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2752" Vartype="Pointer" Bytesize="8" OffsetHex="00000AC0" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2760" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000AC8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2776" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000AD8" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2780" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000ADC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2784" Vartype="Unicode String" Bytesize="15" OffsetHex="00000AE0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2799" Vartype="Byte" Bytesize="1" OffsetHex="00000AEF" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2800" Vartype="Unicode String" Bytesize="7" OffsetHex="00000AF0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2807" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000AF7" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2809" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000AF9" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2812" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000AFC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2816" Vartype="Pointer" Bytesize="8" OffsetHex="00000B00" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2824" Vartype="Pointer" Bytesize="8" OffsetHex="00000B08" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2832" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000B10" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2840" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000B18" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2848" Vartype="Unicode String" Bytesize="13" OffsetHex="00000B20" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2861" Vartype="Byte" Bytesize="1" OffsetHex="00000B2D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2862" Vartype="Unicode String" Bytesize="6" OffsetHex="00000B2E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2868" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000B34" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2872" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000B38" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2880" Vartype="Pointer" Bytesize="8" RLECount="3" OffsetHex="00000B40" Description="Pointer to instance of GXFLV::GXFlverMaterial" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2904" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000B58" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2912" Vartype="Unicode String" Bytesize="13" OffsetHex="00000B60" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2925" Vartype="Byte" Bytesize="1" OffsetHex="00000B6D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2926" Vartype="Unicode String" Bytesize="6" OffsetHex="00000B6E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2932" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000B74" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2940" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000B7C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2944" Vartype="Pointer" Bytesize="8" OffsetHex="00000B80" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2952" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000B88" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2968" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000B98" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="2972" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000B9C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2976" Vartype="Unicode String" Bytesize="15" OffsetHex="00000BA0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2991" Vartype="Byte" Bytesize="1" OffsetHex="00000BAF" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2992" Vartype="Unicode String" Bytesize="7" OffsetHex="00000BB0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2999" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000BB7" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3001" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000BB9" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3004" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000BBC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3008" Vartype="Unicode String" Bytesize="13" OffsetHex="00000BC0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3021" Vartype="Byte" Bytesize="1" OffsetHex="00000BCD" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3022" Vartype="Unicode String" Bytesize="6" OffsetHex="00000BCE" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3028" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000BD4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3032" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000BD8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3044" Vartype="4 Bytes" Bytesize="4" RLECount="6" OffsetHex="00000BE4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3068" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000BFC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3072" Vartype="Pointer" Bytesize="8" OffsetHex="00000C00" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3080" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000C08" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3096" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000C18" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3100" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000C1C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3104" Vartype="Unicode String" Bytesize="11" OffsetHex="00000C20" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3115" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000C2B" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3117" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000C2D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3120" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000C30" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3132" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000C3C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3136" Vartype="Unicode String" Bytesize="14" OffsetHex="00000C40" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3150" Vartype="Unicode String" Bytesize="7" OffsetHex="00000C4E" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3157" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000C55" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3160" Vartype="4 Bytes" Bytesize="4" RLECount="10" OffsetHex="00000C58" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3200" Vartype="Pointer" Bytesize="8" OffsetHex="00000C80" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3208" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000C88" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3224" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000C98" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3228" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000C9C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3232" Vartype="Unicode String" Bytesize="13" OffsetHex="00000CA0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3245" Vartype="Byte" Bytesize="1" OffsetHex="00000CAD" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3246" Vartype="Unicode String" Bytesize="6" OffsetHex="00000CAE" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3252" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000CB4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3260" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000CBC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3264" Vartype="Pointer" Bytesize="8" OffsetHex="00000CC0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3272" Vartype="Pointer" Bytesize="8" OffsetHex="00000CC8" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3280" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000CD0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3296" Vartype="Pointer" Bytesize="8" OffsetHex="00000CE0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3304" Vartype="Pointer" Bytesize="8" OffsetHex="00000CE8" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3312" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000CF0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3320" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000CF8" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3324" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000CFC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3328" Vartype="Pointer" Bytesize="8" OffsetHex="00000D00" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3336" Vartype="Pointer" Bytesize="8" OffsetHex="00000D08" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3344" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000D10" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3360" Vartype="Unicode String" Bytesize="12" OffsetHex="00000D20" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3372" Vartype="Unicode String" Bytesize="6" OffsetHex="00000D2C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3378" Vartype="Byte" Bytesize="1" RLECount="2" OffsetHex="00000D32" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3380" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000D34" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3384" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000D38" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3388" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000D3C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3392" Vartype="Pointer" Bytesize="8" OffsetHex="00000D40" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3400" Vartype="Pointer" Bytesize="8" OffsetHex="00000D48" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3408" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000D50" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3416" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000D58" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3420" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000D5C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3424" Vartype="Pointer" Bytesize="8" OffsetHex="00000D60" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3432" Vartype="Pointer" Bytesize="8" OffsetHex="00000D68" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3440" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000D70" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3456" Vartype="Pointer" Bytesize="8" OffsetHex="00000D80" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3464" Vartype="Pointer" Bytesize="8" OffsetHex="00000D88" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3472" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000D90" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3488" Vartype="Pointer" Bytesize="8" OffsetHex="00000DA0" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3496" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000DA8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3512" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000DB8" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3516" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000DBC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3520" Vartype="Pointer" Bytesize="8" OffsetHex="00000DC0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3528" Vartype="Pointer" Bytesize="8" OffsetHex="00000DC8" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3536" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000DD0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3540" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000DD4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3544" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000DD8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3552" Vartype="Unicode String" Bytesize="13" OffsetHex="00000DE0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3565" Vartype="Byte" Bytesize="1" OffsetHex="00000DED" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3566" Vartype="Unicode String" Bytesize="6" OffsetHex="00000DEE" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3572" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000DF4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3580" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000DFC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3584" Vartype="Unicode String" Bytesize="10" OffsetHex="00000E00" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3594" Vartype="Unicode String" Bytesize="5" OffsetHex="00000E0A" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3599" Vartype="Byte" Bytesize="1" OffsetHex="00000E0F" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3600" Vartype="Pointer" Bytesize="8" OffsetHex="00000E10" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3608" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000E18" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3616" Vartype="Unicode String" Bytesize="11" OffsetHex="00000E20" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3627" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000E2B" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3629" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000E2D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3632" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E30" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3636" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E34" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3640" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E38" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3644" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E3C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3648" Vartype="Unicode String" Bytesize="15" OffsetHex="00000E40" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3663" Vartype="Byte" Bytesize="1" OffsetHex="00000E4F" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3664" Vartype="Unicode String" Bytesize="7" OffsetHex="00000E50" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3671" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000E57" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3673" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000E59" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3676" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E5C" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3680" Vartype="Pointer" Bytesize="8" OffsetHex="00000E60" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3688" Vartype="Pointer" Bytesize="8" OffsetHex="00000E68" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3696" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000E70" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3708" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E7C" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3712" Vartype="Pointer" Bytesize="8" OffsetHex="00000E80" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3720" Vartype="Pointer" Bytesize="8" OffsetHex="00000E88" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3728" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000E90" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3744" Vartype="Unicode String" Bytesize="11" OffsetHex="00000EA0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3755" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000EAB" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3757" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000EAD" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3760" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000EB0" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3764" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000EB4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3776" Vartype="Pointer" Bytesize="8" OffsetHex="00000EC0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3784" Vartype="Pointer" Bytesize="8" OffsetHex="00000EC8" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3792" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000ED0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3808" Vartype="Pointer" Bytesize="8" OffsetHex="00000EE0" Description="Pointer to instance of DLKRD::HeapAllocator&lt;DLKR::DLDynamicHeap&lt;DLKR::DLDefaultHeapStrategy&lt;DLKR::DLRegularHeap,DLKR::DLMultiThreadingPolicy&gt; &gt; &gt;" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3816" Vartype="Pointer" Bytesize="8" OffsetHex="00000EE8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3824" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000EF0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3832" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000EF8" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3836" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000EFC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3840" Vartype="Pointer" Bytesize="8" OffsetHex="00000F00" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3848" Vartype="Pointer" Bytesize="8" OffsetHex="00000F08" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3856" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000F10" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3860" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000F14" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3864" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000F18" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3872" Vartype="Unicode String" Bytesize="15" OffsetHex="00000F20" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3887" Vartype="Byte" Bytesize="1" OffsetHex="00000F2F" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3888" Vartype="Unicode String" Bytesize="7" OffsetHex="00000F30" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3895" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000F37" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3897" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000F39" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3900" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000F3C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3904" Vartype="Pointer" Bytesize="8" OffsetHex="00000F40" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3912" Vartype="Pointer" Bytesize="8" OffsetHex="00000F48" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3920" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000F50" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3924" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000F54" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3928" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000F58" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3936" Vartype="Unicode String" Bytesize="12" OffsetHex="00000F60" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3948" Vartype="Unicode String" Bytesize="6" OffsetHex="00000F6C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3954" Vartype="Byte" Bytesize="1" RLECount="2" OffsetHex="00000F72" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3956" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000F74" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3968" Vartype="Pointer" Bytesize="8" OffsetHex="00000F80" Description="Pointer to instance of CS::CSPhysSysIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3976" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000F88" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3992" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000F98" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="3996" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000F9C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="4000" Vartype="Pointer" Bytesize="8" OffsetHex="00000FA0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="4008" Vartype="Pointer" Bytesize="8" OffsetHex="00000FA8" Description="Pointer to instance of CS::EnemyIns" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="4016" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000FB0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="4032" Vartype="Unicode String" Bytesize="13" OffsetHex="00000FC0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="4045" Vartype="Byte" Bytesize="1" OffsetHex="00000FCD" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="4046" Vartype="Unicode String" Bytesize="6" OffsetHex="00000FCE" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="4052" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000FD4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="4060" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000FDC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="4064" Vartype="Unicode String" Bytesize="11" OffsetHex="00000FE0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="4075" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000FEB" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="4077" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000FED" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="4080" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000FF0" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="4084" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000FF4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="4088" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000FF8" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="4092" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000FFC" DisplayMethod="Unsigned Integer"/>
+                  </Elements>
+                </Structure>
+              </Element>
               <Element Offset="120" Vartype="Pointer" Bytesize="8" OffsetHex="00000078" Description="Pointer to instance of CS::CSPlayerLadderModule" DisplayMethod="Unsigned Integer"/>
               <Element Offset="128" Vartype="Pointer" Bytesize="8" OffsetHex="00000080" Description="Pointer to instance of CS::CSChrActionRequestModule" DisplayMethod="Unsigned Integer"/>
               <Element Offset="136" Vartype="Pointer" Bytesize="8" OffsetHex="00000088" Description="Pointer to instance of CS::CSChrThrowModule" DisplayMethod="Unsigned Integer"/>
@@ -9551,6 +10377,19 @@ flyCam.destroy()
         <Element Offset="1008" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000003F0" DisplayMethod="Unsigned Integer"/>
         <Element Offset="1016" Vartype="4 Bytes" Bytesize="4" OffsetHex="000003F8" DisplayMethod="Hexadecimal"/>
         <Element Offset="1020" Vartype="4 Bytes" Bytesize="4" OffsetHex="000003FC" DisplayMethod="Unsigned Integer"/>
+      </Elements>
+    </Structure>
+    <Structure Name="Input" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000000" Description="root" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="64" Vartype="Byte" Bytesize="1" OffsetHex="00000040" Description="Buttons1" DisplayMethod="Hexadecimal"/>
+        <Element Offset="65" Vartype="Byte" Bytesize="1" OffsetHex="00000041" Description="Buttons2" DisplayMethod="Hexadecimal"/>
+        <Element Offset="66" Vartype="Byte" Bytesize="1" OffsetHex="00000042" Description="LeftTrigger" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="67" Vartype="Byte" Bytesize="1" OffsetHex="00000043" Description="RightTrigger" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="68" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000044" Description="LeftStick.x" DisplayMethod="Signed Integer"/>
+        <Element Offset="70" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000046" Description="LeftStick.y" DisplayMethod="Signed Integer"/>
+        <Element Offset="72" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000048" Description="RightStick.x" DisplayMethod="Signed Integer"/>
+        <Element Offset="74" Vartype="2 Bytes" Bytesize="2" OffsetHex="0000004A" Description="RightStick.y" DisplayMethod="Signed Integer"/>
       </Elements>
     </Structure>
   </Structures>
