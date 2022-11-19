@@ -826,7 +826,7 @@ XINPUT1_4.dll+5920: 0F B6 4D 03        - movzx ecx,byte ptr [rbp+03]
             <CheatEntry>
               <ID>37</ID>
               <Description>"Input Pointer"</Description>
-              <LastState Value="000001FAD44FA290" RealAddress="7FFA91711000"/>
+              <LastState Value="000001FAD44FA290" RealAddress="7FFA916D1000"/>
               <ShowAsHex>1</ShowAsHex>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>8 Bytes</VariableType>
@@ -921,31 +921,31 @@ registersymbol(INJECT_FlyCamNative)
 [DISABLE]
 
 
-// === INJECTION COPY INPUT POINTER ===
+// === DISABLE - INJECTION COPY INPUT POINTER ===
 INJECT_CopyInputPointer:
   db 88 43 43 0F B6 45 FE
 unregistersymbol(INJECT_CopyInputPointer)
 dealloc(newmem_copyPointer)
-// ====================================
+// ==============================================
 
-// === FREEZE CAM ========
+// === DISABLE - FREEZE CAM ========
 INJECT_FreezeCamPosition:
   db 0F 29 4F 40
 unregistersymbol(INJECT_FreezeCamPosition)
-// =======================
+// =================================
 
-// === FREEZE CONTROLS ===
+// === DISABLE - FREEZE CONTROLS ===
 INJECT_FreezePlayerControls:
   db E8 63 84 FC FF
 unregistersymbol(INJECT_FreezePlayerControls)
-// =======================
+// =================================
 
-// === UNHOOK UPDATE CAM ===
+// === DISABLE - HOOK UPDATE CAM =====
 INJECT_FlyCamNative:
   db E8 64 0C 92 FF
 unregistersymbol(INJECT_FlyCamNative)
 dealloc(newmem)
-// =========================
+// ===================================
 
 {
 // ORIGINAL CODE - INJECTION POINT: eldenring.exe+A8D727

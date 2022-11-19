@@ -52,9 +52,7 @@ void updateCamera(void* cambase, void* inputbase) {
 
     float moveX = input->leftStickX / stickMax;
     float moveZ = input->leftStickY / stickMax;
-    float moveY =
-        ((float)input->rightTrigger - (float)input->leftTrigger)
-        / triggerMax;
+    float moveY = ((float)input->rightTrigger - (float)input->leftTrigger) / triggerMax;
 
     float vx = cam->rx * moveX + cam->ux * moveY + cam->fx * moveZ;
     float vy = cam->ry * moveX + cam->uy * moveY + cam->fy * moveZ;
