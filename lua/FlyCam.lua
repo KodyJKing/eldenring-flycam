@@ -5,8 +5,6 @@ local addresses = reloadPackage("lua/addresses")
 
 local FlyCam = {}
 
-local chrCamSymbol = addresses.chrCam
-
 local tau = math.pi * 2
 local pitchLimit = math.pi / 2 * 7 / 8
 
@@ -24,7 +22,12 @@ FlyCam.create = function()
 
     cam.speedModifier = 1
 
-    local camAddr = readQword(chrCamSymbol)
+    local camAddr = readQword(addresses.chrCam)
+    if camAddr == nil then
+        local msg = "Cannot find player camera."
+        print("Error: " .. msg)
+        error(msg, 2)
+    end
     local fwd = vector.readVec(camAddr + 0x30)
     cam.angles = vector.vecToAngles(fwd)
 
@@ -37,6 +40,9 @@ FlyCam.create = function()
     timer.Interval = dt
     local lastTick = getTickCount()
     timer.OnTimer = function()
+        local camAddr = readQword(addresses.chrCam)
+        if camAddr == nil then return end
+
         local input = getXBox360ControllerState()
         local tick = getTickCount()
         local dt = tick - lastTick
@@ -60,8 +66,6 @@ FlyCam.create = function()
         local moveZ = input.ThumbLeftY / stickMax * speed * dt
         local moveX = input.ThumbLeftX / stickMax * speed * dt
         local moveY = (input.RightTrigger - input.LeftTrigger) / triggerMax * speed * dt
-
-        local camAddr = readQword(chrCamSymbol)
 
         local x = readFloat(camAddr + 0x40)
         local y = readFloat(camAddr + 0x44)
@@ -90,6 +94,18 @@ FlyCam.create = function()
 
         writeLookMatrix(cam.matrix, cam.angles, x, y, z)
         copyMemory(cam.matrix, sizeofMatrix, camAddr + 0x10)
+
+        -- if input.GAMEPAD_X then
+        --     local playerPhysAddr = readQword(addresses.playerIns_chrPhysicsModule)
+        --     if playerPhysAddr == nil then
+        --         print("Cannot find player physics module.")
+        --     else
+        --         writeFloat(playerPhysAddr + 0x70, x)
+        --         writeFloat(playerPhysAddr + 0x74, y)
+        --         writeFloat(playerPhysAddr + 0x78, z)
+        --     end
+        -- end
+
     end
 
     cam.destroy = function()
