@@ -2,6 +2,7 @@
 <CheatTable CheatEngineTableVersion="38">
   <Forms>
     <MainForm_1 Class="TCEForm" Encoding="Ascii85">osqpx!!Q)u*1/+o[!,8pKw[v,S*-JJJvEIOTD4LF9V3(N#v-+N+FnGo?dP^sGmpcBoshPaPE5A1uJ1YDxo@6rg*]p.AsqRPFYO5.R9(J$bBrH@?%eRdgUKQldSHYsH%P.rlSHJ)hj#46f.=f!sNgIET^s#RLNFT5GW3FZAb1grmRATCkXLL0h.l(}J,PEUPl,7Cj9?Bify3%q(o=2/7.pCbeXS!!R*WiaV(zQGbKUa0PH0]XeQC-m^^s,b@OOh-rc{/4AHm7)wLgfIe*,b=aD0dPN=8M!j[X]Gu4aWbO=!/6)XwJHlhN%um?@fOZvW*,u9.p(78IB$ll9J!?kEA@qnOZz/8fBdM7P(rw5K[yJvq8p%]W*H::o,D)O)y3Pb*/CQzanxxMh0)F4]WAQ@o[5VCl=JC$P_p51DLT=ogeURPO)%x,PVmy$9?KAK13j9kzyq]vw</MainForm_1>
+    <CETrainer Class="TTrainerForm" Encoding="Ascii85">=N-lk,cp$tq{uw](OzIB9WV=z1e/pWdfQo,/.s_636]=9I{D;GIu:Ze21Un7_COBkzx1-+has2!0mIG)3XCFU$#Rn%h8:e?$;.a,dwkz{Pah2cqG0giVH8oAW^3[5T@f#C=jDTLjH$nVY/nm?pELDuphje,o+lGar3ss;KOa1?W0qbZhh(TrtXX!=KZ_.2QRI(]2d-F3vUZL4)7]FnScPWE^T8g^5KQQUlamu+4mjee+lSvhU)Hj7G)U4N$(qG=AMP73@nm1Paf_lZii9ymD04U;qQHtAH)cSA?r?C;fjhAye/C7Ml4d^)knt!j0Cesazzkv2eH}5gz#h9J:;,a?N=JBf(oiwJaq(O1hb_BvW._TYm_l#=22qsAQ-94Gr{w;wlIRhf]ZPgQIRG6[%US1*EPHFlNVfaXlAco1Q:W)%^jsI?iy6,zCZK4RUh0ORy5x6gI*n11%sz#i9w^y_Ecq,+aD9CZOnDHdZ.@6f$-AYs,wFp9@1$Qw.@J/UNSo)+pd*R4vMC+OT=fX5tg_G_(R.8LwSJ=RmW-]nlIi,ON.XCQ[0E98CCUR%0L3Irl.:,,s-2{vSfo8%A)W]@!K1:.K.m@iK^3-Uu_$dFeJFM:PFGwtLQ,/YE7E29bclO_V:r{k%{C+BR0=j^Q=h14e[V5#DYjC7RgQqhmmwo7LyBm*gy+O:^K0/dHWQ?(F7:}q6I2tB;DNL:5sT+;2$(HUHNl,PrRjLC9SK1]v$J=kcvccrK%Z^QZ%4CF[Wn^VGy};T26/GQIhP8c/!]udKd,6Gg7KdD;Aran],04b2bI6(jQr5uRc%#=H.tlFKY,(]p;NCJAw3QFYpQ;O$3G(/ny1Qln!GT#T5!QZ,Hg?_Yj7dx;2M*wfKuHdyTV9oPxCR!P[qPYnl0%AsPn6ctd8ImVaxNQ?7+@eySMEP:C:4cA[{ui=bnrp,8$vGbY%sQa(#d:9n@?2eK(L[!yp;@.}m*KcG$0KSa(w#df$U;bMYX@,CnfdZe]dl-{x[}ImLg,T*.,zE=F$/!-#Po(EOg^!%b4QkqxN}qOBFretfpF]Y4ZSDye,Y=W1p?m/GoKe0A*:/=$F6TT^AW)L[5tKH{sjLyQo{n{@.hm*s[Kv_;Er(9mrW62ve*m:}0ILFg7:bN2CK$}RTmpxLgKFB](o[iq9_/c+5:(kQBUbD788$d77kQXk)Rb?HD?^po1fDY82oMcqs8Y!q?j,,EDF8616L-_GhQ8^#,698Wjf?${9A/LUnKR5iD/t/}-9wm}I7kg7qo@PyBVGIeKAfqwu</CETrainer>
   </Forms>
   <CheatEntries>
     <CheatEntry>
@@ -69,21 +70,6 @@ eldenring.exe+3B5726: F3 0F 10 8B CC 01 00 00  - movss xmm1,[rbx+000001CC]
 eldenring.exe+3B572E: 0F 57 D2                 - xorps xmm2,xmm2
 }
 </AssemblerScript>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Toggle Activation</Action>
-              <Keys>
-                <Key>22533</Key>
-                <Key>22550</Key>
-                <Key>22529</Key>
-                <Key>22563</Key>
-                <Key>22578</Key>
-              </Keys>
-              <ID>0</ID>
-              <ActivateSound>Activate</ActivateSound>
-              <DeactivateSound>Deactivate</DeactivateSound>
-            </Hotkey>
-          </Hotkeys>
         </CheatEntry>
         <CheatEntry>
           <ID>13</ID>
@@ -470,7 +456,7 @@ flyCam.destroy()
         <CheatEntry>
           <ID>21</ID>
           <Description>"ChrCamPointer"</Description>
-          <LastState Value="00007FF3B190CF00" RealAddress="7FF3B190C810"/>
+          <LastState Value="00007FF4293E9BD0" RealAddress="7FF4293329A0"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
@@ -479,7 +465,7 @@ flyCam.destroy()
         <CheatEntry>
           <ID>29</ID>
           <Description>"PlayerIns Pointer"</Description>
-          <LastState Value="00007FF3F1BFF210" RealAddress="7FF3B24B13C0"/>
+          <LastState Value="00007FF42C2B9390" RealAddress="7FF3ED8313C0"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
@@ -488,7 +474,7 @@ flyCam.destroy()
         <CheatEntry>
           <ID>32</ID>
           <Description>"ChrDataModule"</Description>
-          <LastState Value="00007FF3F1BFFB80" RealAddress="7FF3EF466000"/>
+          <LastState Value="00007FF42C2B9D00" RealAddress="7FF42A7E6000"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
@@ -497,7 +483,7 @@ flyCam.destroy()
         <CheatEntry>
           <ID>33</ID>
           <Description>"PlayerHP"</Description>
-          <LastState Value="1216" RealAddress="7FF3F1BFFCB8"/>
+          <LastState Value="1216" RealAddress="7FF42C2B9E38"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>[[[["eldenring.exe"+03A18D80]]+190]+0]+138</Address>
@@ -840,6 +826,7 @@ XINPUT1_4.dll+5920: 0F B6 4D 03        - movzx ecx,byte ptr [rbp+03]
             <CheatEntry>
               <ID>37</ID>
               <Description>"Input Pointer"</Description>
+              <LastState Value="000001FAD44FA290" RealAddress="7FFA91731000"/>
               <ShowAsHex>1</ShowAsHex>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>8 Bytes</VariableType>
@@ -949,13 +936,13 @@ typedef struct {
 
 float speedModifier = 1.0;
 
-void main(void* cambase) {
-    extern void* inputPointer;
-    if (inputPointer == null)
+void main(void* cambase, void* inputbase) {
+    //extern void* inputPointer;
+    if (inputbase == null)
         return;
 
     Camera *cam = (Camera*)cambase;
-    Input *input = (Input*)inputPointer;
+    Input *input = (Input*)inputbase;
 
     if (input-&gt;rightShoulder &amp;&amp; input-&gt;leftShoulder)
         speedModifier = 1.0;
@@ -975,6 +962,8 @@ void main(void* cambase) {
     float vz = cam-&gt;rz * moveX + cam-&gt;uz * moveY + cam-&gt;fz * moveZ;
 
     float speed = baseSpeed * speedModifier;
+    if (input-&gt;b) speed *= 2.0;
+
     cam-&gt;x += vx * speed * dt;
     cam-&gt;y += vy * speed * dt;
     cam-&gt;z += vz * speed * dt;
@@ -983,8 +972,9 @@ void main(void* cambase) {
 
 newmem:
 code:
-{$ccode cambase=RCX}
-  main(cambase)
+mov rax,[inputPointer]
+{$ccode cambase=RCX inputbase=RAX}
+  main(cambase, inputbase)
 {$asm}
   call eldenring.exe+3AE390
   jmp return
