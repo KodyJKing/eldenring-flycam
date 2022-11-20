@@ -1,11 +1,6 @@
 #include <stdbool.h>
 
-const int null = 0;
-const float speedModifyRate = 1.0116194403019225;
-const float dt = 1.0 / 60.0;
-const float baseSpeed = 10.0;
-const float triggerMax = 255.0;
-const float stickMax = 32768.0;
+#define NULL 0
 
 typedef struct {
     char pad0[0x10];
@@ -28,10 +23,17 @@ typedef struct {
     short rightStickX; short rightStickY;
 } Input;
 
+const float triggerMax = 255.0;
+const float stickMax = 32768.0;
+
+const float speedModifyRate = 1.0116194403019225;
+const float dt = 1.0 / 60.0;
+const float baseSpeed = 10.0;
+
 float speedModifier = 1.0;
 
 void updateCamera(void* cambase, void* inputbase) {
-    if (inputbase == null)
+    if (inputbase == NULL)
         return;
 
     Camera *cam = (Camera*)cambase;

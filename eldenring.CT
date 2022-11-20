@@ -11,7 +11,7 @@
         <CheatEntry>
           <ID>39</ID>
           <Description>"right.x"</Description>
-          <LastState Value="0.3067228198" RealAddress="7FF3F5ABEED0"/>
+          <LastState Value="0.1294624507" RealAddress="7FF3F5ABEED0"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+10</Address>
         </CheatEntry>
@@ -25,70 +25,70 @@
         <CheatEntry>
           <ID>41</ID>
           <Description>"right.z"</Description>
-          <LastState Value="-0.9517989159" RealAddress="7FF3F5ABEED8"/>
+          <LastState Value="-0.991584301" RealAddress="7FF3F5ABEED8"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+18</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>42</ID>
           <Description>"up.x"</Description>
-          <LastState Value="0.2214683294" RealAddress="7FF3F5ABEEE0"/>
+          <LastState Value="0.2102318704" RealAddress="7FF3F5ABEEE0"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+20</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>43</ID>
           <Description>"up.y"</Description>
-          <LastState Value="0.9725524187" RealAddress="7FF3F5ABEEE4"/>
+          <LastState Value="0.9772661924" RealAddress="7FF3F5ABEEE4"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+24</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>44</ID>
           <Description>"up.z"</Description>
-          <LastState Value="0.07136947662" RealAddress="7FF3F5ABEEE8"/>
+          <LastState Value="0.02744812891" RealAddress="7FF3F5ABEEE8"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+28</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>45</ID>
           <Description>"fwd.x"</Description>
-          <LastState Value="0.9256742597" RealAddress="7FF3F5ABEEF0"/>
+          <LastState Value="0.9690418243" RealAddress="7FF3F5ABEEF0"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+30</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>46</ID>
           <Description>"fwd.y"</Description>
-          <LastState Value="-0.2326839417" RealAddress="7FF3F5ABEEF4"/>
+          <LastState Value="-0.2120161206" RealAddress="7FF3F5ABEEF4"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+34</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>47</ID>
           <Description>"fwd.z"</Description>
-          <LastState Value="0.2983039916" RealAddress="7FF3F5ABEEF8"/>
+          <LastState Value="0.1265192777" RealAddress="7FF3F5ABEEF8"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+38</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>48</ID>
           <Description>"pos.x"</Description>
-          <LastState Value="-12.80328178" RealAddress="7FF3F5ABEF00"/>
+          <LastState Value="-18.39679909" RealAddress="7FF3F5ABEF00"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+40</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>49</ID>
           <Description>"pos.y"</Description>
-          <LastState Value="8.679311752" RealAddress="7FF3F5ABEF04"/>
+          <LastState Value="9.783409119" RealAddress="7FF3F5ABEF04"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+44</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>50</ID>
           <Description>"pos.z"</Description>
-          <LastState Value="-1.008770823" RealAddress="7FF3F5ABEF08"/>
+          <LastState Value="-0.0751394704" RealAddress="7FF3F5ABEF08"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+48</Address>
         </CheatEntry>
@@ -97,7 +97,7 @@
     <CheatEntry>
       <ID>38</ID>
       <Description>"Fly Cam"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
