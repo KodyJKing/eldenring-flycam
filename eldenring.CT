@@ -1,859 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CheatTable CheatEngineTableVersion="38">
-  <Forms>
-    <MainForm_1 Class="TCEForm" Encoding="Ascii85">osqpx!!Q)u*1/+o[!,8pKw[v,S*-JJJvEIOTD4LF9V3(N#v-+N+FnGo?dP^sGmpcBoshPaPE5A1uJ1YDxo@6rg*]p.AsqRPFYO5.R9(J$bBrH@?%eRdgUKQldSHYsH%P.rlSHJ)hj#46f.=f!sNgIET^s#RLNFT5GW3FZAb1grmRATCkXLL0h.l(}J,PEUPl,7Cj9?Bify3%q(o=2/7.pCbeXS!!R*WiaV(zQGbKUa0PH0]XeQC-m^^s,b@OOh-rc{/4AHm7)wLgfIe*,b=aD0dPN=8M!j[X]Gu4aWbO=!/6)XwJHlhN%um?@fOZvW*,u9.p(78IB$ll9J!?kEA@qnOZz/8fBdM7P(rw5K[yJvq8p%]W*H::o,D)O)y3Pb*/CQzanxxMh0)F4]WAQ@o[5VCl=JC$P_p51DLT=ogeURPO)%x,PVmy$9?KAK13j9kzyq]vw</MainForm_1>
-    <CETrainer Class="TTrainerForm" Encoding="Ascii85">=N-lk,cp$tq{uw](OzIB9WV=z1e/pWdfQo,/.s_636]=9I{D;GIu:Ze21Un7_COBkzx1-+has2!0mIG)3XCFU$#Rn%h8:e?$;.a,dwkz{Pah2cqG0giVH8oAW^3[5T@f#C=jDTLjH$nVY/nm?pELDuphje,o+lGar3ss;KOa1?W0qbZhh(TrtXX!=KZ_.2QRI(]2d-F3vUZL4)7]FnScPWE^T8g^5KQQUlamu+4mjee+lSvhU)Hj7G)U4N$(qG=AMP73@nm1Paf_lZii9ymD04U;qQHtAH)cSA?r?C;fjhAye/C7Ml4d^)knt!j0Cesazzkv2eH}5gz#h9J:;,a?N=JBf(oiwJaq(O1hb_BvW._TYm_l#=22qsAQ-94Gr{w;wlIRhf]ZPgQIRG6[%US1*EPHFlNVfaXlAco1Q:W)%^jsI?iy6,zCZK4RUh0ORy5x6gI*n11%sz#i9w^y_Ecq,+aD9CZOnDHdZ.@6f$-AYs,wFp9@1$Qw.@J/UNSo)+pd*R4vMC+OT=fX5tg_G_(R.8LwSJ=RmW-]nlIi,ON.XCQ[0E98CCUR%0L3Irl.:,,s-2{vSfo8%A)W]@!K1:.K.m@iK^3-Uu_$dFeJFM:PFGwtLQ,/YE7E29bclO_V:r{k%{C+BR0=j^Q=h14e[V5#DYjC7RgQqhmmwo7LyBm*gy+O:^K0/dHWQ?(F7:}q6I2tB;DNL:5sT+;2$(HUHNl,PrRjLC9SK1]v$J=kcvccrK%Z^QZ%4CF[Wn^VGy};T26/GQIhP8c/!]udKd,6Gg7KdD;Aran],04b2bI6(jQr5uRc%#=H.tlFKY,(]p;NCJAw3QFYpQ;O$3G(/ny1Qln!GT#T5!QZ,Hg?_Yj7dx;2M*wfKuHdyTV9oPxCR!P[qPYnl0%AsPn6ctd8ImVaxNQ?7+@eySMEP:C:4cA[{ui=bnrp,8$vGbY%sQa(#d:9n@?2eK(L[!yp;@.}m*KcG$0KSa(w#df$U;bMYX@,CnfdZe]dl-{x[}ImLg,T*.,zE=F$/!-#Po(EOg^!%b4QkqxN}qOBFretfpF]Y4ZSDye,Y=W1p?m/GoKe0A*:/=$F6TT^AW)L[5tKH{sjLyQo{n{@.hm*s[Kv_;Er(9mrW62ve*m:}0ILFg7:bN2CK$}RTmpxLgKFB](o[iq9_/c+5:(kQBUbD788$d77kQXk)Rb?HD?^po1fDY82oMcqs8Y!q?j,,EDF8616L-_GhQ8^#,698Wjf?${9A/LUnKR5iD/t/}-9wm}I7kg7qo@PyBVGIeKAfqwu</CETrainer>
-  </Forms>
   <CheatEntries>
     <CheatEntry>
-      <ID>17</ID>
-      <Description>"Old Scripts"</Description>
+      <ID>52</ID>
+      <Description>"Camera"</Description>
       <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
       <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
-        <CheatEntry>
-          <ID>3</ID>
-          <Description>"FreezeFollowCamera"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{ Game   : eldenring.exe
-  Version: 
-  Date   : 2022-11-13
-  Author : Kody
-
-  This script does blah blah blah
-}
-
-[ENABLE]
-
-aobscanmodule(INJECT_FreezeCamera,eldenring.exe,0F 29 37 80 BB 15 03 00 00 00)
-
-INJECT_FreezeCamera:
-  db 90 90 90 90 90 90 90 90 90 90
-
-registersymbol(INJECT_FreezeCamera)
-
-[DISABLE]
-
-INJECT_FreezeCamera:
-  db 0F 29 37 80 BB 15 03 00 00 00
-
-unregistersymbol(INJECT_FreezeCamera)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+3B56FC
-
-eldenring.exe+3B56C9: F3 0F 10 4C 24 7C        - movss xmm1,[rsp+7C]
-eldenring.exe+3B56CF: 0F 28 F3                 - movaps xmm6,xmm3
-eldenring.exe+3B56D2: 0F 14 F0                 - unpcklps xmm6,xmm0
-eldenring.exe+3B56D5: 0F 14 D1                 - unpcklps xmm2,xmm1
-eldenring.exe+3B56D8: 0F 14 F2                 - unpcklps xmm6,xmm2
-eldenring.exe+3B56DB: 44 0F 29 43 70           - movaps [rbx+70],xmm8
-eldenring.exe+3B56E0: 44 0F 28 4C 24 50        - movaps xmm9,[rsp+50]
-eldenring.exe+3B56E6: 44 0F 29 8B 80 00 00 00  - movaps [rbx+00000080],xmm9
-eldenring.exe+3B56EE: 0F 29 BB 90 00 00 00     - movaps [rbx+00000090],xmm7
-eldenring.exe+3B56F5: 48 8D BB A0 00 00 00     - lea rdi,[rbx+000000A0]
-// ---------- INJECTING HERE ----------
-eldenring.exe+3B56FC: 0F 29 37                 - movaps [rdi],xmm6
-// ---------- DONE INJECTING  ----------
-eldenring.exe+3B56FF: 80 BB 15 03 00 00 00     - cmp byte ptr [rbx+00000315],00
-eldenring.exe+3B5706: 74 1E                    - je eldenring.exe+3B5726
-eldenring.exe+3B5708: 0F 57 C9                 - xorps xmm1,xmm1
-eldenring.exe+3B570B: 0F 29 8B 10 02 00 00     - movaps [rbx+00000210],xmm1
-eldenring.exe+3B5712: 0F 28 07                 - movaps xmm0,[rdi]
-eldenring.exe+3B5715: 66 0F 7F 83 20 02 00 00  - movdqa [rbx+00000220],xmm0
-eldenring.exe+3B571D: 0F 29 8B 30 02 00 00     - movaps [rbx+00000230],xmm1
-eldenring.exe+3B5724: EB 4E                    - jmp eldenring.exe+3B5774
-eldenring.exe+3B5726: F3 0F 10 8B CC 01 00 00  - movss xmm1,[rbx+000001CC]
-eldenring.exe+3B572E: 0F 57 D2                 - xorps xmm2,xmm2
-}
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>13</ID>
-          <Description>"FreezeCamPos"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{ Game   : eldenring.exe
-  Version: 
-  Date   : 2022-11-16
-  Author : Kody
-
-  This script does blah blah blah
-}
-
-[ENABLE]
-
-aobscanmodule(INJECT_FreezeCamPos,eldenring.exe,0F 29 4F 40 E9 31 04 00 00)
-
-INJECT_FreezeCamPos:
-  db 90 90 90 90
-
-registersymbol(INJECT_FreezeCamPos)
-
-[DISABLE]
-
-INJECT_FreezeCamPos:
-  db 0F 29 4F 40
-
-unregistersymbol(INJECT_FreezeCamPos)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+3AEAE9
-
-eldenring.exe+3AEAC4: 89 47 58                 - mov [rdi+58],eax
-eldenring.exe+3AEAC7: 8B 41 5C                 - mov eax,[rcx+5C]
-eldenring.exe+3AEACA: 89 47 5C                 - mov [rdi+5C],eax
-eldenring.exe+3AEACD: 0F 28 41 10              - movaps xmm0,[rcx+10]
-eldenring.exe+3AEAD1: 0F 29 47 10              - movaps [rdi+10],xmm0
-eldenring.exe+3AEAD5: 0F 28 49 20              - movaps xmm1,[rcx+20]
-eldenring.exe+3AEAD9: 0F 29 4F 20              - movaps [rdi+20],xmm1
-eldenring.exe+3AEADD: 0F 28 41 30              - movaps xmm0,[rcx+30]
-eldenring.exe+3AEAE1: 0F 29 47 30              - movaps [rdi+30],xmm0
-eldenring.exe+3AEAE5: 0F 28 49 40              - movaps xmm1,[rcx+40]
-// ---------- INJECTING HERE ----------
-eldenring.exe+3AEAE9: 0F 29 4F 40              - movaps [rdi+40],xmm1
-// ---------- DONE INJECTING  ----------
-eldenring.exe+3AEAED: E9 31 04 00 00           - jmp eldenring.exe+3AEF23
-eldenring.exe+3AEAF2: 48 8B 4F 60              - mov rcx,[rdi+60]
-eldenring.exe+3AEAF6: 4D 8B CE                 - mov r9,r14
-eldenring.exe+3AEAF9: 4C 8B C6                 - mov r8,rsi
-eldenring.exe+3AEAFC: 41 0F 28 C9              - movaps xmm1,xmm9
-eldenring.exe+3AEB00: E8 8B 41 00 00           - call eldenring.exe+3B2C90
-eldenring.exe+3AEB05: F3 0F 10 9F 80 00 00 00  - movss xmm3,[rdi+00000080]
-eldenring.exe+3AEB0D: 41 0F 2F D8              - comiss xmm3,xmm8
-eldenring.exe+3AEB11: 76 15                    - jna eldenring.exe+3AEB28
-eldenring.exe+3AEB13: 4C 8B 47 68              - mov r8,[rdi+68]
-}
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>11</ID>
-          <Description>"FreezePlayerWalk"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{ Game   : eldenring.exe
-  Version: 
-  Date   : 2022-11-16
-  Author : Kody
-
-  This script does blah blah blah
-}
-
-[ENABLE]
-
-aobscanmodule(INJECT_Freeze_Player_Walk,eldenring.exe,E8 8B 30 00 00 90 48)
-
-INJECT_Freeze_Player_Walk:
-  db 90 90 90 90 90
-
-registersymbol(INJECT_Freeze_Player_Walk)
-
-[DISABLE]
-
-INJECT_Freeze_Player_Walk:
-  db E8 8B 30 00 00
-
-unregistersymbol(INJECT_Freeze_Player_Walk)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+3C5E40
-
-eldenring.exe+3C5E0A: C6 83 ED 00 00 00 01     - mov byte ptr [rbx+000000ED],01
-eldenring.exe+3C5E11: 48 8D 35 80 2F 55 02     - lea rsi,[eldenring.exe+2918D98]
-eldenring.exe+3C5E18: 48 89 74 24 28           - mov [rsp+28],rsi
-eldenring.exe+3C5E1D: 0F 57 C0                 - xorps xmm0,xmm0
-eldenring.exe+3C5E20: F3 0F 11 44 24 30        - movss [rsp+30],xmm0
-eldenring.exe+3C5E26: 48 8D 3D 7B 2F 55 02     - lea rdi,[eldenring.exe+2918DA8]
-eldenring.exe+3C5E2D: 48 89 7C 24 28           - mov [rsp+28],rdi
-eldenring.exe+3C5E32: F3 0F 11 74 24 30        - movss [rsp+30],xmm6
-eldenring.exe+3C5E38: 48 8D 54 24 28           - lea rdx,[rsp+28]
-eldenring.exe+3C5E3D: 48 8B CB                 - mov rcx,rbx
-// ---------- INJECTING HERE ----------
-eldenring.exe+3C5E40: E8 8B 30 00 00           - call eldenring.exe+3C8ED0
-// ---------- DONE INJECTING  ----------
-eldenring.exe+3C5E45: 90                       - nop 
-eldenring.exe+3C5E46: 48 89 7C 24 28           - mov [rsp+28],rdi
-eldenring.exe+3C5E4B: 48 89 74 24 28           - mov [rsp+28],rsi
-eldenring.exe+3C5E50: BA 04 00 00 00           - mov edx,00000004
-eldenring.exe+3C5E55: 48 8B 4B 20              - mov rcx,[rbx+20]
-eldenring.exe+3C5E59: E8 42 BA FF FF           - call eldenring.exe+3C18A0
-eldenring.exe+3C5E5E: 89 83 70 01 00 00        - mov [rbx+00000170],eax
-eldenring.exe+3C5E64: C6 83 18 03 00 00 00     - mov byte ptr [rbx+00000318],00
-eldenring.exe+3C5E6B: F3 0F 10 05 F5 59 C2 02  - movss xmm0,[eldenring.exe+2FEB868]
-eldenring.exe+3C5E73: 0F 57 05 F6 25 E1 02     - xorps xmm0,[eldenring.exe+31D8470]
-}
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>6</ID>
-          <Description>"Copy ChrCam"</Description>
-          <Options moHideChildren="1"/>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{ Game   : eldenring.exe
-  Version: 
-  Date   : 2022-11-16
-  Author : Kody
-
-  This script does blah blah blah
-}
-
-[ENABLE]
-
-aobscanmodule(INJECT_CopyChrCam,eldenring.exe,0F 28 40 10 0F 29 83 80 00 00 00 0F 28) // should be unique
-alloc(newmem,$1000,INJECT_CopyChrCam)
-
-alloc(chrCam,8,INJECT_CopyChrCam)
-registersymbol(chrCam)
-
-label(code)
-label(return)
-
-{$lua}
-if syntaxcheck then return end
-createTimer(500, function() openFormIfAbsent("[chrCam]", "CS::ChrCam") end)
-
-{$asm}
-
-newmem:
-
-code:
-  mov [chrCam],rax
-  movaps xmm0,[rax+10]
-  movaps [rbx+00000080],xmm0
-  jmp return
-
-INJECT_CopyChrCam:
-  jmp newmem
-  nop 6
-return:
-registersymbol(INJECT_CopyChrCam)
-
-[DISABLE]
-
-INJECT_CopyChrCam:
-  db 0F 28 40 10 0F 29 83 80 00 00 00
-
-unregistersymbol(INJECT_CopyChrCam)
-unregistersymbol(chrCam)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+4A1BFA
-
-eldenring.exe+4A1BD2: 48 83 EC 20           - sub rsp,20
-eldenring.exe+4A1BD6: 48 8B D9              - mov rbx,rcx
-eldenring.exe+4A1BD9: 48 83 C1 48           - add rcx,48
-eldenring.exe+4A1BDD: E8 6E A5 63 00        - call eldenring.exe+ADC150
-eldenring.exe+4A1BE2: 48 8B 05 8F 9E 7A 03  - mov rax,[eldenring.exe+3C4BA78]
-eldenring.exe+4A1BE9: 48 85 C0              - test rax,rax
-eldenring.exe+4A1BEC: 74 38                 - je eldenring.exe+4A1C26
-eldenring.exe+4A1BEE: 48 8B 80 D8 EC 01 00  - mov rax,[rax+0001ECD8]
-eldenring.exe+4A1BF5: 48 85 C0              - test rax,rax
-eldenring.exe+4A1BF8: 74 2C                 - je eldenring.exe+4A1C26
-// ---------- INJECTING HERE ----------
-eldenring.exe+4A1BFA: 0F 28 40 10           - movaps xmm0,[rax+10]
-// ---------- DONE INJECTING  ----------
-eldenring.exe+4A1BFE: 0F 29 83 80 00 00 00  - movaps [rbx+00000080],xmm0
-eldenring.exe+4A1C05: 0F 28 48 20           - movaps xmm1,[rax+20]
-eldenring.exe+4A1C09: 0F 29 8B 90 00 00 00  - movaps [rbx+00000090],xmm1
-eldenring.exe+4A1C10: 0F 28 40 30           - movaps xmm0,[rax+30]
-eldenring.exe+4A1C14: 0F 29 83 A0 00 00 00  - movaps [rbx+000000A0],xmm0
-eldenring.exe+4A1C1B: 0F 28 48 40           - movaps xmm1,[rax+40]
-eldenring.exe+4A1C1F: 0F 29 8B B0 00 00 00  - movaps [rbx+000000B0],xmm1
-eldenring.exe+4A1C26: 48 83 C4 20           - add rsp,20
-eldenring.exe+4A1C2A: 5B                    - pop rbx
-eldenring.exe+4A1C2B: C3                    - ret 
-}
-</AssemblerScript>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>7</ID>
-              <Description>"ChrCam Address"</Description>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>8 Bytes</VariableType>
-              <Address>chrCam</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>19</ID>
-              <Description>"VTable"</Description>
-              <ShowAsHex>1</ShowAsHex>
-              <VariableType>8 Bytes</VariableType>
-              <Address>[chrCam]</Address>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>25</ID>
-          <Description>"Copy PlayerIns"</Description>
-          <Options moHideChildren="1"/>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{ Game   : eldenring.exe
-  Version: 
-  Date   : 2022-11-17
-  Author : Kody
-
-  This script does blah blah blah
-}
-
-[ENABLE]
-
-aobscanmodule(INJECT_CopyPlayerIns,eldenring.exe,48 8B 68 08 48 8B 03)
-alloc(newmem,$1000,INJECT_CopyPlayerIns)
-
-alloc(playerIns,8,INJECT_CopyPlayerIns)
-registersymbol(playerIns)
-
-label(code)
-label(return)
-
-newmem:
-
-code:
-  mov [playerIns],rax
-  mov rbp,[rax+08]
-  mov rax,[rbx]
-  jmp return
-
-INJECT_CopyPlayerIns:
-  jmp newmem
-  nop 2
-return:
-registersymbol(INJECT_CopyPlayerIns)
-
-[DISABLE]
-
-INJECT_CopyPlayerIns:
-  db 48 8B 68 08 48 8B 03
-
-unregistersymbol(INJECT_CopyPlayerIns)
-unregistersymbol(playerIns)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+2C4A2B
-
-eldenring.exe+2C49F4: 75 2E                 - jne eldenring.exe+2C4A24
-eldenring.exe+2C49F6: 48 8D 0D 6F BF 97 03  - lea rcx,[eldenring.exe+3C4096C]
-eldenring.exe+2C49FD: E8 5E 85 B6 01        - call eldenring.exe+1E2CF60
-eldenring.exe+2C4A02: 4C 8B C8              - mov r9,rax
-eldenring.exe+2C4A05: 4C 8D 05 24 71 F0 02  - lea r8,[eldenring.exe+31CBB30]
-eldenring.exe+2C4A0C: BA B4 00 00 00        - mov edx,000000B4
-eldenring.exe+2C4A11: 48 8D 0D 08 30 65 02  - lea rcx,[eldenring.exe+2917A20]
-eldenring.exe+2C4A18: E8 03 09 B6 01        - call eldenring.exe+1E25320
-eldenring.exe+2C4A1D: 48 8B 05 54 70 98 03  - mov rax,[eldenring.exe+3C4BA78]
-eldenring.exe+2C4A24: 48 8B 80 08 E5 01 00  - mov rax,[rax+0001E508]
-// ---------- INJECTING HERE ----------
-eldenring.exe+2C4A2B: 48 8B 68 08           - mov rbp,[rax+08]
-// ---------- DONE INJECTING  ----------
-eldenring.exe+2C4A2F: 48 8B 03              - mov rax,[rbx]
-eldenring.exe+2C4A32: 48 8D 54 24 70        - lea rdx,[rsp+70]
-eldenring.exe+2C4A37: 48 8B CB              - mov rcx,rbx
-eldenring.exe+2C4A3A: FF 90 D8 00 00 00     - call qword ptr [rax+000000D8]
-eldenring.exe+2C4A40: 8B CD                 - mov ecx,ebp
-eldenring.exe+2C4A42: BA FF FF FF FF        - mov edx,FFFFFFFF
-eldenring.exe+2C4A47: 48 3B CA              - cmp rcx,rdx
-eldenring.exe+2C4A4A: 75 07                 - jne eldenring.exe+2C4A53
-eldenring.exe+2C4A4C: 8B 00                 - mov eax,[rax]
-eldenring.exe+2C4A4E: 48 3B C2              - cmp rax,rdx
-}
-</AssemblerScript>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>26</ID>
-              <Description>"PlayerIns Address"</Description>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>8 Bytes</VariableType>
-              <Address>playerIns</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>27</ID>
-              <Description>"VTable"</Description>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>8 Bytes</VariableType>
-              <Address>[playerIns]</Address>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>14</ID>
-          <Description>"_FlyCam"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
-if syntaxcheck then return end
-[ENABLE]
-flyCam = reloadPackage("lua/FlyCam").create()
-[DISABLE]
-flyCam.destroy()
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>24</ID>
-          <Description>"Fly Cam"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
-if syntaxcheck then return end
-{$asm}
-
-[ENABLE]
-
-aobscanmodule(INJECT_FreezeCam,eldenring.exe,E8 64 0C 92 FF)
-aobscanmodule(INJECT_FreezePlayerControls,eldenring.exe,E8 63 84 FC FF 48 8B 8F 90 01 00 00)
-INJECT_FreezeCam:
-  db 90 90 90 90 90
-INJECT_FreezePlayerControls:
-  db 90 90 90 90 90
-registersymbol(INJECT_FreezeCam)
-registersymbol(INJECT_FreezePlayerControls)
-
-{$lua}
-flyCam = reloadPackage("lua/FlyCam").create()
-{$asm}
-
-[DISABLE]
-
-INJECT_FreezeCam:
-  db E8 64 0C 92 FF
-INJECT_FreezePlayerControls:
-  db E8 63 84 FC FF
-unregistersymbol(INJECT_FreezeCam)
-unregistersymbol(INJECT_FreezePlayerControls)
-
-{$lua}
-flyCam.destroy()
-{$asm}
-</AssemblerScript>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>22</ID>
-      <Description>"Pointers"</Description>
-      <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
-      <GroupHeader>1</GroupHeader>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>35</ID>
-          <Description>"Game Base"</Description>
-          <LastState Value="0000000300905A4D" RealAddress="7FF6F9700000"/>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>8 Bytes</VariableType>
-          <Address>"eldenring.exe"</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>21</ID>
-          <Description>"ChrCamPointer"</Description>
-          <LastState Value="00007FF3F5ABEEC0" RealAddress="7FF3F47067B0"/>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>8 Bytes</VariableType>
-          <Address>["eldenring.exe"+03C482C8]+60</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>29</ID>
-          <Description>"PlayerIns Pointer"</Description>
-          <LastState Value="00007FF3EE3D2CB0" RealAddress="7FF3EFAAA340"/>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>8 Bytes</VariableType>
-          <Address>["eldenring.exe"+03A18D80]</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>32</ID>
-          <Description>"ChrDataModule"</Description>
-          <LastState Value="00007FF3EE3D33C0" RealAddress="7FF3ECB3D400"/>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>8 Bytes</VariableType>
-          <Address>[[["eldenring.exe"+03A18D80]]+190]</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>33</ID>
-          <Description>"PlayerHP"</Description>
-          <LastState Value="1216" RealAddress="7FF3EE3D34F8"/>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>[[[["eldenring.exe"+03A18D80]]+190]+0]+138</Address>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>23</ID>
-      <Description>"Dev"</Description>
-      <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
-      <GroupHeader>1</GroupHeader>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>30</ID>
-          <Description>"False Floor"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
-
-aobscanmodule(INJECT_FalseFloorA,eldenring.exe,C6 83 D2 01 00 00 00)
-aobscanmodule(INJECT_FalseFloorB,eldenring.exe,C6 81 D1 01 00 00 00 48 81 C1 F0 01 00 00 49)
-
-INJECT_FalseFloorA:
-  db 90 90 90 90 90 90 90
-INJECT_FalseFloorB:
-  db 90 90 90 90 90 90 90
-
-registersymbol(INJECT_FalseFloorA)
-registersymbol(INJECT_FalseFloorB)
-
-[DISABLE]
-
-INJECT_FalseFloorA:
-  db C6 83 D2 01 00 00 00
-INJECT_FalseFloorB:
-  db C6 81 D1 01 00 00 00
-
-unregistersymbol(INJECT_FalseFloorA)
-unregistersymbol(INJECT_FalseFloorB)
-
-{
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+462269
-
-eldenring.exe+462241: E8 6A 99 01 00              - call eldenring.exe+47BBB0
-eldenring.exe+462246: 84 C0                       - test al,al
-eldenring.exe+462248: 75 1F                       - jne eldenring.exe+462269
-eldenring.exe+46224A: 48 8B CB                    - mov rcx,rbx
-eldenring.exe+46224D: E8 DE 62 FD FF              - call eldenring.exe+438530
-eldenring.exe+462252: 48 8B 88 90 01 00 00        - mov rcx,[rax+00000190]
-eldenring.exe+462259: 48 8B 89 E8 00 00 00        - mov rcx,[rcx+000000E8]
-eldenring.exe+462260: E8 BB DC 00 00              - call eldenring.exe+46FF20
-eldenring.exe+462265: 84 C0                       - test al,al
-eldenring.exe+462267: 74 8B                       - je eldenring.exe+4621F4
-// ---------- INJECTING HERE ----------
-eldenring.exe+462269: C6 83 D2 01 00 00 00        - mov byte ptr [rbx+000001D2],00
-// ---------- DONE INJECTING  ----------
-eldenring.exe+462270: 66 C7 83 D4 01 00 00 00 00  - mov word ptr [rbx+000001D4],0000
-eldenring.exe+462279: 48 83 C4 20                 - add rsp,20
-eldenring.exe+46227D: 5B                          - pop rbx
-eldenring.exe+46227E: C3                          - ret 
-eldenring.exe+46227F: 80 89 D7 01 00 00 01        - or byte ptr [rcx+000001D7],01
-eldenring.exe+462286: C6 81 D2 01 00 00 01        - mov byte ptr [rcx+000001D2],01
-eldenring.exe+46228D: 66 C7 83 D4 01 00 00 00 00  - mov word ptr [rbx+000001D4],0000
-eldenring.exe+462296: 48 83 C4 20                 - add rsp,20
-eldenring.exe+46229A: 5B                          - pop rbx
-eldenring.exe+46229B: C3                          - ret 
-}
-
-{
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+46097B
-
-eldenring.exe+460950: 4C 8B DC                 - mov r11,rsp
-eldenring.exe+460953: 49 89 7B 20              - mov [r11+20],rdi
-eldenring.exe+460957: 55                       - push rbp
-eldenring.exe+460958: 49 8D 6B A1              - lea rbp,[r11-5F]
-eldenring.exe+46095C: 48 81 EC C0 00 00 00     - sub rsp,000000C0
-eldenring.exe+460963: 48 8B 05 96 8B 6E 03     - mov rax,[eldenring.exe+3B49500]
-eldenring.exe+46096A: 48 33 C4                 - xor rax,rsp
-eldenring.exe+46096D: 48 89 45 27              - mov [rbp+27],rax
-eldenring.exe+460971: 48 8B F9                 - mov rdi,rcx
-eldenring.exe+460974: C6 81 92 00 00 00 00     - mov byte ptr [rcx+00000092],00
-// ---------- INJECTING HERE ----------
-eldenring.exe+46097B: C6 81 D1 01 00 00 00     - mov byte ptr [rcx+000001D1],00
-// ---------- DONE INJECTING  ----------
-eldenring.exe+460982: 48 81 C1 F0 01 00 00     - add rcx,000001F0
-eldenring.exe+460989: 49 89 5B 10              - mov [r11+10],rbx
-eldenring.exe+46098D: 41 0F 29 73 E8           - movaps [r11-18],xmm6
-eldenring.exe+460992: E8 C9 C9 00 00           - call eldenring.exe+46D360
-eldenring.exe+460997: 48 8B 8F A0 00 00 00     - mov rcx,[rdi+000000A0]
-eldenring.exe+46099E: 48 8D 55 07              - lea rdx,[rbp+07]
-eldenring.exe+4609A2: 48 85 C9                 - test rcx,rcx
-eldenring.exe+4609A5: 0F 84 FE 00 00 00        - je eldenring.exe+460AA9
-eldenring.exe+4609AB: 48 89 B4 24 E0 00 00 00  - mov [rsp+000000E0],rsi
-eldenring.exe+4609B3: 0F 29 BC 24 A0 00 00 00  - movaps [rsp+000000A0],xmm7
-}
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>16</ID>
-          <Description>"FreezeCam"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{ Game   : eldenring.exe
-  Version: 
-  Date   : 2022-11-17
-  Author : Kody
-
-  This script does blah blah blah
-}
-
-[ENABLE]
-
-aobscanmodule(INJECT_FreezeCam,eldenring.exe,E8 64 0C 92 FF)
-
-INJECT_FreezeCam:
-  db 90 90 90 90 90
-
-registersymbol(INJECT_FreezeCam)
-
-[DISABLE]
-
-INJECT_FreezeCam:
-  db E8 64 0C 92 FF
-
-unregistersymbol(INJECT_FreezeCam)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+A8D727
-
-eldenring.exe+A8D6F2: 48 8D 0D 27 A3 E8 01     - lea rcx,[eldenring.exe+2917A20]
-eldenring.exe+A8D6F9: E8 22 7C 39 01           - call eldenring.exe+1E25320
-eldenring.exe+A8D6FE: 48 8B 05 6B 25 1C 03     - mov rax,[eldenring.exe+3C4FC70]
-eldenring.exe+A8D705: C6 80 31 28 00 00 00     - mov byte ptr [rax+00002831],00
-eldenring.exe+A8D70C: 4C 89 74 24 28           - mov [rsp+28],r14
-eldenring.exe+A8D711: 48 89 74 24 28           - mov [rsp+28],rsi
-eldenring.exe+A8D716: 44 0F B6 CD              - movzx r9d,bpl
-eldenring.exe+A8D71A: 4C 8B C7                 - mov r8,rdi
-eldenring.exe+A8D71D: 0F 28 CE                 - movaps xmm1,xmm6
-eldenring.exe+A8D720: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
-// ---------- INJECTING HERE ----------
-eldenring.exe+A8D727: E8 64 0C 92 FF           - call eldenring.exe+3AE390
-// ---------- DONE INJECTING  ----------
-eldenring.exe+A8D72C: 48 8B 93 E8 00 00 00     - mov rdx,[rbx+000000E8]
-eldenring.exe+A8D733: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
-eldenring.exe+A8D73A: E8 31 0B 92 FF           - call eldenring.exe+3AE270
-eldenring.exe+A8D73F: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
-eldenring.exe+A8D746: E8 A5 07 92 FF           - call eldenring.exe+3ADEF0
-eldenring.exe+A8D74B: 0F 28 CE                 - movaps xmm1,xmm6
-eldenring.exe+A8D74E: 48 8B 8B E8 00 00 00     - mov rcx,[rbx+000000E8]
-eldenring.exe+A8D755: 48 8B 5C 24 70           - mov rbx,[rsp+70]
-eldenring.exe+A8D75A: 48 8B AC 24 80 00 00 00  - mov rbp,[rsp+00000080]
-eldenring.exe+A8D762: 0F 28 74 24 40           - movaps xmm6,[rsp+40]
-}
-</AssemblerScript>
-        </CheatEntry>
         <CheatEntry>
           <ID>39</ID>
-          <Description>"FreezeCamPosition"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
-
-aobscanmodule(INJECT_FreezeCamPosition,eldenring.exe,0F 29 4F 40 E9 31 04 00 00)
-INJECT_FreezeCamPosition:
-  db 90 90 90 90
-registersymbol(INJECT_FreezeCamPosition)
-
-[DISABLE]
-
-INJECT_FreezeCamPosition:
-  db 0F 29 4F 40
-unregistersymbol(INJECT_FreezeCamPosition)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+3AEAE9
-
-eldenring.exe+3AEAC4: 89 47 58                 - mov [rdi+58],eax
-eldenring.exe+3AEAC7: 8B 41 5C                 - mov eax,[rcx+5C]
-eldenring.exe+3AEACA: 89 47 5C                 - mov [rdi+5C],eax
-eldenring.exe+3AEACD: 0F 28 41 10              - movaps xmm0,[rcx+10]
-eldenring.exe+3AEAD1: 0F 29 47 10              - movaps [rdi+10],xmm0
-eldenring.exe+3AEAD5: 0F 28 49 20              - movaps xmm1,[rcx+20]
-eldenring.exe+3AEAD9: 0F 29 4F 20              - movaps [rdi+20],xmm1
-eldenring.exe+3AEADD: 0F 28 41 30              - movaps xmm0,[rcx+30]
-eldenring.exe+3AEAE1: 0F 29 47 30              - movaps [rdi+30],xmm0
-eldenring.exe+3AEAE5: 0F 28 49 40              - movaps xmm1,[rcx+40]
-// ---------- INJECTING HERE ----------
-eldenring.exe+3AEAE9: 0F 29 4F 40              - movaps [rdi+40],xmm1
-// ---------- DONE INJECTING  ----------
-eldenring.exe+3AEAED: E9 31 04 00 00           - jmp eldenring.exe+3AEF23
-eldenring.exe+3AEAF2: 48 8B 4F 60              - mov rcx,[rdi+60]
-eldenring.exe+3AEAF6: 4D 8B CE                 - mov r9,r14
-eldenring.exe+3AEAF9: 4C 8B C6                 - mov r8,rsi
-eldenring.exe+3AEAFC: 41 0F 28 C9              - movaps xmm1,xmm9
-eldenring.exe+3AEB00: E8 8B 41 00 00           - call eldenring.exe+3B2C90
-eldenring.exe+3AEB05: F3 0F 10 9F 80 00 00 00  - movss xmm3,[rdi+00000080]
-eldenring.exe+3AEB0D: 41 0F 2F D8              - comiss xmm3,xmm8
-eldenring.exe+3AEB11: 76 15                    - jna eldenring.exe+3AEB28
-eldenring.exe+3AEB13: 4C 8B 47 68              - mov r8,[rdi+68]
-}
-</AssemblerScript>
+          <Description>"right.x"</Description>
+          <LastState Value="0.3067228198" RealAddress="7FF3F5ABEED0"/>
+          <VariableType>Float</VariableType>
+          <Address>[["eldenring.exe"+03C482C8]+60]+10</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>18</ID>
-          <Description>"FreezePlayerControls"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{ Game   : eldenring.exe
-  Version: 
-  Date   : 2022-11-17
-  Author : Kody
-
-  This script does blah blah blah
-}
-
-[ENABLE]
-
-aobscanmodule(INJECT_FreezePlayerControls,eldenring.exe,E8 63 84 FC FF 48 8B 8F 90 01 00 00)
-
-INJECT_FreezePlayerControls:
-  db 90 90 90 90 90
-
-registersymbol(INJECT_FreezePlayerControls)
-
-[DISABLE]
-
-INJECT_FreezePlayerControls:
-  db E8 63 84 FC FF
-
-unregistersymbol(INJECT_FreezePlayerControls)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+3FD818
-
-eldenring.exe+3FD7ED: 48 8D 4D EF           - lea rcx,[rbp-11]
-eldenring.exe+3FD7F1: E8 7A 46 A4 01        - call eldenring.exe+1E41E70
-eldenring.exe+3FD7F6: 48 8B 07              - mov rax,[rdi]
-eldenring.exe+3FD7F9: 48 8B CF              - mov rcx,rdi
-eldenring.exe+3FD7FC: FF 90 F0 05 00 00     - call qword ptr [rax+000005F0]
-eldenring.exe+3FD802: 48 8B 10              - mov rdx,[rax]
-eldenring.exe+3FD805: 48 8B C8              - mov rcx,rax
-eldenring.exe+3FD808: FF 92 D0 00 00 00     - call qword ptr [rdx+000000D0]
-eldenring.exe+3FD80E: F3 41 0F 10 4F 08     - movss xmm1,[r15+08]
-eldenring.exe+3FD814: 48 8B 4F 58           - mov rcx,[rdi+58]
-// ---------- INJECTING HERE ----------
-eldenring.exe+3FD818: E8 63 84 FC FF        - call eldenring.exe+3C5C80
-// ---------- DONE INJECTING  ----------
-eldenring.exe+3FD81D: 48 8B 8F 90 01 00 00  - mov rcx,[rdi+00000190]
-eldenring.exe+3FD824: 49 8B D7              - mov rdx,r15
-eldenring.exe+3FD827: 48 8B 89 C0 00 00 00  - mov rcx,[rcx+000000C0]
-eldenring.exe+3FD82E: E8 2D 53 01 00        - call eldenring.exe+412B60
-eldenring.exe+3FD833: 48 8B 8F 90 01 00 00  - mov rcx,[rdi+00000190]
-eldenring.exe+3FD83A: F3 41 0F 10 4F 08     - movss xmm1,[r15+08]
-eldenring.exe+3FD840: 48 8B 49 30           - mov rcx,[rcx+30]
-eldenring.exe+3FD844: E8 27 1C 02 00        - call eldenring.exe+41F470
-eldenring.exe+3FD849: 48 8B 8F 90 01 00 00  - mov rcx,[rdi+00000190]
-eldenring.exe+3FD850: 48 8B 49 28           - mov rcx,[rcx+28]
-}
-</AssemblerScript>
+          <ID>40</ID>
+          <Description>"right.y"</Description>
+          <LastState Value="0" RealAddress="7FF3F5ABEED4"/>
+          <VariableType>Float</VariableType>
+          <Address>[["eldenring.exe"+03C482C8]+60]+14</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>36</ID>
-          <Description>"Copy Input Pointer"</Description>
-          <Options moHideChildren="1" moManualExpandCollapse="1"/>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{ Game   : eldenring.exe
-  Version: 
-  Date   : 2022-11-19
-  Author : Kody
-
-  This script does blah blah blah
-}
-
-[ENABLE]
-
-aobscanmodule(INJECT_CopyInputPointer,XINPUT1_4.dll,88 43 43 0F B6 45 FE 66 0B C8)
-alloc(newmem,$1000,INJECT_CopyInputPointer)
-alloc(inputPointer,8)
-
-label(code)
-label(return)
-
-newmem:
-
-code:
-  mov [inputPointer],rbx
-  mov [rbx+43],al
-  movzx eax,byte ptr [rbp-02]
-  jmp return
-
-INJECT_CopyInputPointer:
-  jmp newmem
-  nop 2
-return:
-registersymbol(INJECT_CopyInputPointer)
-registersymbol(inputPointer)
-
-[DISABLE]
-
-INJECT_CopyInputPointer:
-  db 88 43 43 0F B6 45 FE
-
-unregistersymbol(INJECT_CopyInputPointer)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: XINPUT1_4.dll+58FB
-
-XINPUT1_4.dll+58D7: 8B 13              - mov edx,[rbx]
-XINPUT1_4.dll+58D9: 66 44 39 6B 38     - cmp [rbx+38],r13w
-XINPUT1_4.dll+58DE: 0F 84 8E 00 00 00  - je XINPUT1_4.dll+5972
-XINPUT1_4.dll+58E4: 8B 45 F4           - mov eax,[rbp-0C]
-XINPUT1_4.dll+58E7: 0F B6 4D FF        - movzx ecx,byte ptr [rbp-01]
-XINPUT1_4.dll+58EB: 66 C1 E1 08        - shl cx,08
-XINPUT1_4.dll+58EF: 89 43 3C           - mov [rbx+3C],eax
-XINPUT1_4.dll+58F2: 8A 45 FC           - mov al,[rbp-04]
-XINPUT1_4.dll+58F5: 88 43 42           - mov [rbx+42],al
-XINPUT1_4.dll+58F8: 8A 45 FD           - mov al,[rbp-03]
-// ---------- INJECTING HERE ----------
-XINPUT1_4.dll+58FB: 88 43 43           - mov [rbx+43],al
-// ---------- DONE INJECTING  ----------
-XINPUT1_4.dll+58FE: 0F B6 45 FE        - movzx eax,byte ptr [rbp-02]
-XINPUT1_4.dll+5902: 66 0B C8           - or cx,ax
-XINPUT1_4.dll+5905: 0F B6 45 00        - movzx eax,byte ptr [rbp+00]
-XINPUT1_4.dll+5909: 66 89 4B 44        - mov [rbx+44],cx
-XINPUT1_4.dll+590D: 0F B6 4D 01        - movzx ecx,byte ptr [rbp+01]
-XINPUT1_4.dll+5911: 66 C1 E1 08        - shl cx,08
-XINPUT1_4.dll+5915: 66 0B C8           - or cx,ax
-XINPUT1_4.dll+5918: 0F B6 45 02        - movzx eax,byte ptr [rbp+02]
-XINPUT1_4.dll+591C: 66 89 4B 46        - mov [rbx+46],cx
-XINPUT1_4.dll+5920: 0F B6 4D 03        - movzx ecx,byte ptr [rbp+03]
-}
-</AssemblerScript>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>37</ID>
-              <Description>"Input Pointer"</Description>
-              <LastState Value="00000189DC89C480" RealAddress="7FFA88F31000"/>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>8 Bytes</VariableType>
-              <Address>inputPointer</Address>
-            </CheatEntry>
-          </CheatEntries>
+          <ID>41</ID>
+          <Description>"right.z"</Description>
+          <LastState Value="-0.9517989159" RealAddress="7FF3F5ABEED8"/>
+          <VariableType>Float</VariableType>
+          <Address>[["eldenring.exe"+03C482C8]+60]+18</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>42</ID>
+          <Description>"up.x"</Description>
+          <LastState Value="0.2214683294" RealAddress="7FF3F5ABEEE0"/>
+          <VariableType>Float</VariableType>
+          <Address>[["eldenring.exe"+03C482C8]+60]+20</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>43</ID>
+          <Description>"up.y"</Description>
+          <LastState Value="0.9725524187" RealAddress="7FF3F5ABEEE4"/>
+          <VariableType>Float</VariableType>
+          <Address>[["eldenring.exe"+03C482C8]+60]+24</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>44</ID>
+          <Description>"up.z"</Description>
+          <LastState Value="0.07136947662" RealAddress="7FF3F5ABEEE8"/>
+          <VariableType>Float</VariableType>
+          <Address>[["eldenring.exe"+03C482C8]+60]+28</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>45</ID>
+          <Description>"fwd.x"</Description>
+          <LastState Value="0.9256742597" RealAddress="7FF3F5ABEEF0"/>
+          <VariableType>Float</VariableType>
+          <Address>[["eldenring.exe"+03C482C8]+60]+30</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>46</ID>
+          <Description>"fwd.y"</Description>
+          <LastState Value="-0.2326839417" RealAddress="7FF3F5ABEEF4"/>
+          <VariableType>Float</VariableType>
+          <Address>[["eldenring.exe"+03C482C8]+60]+34</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>47</ID>
+          <Description>"fwd.z"</Description>
+          <LastState Value="0.2983039916" RealAddress="7FF3F5ABEEF8"/>
+          <VariableType>Float</VariableType>
+          <Address>[["eldenring.exe"+03C482C8]+60]+38</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>48</ID>
+          <Description>"pos.x"</Description>
+          <LastState Value="-12.80328178" RealAddress="7FF3F5ABEF00"/>
+          <VariableType>Float</VariableType>
+          <Address>[["eldenring.exe"+03C482C8]+60]+40</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>49</ID>
+          <Description>"pos.y"</Description>
+          <LastState Value="8.679311752" RealAddress="7FF3F5ABEF04"/>
+          <VariableType>Float</VariableType>
+          <Address>[["eldenring.exe"+03C482C8]+60]+44</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>50</ID>
+          <Description>"pos.z"</Description>
+          <LastState Value="-1.008770823" RealAddress="7FF3F5ABEF08"/>
+          <VariableType>Float</VariableType>
+          <Address>[["eldenring.exe"+03C482C8]+60]+48</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>5</ID>
-      <Description>"Scripts"</Description>
-      <Options moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
-      <GroupHeader>1</GroupHeader>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>38</ID>
-          <Description>"Fly Cam Native"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
+      <ID>38</ID>
+      <Description>"Fly Cam"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
 
 // === INJECTION COPY INPUT POINTER ===
 aobscanmodule(INJECT_CopyInputPointer,XINPUT1_4.dll,88 43 43 0F B6 45 FE 66 0B C8)
 alloc(newmem_copyPointer,$1000,INJECT_CopyInputPointer)
-alloc(inputPointer,8)
+alloc(inputPointer,8) // Pointer to structure containing xbox controller state.
 
 label(code_copyPointer)
 label(return_copyPointer)
@@ -917,9 +168,7 @@ return:
 registersymbol(INJECT_FlyCamNative)
 // =======================
 
-
 [DISABLE]
-
 
 // === DISABLE - INJECTION COPY INPUT POINTER ===
 INJECT_CopyInputPointer:
@@ -946,46 +195,16 @@ INJECT_FlyCamNative:
 unregistersymbol(INJECT_FlyCamNative)
 dealloc(newmem)
 // ===================================
-
-{
-// ORIGINAL CODE - INJECTION POINT: eldenring.exe+A8D727
-
-eldenring.exe+A8D6F2: 48 8D 0D 27 A3 E8 01     - lea rcx,[eldenring.exe+2917A20]
-eldenring.exe+A8D6F9: E8 22 7C 39 01           - call eldenring.exe+1E25320
-eldenring.exe+A8D6FE: 48 8B 05 6B 25 1C 03     - mov rax,[eldenring.exe+3C4FC70]
-eldenring.exe+A8D705: C6 80 31 28 00 00 00     - mov byte ptr [rax+00002831],00
-eldenring.exe+A8D70C: 4C 89 74 24 28           - mov [rsp+28],r14
-eldenring.exe+A8D711: 48 89 74 24 28           - mov [rsp+28],rsi
-eldenring.exe+A8D716: 44 0F B6 CD              - movzx r9d,bpl
-eldenring.exe+A8D71A: 4C 8B C7                 - mov r8,rdi
-eldenring.exe+A8D71D: 0F 28 CE                 - movaps xmm1,xmm6
-eldenring.exe+A8D720: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
-// ---------- INJECTING HERE ----------
-eldenring.exe+A8D727: E8 64 0C 92 FF           - call eldenring.exe+3AE390
-// ---------- DONE INJECTING  ----------
-eldenring.exe+A8D72C: 48 8B 93 E8 00 00 00     - mov rdx,[rbx+000000E8]
-eldenring.exe+A8D733: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
-eldenring.exe+A8D73A: E8 31 0B 92 FF           - call eldenring.exe+3AE270
-eldenring.exe+A8D73F: 48 8B 8B F8 00 00 00     - mov rcx,[rbx+000000F8]
-eldenring.exe+A8D746: E8 A5 07 92 FF           - call eldenring.exe+3ADEF0
-eldenring.exe+A8D74B: 0F 28 CE                 - movaps xmm1,xmm6
-eldenring.exe+A8D74E: 48 8B 8B E8 00 00 00     - mov rcx,[rbx+000000E8]
-eldenring.exe+A8D755: 48 8B 5C 24 70           - mov rbx,[rsp+70]
-eldenring.exe+A8D75A: 48 8B AC 24 80 00 00 00  - mov rbp,[rsp+00000080]
-eldenring.exe+A8D762: 0F 28 74 24 40           - movaps xmm6,[rsp+40]
-}
 </AssemblerScript>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Toggle Activation</Action>
-              <Keys>
-                <Key>33</Key>
-              </Keys>
-              <ID>0</ID>
-            </Hotkey>
-          </Hotkeys>
-        </CheatEntry>
-      </CheatEntries>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>33</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -10459,45 +9678,14 @@ eldenring.exe+A8D762: 0F 28 74 24 40           - movaps xmm6,[rsp+40]
       </Elements>
     </Structure>
   </Structures>
-  <LuaScript>function reloadPackage(path)
-  package.loaded[path] = nil
-  return require(path)
-end
-
-function toHex(n) return string.format("%x", n):upper() end
-function printHex(n) print(toHex(n)) end
-
-function openFormIfAbsent(address, structureName)
-    local found = false
-    for i,form in ipairs(enumStructureForms()) do
-        local struct = form.MainStruct
-        if struct ~= nil then
-            if struct.Name == structureName then
-                for i = 0, form.ColumnCount - 1 do
-                    local column = form.Column[i]
-                    if column.AddressText == address then
-                        found = true
-                        break
-                    end
-                end
-            end
-        end
-    end
-    if not found then
-        createStructureForm(address, nil, structureName)
-    end
-end
-
--- Forms --
-
-function MainForm_1_CEButton_CamStructClick(sender)
-    local addr = reloadPackage("lua/addresses").chrCam
-    openFormIfAbsent("[" .. addr .. "]", "CS::ChrCam")
-end
-
-function MainForm_1_CEButton_PlayerStructClick(sender)
-    local addr = reloadPackage("lua/addresses").playerIns
-    openFormIfAbsent("[" .. addr .. "]", "CS::PlayerIns")
-end
+  <Comments>controls:
+   enable/disable:     page up
+   move horizontally:  left stick
+   move vertically:    left/right triggers
+   increase speed:     hold right shoulder
+   decrease speed:     hold left shoulder
+   reset speed:        left shoulder + right shoulder
+</Comments>
+  <LuaScript>
 </LuaScript>
 </CheatTable>
