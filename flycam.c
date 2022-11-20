@@ -1,16 +1,11 @@
 #include <stdbool.h>
 
-//typedef struct { float yaw; float pitch; } Angles;
-//Angles angles;
-
 const int null = 0;
 const float speedModifyRate = 1.0116194403019225;
 const float dt = 1.0 / 60.0;
 const float baseSpeed = 10.0;
 const float triggerMax = 255.0;
 const float stickMax = 32768.0;
-//const float pi = 3.141592653589793;
-//const float tau = 6.283185307179586;
 
 typedef struct {
     char pad0[0x10];
@@ -36,7 +31,6 @@ typedef struct {
 float speedModifier = 1.0;
 
 void updateCamera(void* cambase, void* inputbase) {
-    // extern void* inputPointer;
     if (inputbase == null)
         return;
 
