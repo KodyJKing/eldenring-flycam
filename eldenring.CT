@@ -11,84 +11,84 @@
         <CheatEntry>
           <ID>39</ID>
           <Description>"right.x"</Description>
-          <LastState Value="0.1294624507" RealAddress="7FF3F5ABEED0"/>
+          <LastState Value="0.8168976307" RealAddress="7FF4443E9BE0"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+10</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>40</ID>
           <Description>"right.y"</Description>
-          <LastState Value="0" RealAddress="7FF3F5ABEED4"/>
+          <LastState Value="0" RealAddress="7FF4443E9BE4"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+14</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>41</ID>
           <Description>"right.z"</Description>
-          <LastState Value="-0.991584301" RealAddress="7FF3F5ABEED8"/>
+          <LastState Value="-0.5767826438" RealAddress="7FF4443E9BE8"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+18</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>42</ID>
           <Description>"up.x"</Description>
-          <LastState Value="0.2102318704" RealAddress="7FF3F5ABEEE0"/>
+          <LastState Value="0.1841771156" RealAddress="7FF4443E9BF0"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+20</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>43</ID>
           <Description>"up.y"</Description>
-          <LastState Value="0.9772661924" RealAddress="7FF3F5ABEEE4"/>
+          <LastState Value="0.9476476312" RealAddress="7FF4443E9BF4"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+24</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>44</ID>
           <Description>"up.z"</Description>
-          <LastState Value="0.02744812891" RealAddress="7FF3F5ABEEE8"/>
+          <LastState Value="0.2608501613" RealAddress="7FF4443E9BF8"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+28</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>45</ID>
           <Description>"fwd.x"</Description>
-          <LastState Value="0.9690418243" RealAddress="7FF3F5ABEEF0"/>
+          <LastState Value="0.5465866923" RealAddress="7FF4443E9C00"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+30</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>46</ID>
           <Description>"fwd.y"</Description>
-          <LastState Value="-0.2120161206" RealAddress="7FF3F5ABEEF4"/>
+          <LastState Value="-0.3193180263" RealAddress="7FF4443E9C04"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+34</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>47</ID>
           <Description>"fwd.z"</Description>
-          <LastState Value="0.1265192777" RealAddress="7FF3F5ABEEF8"/>
+          <LastState Value="0.7741311193" RealAddress="7FF4443E9C08"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+38</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>48</ID>
           <Description>"pos.x"</Description>
-          <LastState Value="-18.39679909" RealAddress="7FF3F5ABEF00"/>
+          <LastState Value="-9.634840012" RealAddress="7FF4443E9C10"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+40</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>49</ID>
           <Description>"pos.y"</Description>
-          <LastState Value="9.783409119" RealAddress="7FF3F5ABEF04"/>
+          <LastState Value="14.40692139" RealAddress="7FF4443E9C14"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+44</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>50</ID>
           <Description>"pos.z"</Description>
-          <LastState Value="-0.0751394704" RealAddress="7FF3F5ABEF08"/>
+          <LastState Value="-7.373263359" RealAddress="7FF4443E9C18"/>
           <VariableType>Float</VariableType>
           <Address>[["eldenring.exe"+03C482C8]+60]+48</Address>
         </CheatEntry>
@@ -9685,7 +9685,8 @@ dealloc(newmem)
    increase speed:     hold right shoulder
    decrease speed:     hold left shoulder
    reset speed:        left shoulder + right shoulder
+   
+   hold A to move at 2x speed
+   hold B to move at 1/2 speed
 </Comments>
-  <LuaScript>
-</LuaScript>
 </CheatTable>

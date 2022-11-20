@@ -4,10 +4,11 @@
 
 typedef struct {
     char pad0[0x10];
-    float rx; float ry; float rz; float rw;
-    float ux; float uy; float uz; float uw;
-    float fx; float fy; float fz; float fw;
-    float  x; float  y; float  z;
+    // Camera matrix:
+    float rx; float ry; float rz; float rw; // Right
+    float ux; float uy; float uz; float uw; // Up
+    float fx; float fy; float fz; float fw; // Forward
+    float  x; float  y; float  z;           // Position
 } Camera;
 
 typedef struct {
@@ -56,6 +57,7 @@ void updateCamera(void* cambase, void* inputbase) {
 
     float speed = baseSpeed * speedModifier;
     if (input->b) speed *= 2.0;
+    if (input->a) speed /= 2.0;
 
     cam->x += vx * speed * dt;
     cam->y += vy * speed * dt;
