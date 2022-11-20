@@ -456,7 +456,7 @@ flyCam.destroy()
         <CheatEntry>
           <ID>21</ID>
           <Description>"ChrCamPointer"</Description>
-          <LastState Value="00007FF4293E9BD0" RealAddress="7FF4293329A0"/>
+          <LastState Value="00007FF3F5ABEEC0" RealAddress="7FF3F47067B0"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
@@ -465,7 +465,7 @@ flyCam.destroy()
         <CheatEntry>
           <ID>29</ID>
           <Description>"PlayerIns Pointer"</Description>
-          <LastState Value="00007FF42C2B9390" RealAddress="7FF3ED8313C0"/>
+          <LastState Value="00007FF3EE3D2CB0" RealAddress="7FF3EFAAA340"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
@@ -474,7 +474,7 @@ flyCam.destroy()
         <CheatEntry>
           <ID>32</ID>
           <Description>"ChrDataModule"</Description>
-          <LastState Value="00007FF42C2B9D00" RealAddress="7FF42A7E6000"/>
+          <LastState Value="00007FF3EE3D33C0" RealAddress="7FF3ECB3D400"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
@@ -483,7 +483,7 @@ flyCam.destroy()
         <CheatEntry>
           <ID>33</ID>
           <Description>"PlayerHP"</Description>
-          <LastState Value="1216" RealAddress="7FF42C2B9E38"/>
+          <LastState Value="1216" RealAddress="7FF3EE3D34F8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>[[[["eldenring.exe"+03A18D80]]+190]+0]+138</Address>
@@ -826,7 +826,7 @@ XINPUT1_4.dll+5920: 0F B6 4D 03        - movzx ecx,byte ptr [rbp+03]
             <CheatEntry>
               <ID>37</ID>
               <Description>"Input Pointer"</Description>
-              <LastState Value="000001FAD44FA290" RealAddress="7FFA916D1000"/>
+              <LastState Value="00000189DC89C480" RealAddress="7FFA88F31000"/>
               <ShowAsHex>1</ShowAsHex>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>8 Bytes</VariableType>
@@ -846,7 +846,7 @@ XINPUT1_4.dll+5920: 0F B6 4D 03        - movzx ecx,byte ptr [rbp+03]
         <CheatEntry>
           <ID>38</ID>
           <Description>"Fly Cam Native"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 
