@@ -48,19 +48,19 @@ void updateCamera(void* cambase) {
     else if (input.leftShoulder)
         speedModifier /= speedModifyRate;
 
-    float moveX = input.leftStickX / stickMax;
-    float moveZ = input.leftStickY / stickMax;
-    float moveY = ((float)input.rightTrigger - (float)input.leftTrigger) / triggerMax;
+    float moveR = input.leftStickX / stickMax;
+    float moveU = ((float)input.rightTrigger - (float)input.leftTrigger) / triggerMax;
+    float moveF = input.leftStickY / stickMax;
 
-    float vx = pCam->rx * moveX + pCam->ux * moveY + pCam->fx * moveZ;
-    float vy = pCam->ry * moveX + pCam->uy * moveY + pCam->fy * moveZ;
-    float vz = pCam->rz * moveX + pCam->uz * moveY + pCam->fz * moveZ;
+    float moveX = pCam->rx * moveR + pCam->ux * moveU + pCam->fx * moveF;
+    float moveY = pCam->ry * moveR + pCam->uy * moveU + pCam->fy * moveF;
+    float moveZ = pCam->rz * moveR + pCam->uz * moveU + pCam->fz * moveF;
 
     float speed = baseSpeed * speedModifier;
     if (input.b) speed *= 2.0;
     if (input.a) speed /= 2.0;
 
-    pCam->x += vx * speed * dt;
-    pCam->y += vy * speed * dt;
-    pCam->z += vz * speed * dt;
+    pCam->x += moveX * speed * dt;
+    pCam->y += moveY * speed * dt;
+    pCam->z += moveZ * speed * dt;
 }
