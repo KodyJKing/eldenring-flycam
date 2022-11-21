@@ -11,19 +11,28 @@ typedef struct {
     float  x; float  y; float  z;           // Position
 } Camera;
 
+// https://learn.microsoft.com/en-us/windows/win32/api/xinput/ns-xinput-xinput_state
+// https://learn.microsoft.com/en-us/windows/win32/api/xinput/ns-xinput-xinput_gamepad
 typedef struct {
     int packetNumber;
+    
+    // Button bitfields:
     bool dpadUp : 1; bool dpadDown : 1; bool dpadLeft : 1; bool dpadRight : 1;
     bool start : 1; bool back : 1;
     bool leftStick : 1; bool rightStick : 1;
     bool leftShoulder : 1; bool rightShoulder : 1;
     int pad_0 : 2;
     bool a : 1; bool b : 1; bool x : 1; bool y : 1;
-    unsigned char leftTrigger; unsigned char rightTrigger;
-    short leftStickX; short leftStickY;
-    short rightStickX; short rightStickY;
+
+    unsigned char leftTrigger;
+    unsigned char rightTrigger;
+    short leftStickX;
+    short leftStickY;
+    short rightStickX;
+    short rightStickY;
 } Input;
 
+// https://learn.microsoft.com/en-us/windows/win32/api/xinput/nf-xinput-xinputgetstate
 extern int XInputGetState(int controllerIndex, Input *pInput);
 
 const float triggerMax = 255.0;

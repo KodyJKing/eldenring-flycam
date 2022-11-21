@@ -101,34 +101,6 @@
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
-// === INJECTION COPY INPUT POINTER ===
-aobscanmodule(INJECT_CopyInputPointer,XINPUT1_4.dll,88 43 43 0F B6 45 FE 66 0B C8)
-alloc(newmem_copyPointer,$1000,INJECT_CopyInputPointer)
-alloc(inputPointer,8) // Pointer to structure containing xbox controller state.
-
-label(code_copyPointer)
-label(return_copyPointer)
-
-inputPointer:
-    dq 0
-
-newmem_copyPointer:
-
-code_copyPointer:
-  mov [inputPointer],rbx
-  mov [rbx+43],al
-  movzx eax,byte ptr [rbp-02]
-  jmp return_copyPointer
-
-INJECT_CopyInputPointer:
-  jmp newmem_copyPointer
-  nop 2
-return_copyPointer:
-
-registersymbol(INJECT_CopyInputPointer)
-registersymbol(inputPointer)
-// ====================================
-
 // === FREEZE CAM POS ====
 aobscanmodule(INJECT_FreezeCamPosition,eldenring.exe,0F 29 4F 40 E9 31 04 00 00)
 INJECT_FreezeCamPosition:
@@ -155,9 +127,8 @@ label(return)
 
 newmem:
 code:
-mov rax,[inputPointer]
-{$ccode cambase=RCX inputbase=RAX}
-  updateCamera(cambase, inputbase)
+{$ccode cambase=RCX}
+  updateCamera(cambase);
 {$asm}
   call eldenring.exe+3AE390
   jmp return
@@ -169,13 +140,6 @@ registersymbol(INJECT_FlyCamNative)
 // =======================
 
 [DISABLE]
-
-// === DISABLE - INJECTION COPY INPUT POINTER ===
-INJECT_CopyInputPointer:
-  db 88 43 43 0F B6 45 FE
-unregistersymbol(INJECT_CopyInputPointer)
-dealloc(newmem_copyPointer)
-// ==============================================
 
 // === DISABLE - FREEZE CAM ========
 INJECT_FreezeCamPosition:
