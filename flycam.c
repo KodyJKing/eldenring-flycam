@@ -33,6 +33,7 @@ typedef struct {
 } Input;
 
 // https://learn.microsoft.com/en-us/windows/win32/api/xinput/nf-xinput-xinputgetstate
+// The XInput dll is used by Elden Ring, so Cheat Engine's C compiler will link against it.
 extern int XInputGetState(int controllerIndex, Input *pInput);
 
 const float triggerMax = 255.0;
@@ -48,7 +49,7 @@ Input input;
 void updateCamera(void* cambase) {
     Camera *pCam = (Camera*)cambase;
 
-    XInputGetState(0, &input);
+    XInputGetState(0 /*controllerIndex*/, &input);
 
     if (input.rightShoulder && input.leftShoulder)
         speedModifier = 1.0;
